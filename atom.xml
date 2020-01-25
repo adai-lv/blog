@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>海韵学社</title>
+  
+  <subtitle>不断打破自我认知</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.lvmaohai.cn/"/>
+  <updated>2020-01-20T15:20:15.000Z</updated>
+  <id>https://blog.lvmaohai.cn/</id>
+  
+  <author>
+    <name>Bigo Lv</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hive 安装和配置</title>
+    <link href="https://blog.lvmaohai.cn/article/hive-an-zhuang-he-pei-zhi.html"/>
+    <id>https://blog.lvmaohai.cn/article/hive-an-zhuang-he-pei-zhi.html</id>
+    <published>2020-01-20T15:20:15.000Z</published>
+    <updated>2020-01-20T15:20:15.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;系统环境：MacOS&lt;br&gt;Hadoop 版本：3.1.2&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Homebrew安装Hive&quot;&gt;&lt;a href=&quot;#Homebrew安装Hive&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大数据" scheme="https://blog.lvmaohai.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="Hive" scheme="https://blog.lvmaohai.cn/tags/hive/"/>
+    
+  </entry>
+  
+</feed>
