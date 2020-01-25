@@ -5,9 +5,9 @@
   <subtitle>不断打破自我认知</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://blog.lvmaohai.cn/"/>
+  <link href="http://www.lvmaohai.cn/"/>
   <updated>2020-01-20T15:20:15.000Z</updated>
-  <id>https://blog.lvmaohai.cn/</id>
+  <id>http://www.lvmaohai.cn/</id>
   
   <author>
     <name>Bigo Lv</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hive 安装和配置</title>
-    <link href="https://blog.lvmaohai.cn/article/hive-an-zhuang-he-pei-zhi.html"/>
-    <id>https://blog.lvmaohai.cn/article/hive-an-zhuang-he-pei-zhi.html</id>
+    <link href="http://www.lvmaohai.cn/article/hive-an-zhuang-he-pei-zhi.html"/>
+    <id>http://www.lvmaohai.cn/article/hive-an-zhuang-he-pei-zhi.html</id>
     <published>2020-01-20T15:20:15.000Z</published>
     <updated>2020-01-20T15:20:15.000Z</updated>
     
@@ -39,10 +39,10 @@
     </summary>
     
     
-      <category term="大数据" scheme="https://blog.lvmaohai.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+      <category term="大数据" scheme="http://www.lvmaohai.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
     
-      <category term="Hive" scheme="https://blog.lvmaohai.cn/tags/hive/"/>
+      <category term="Hive" scheme="http://www.lvmaohai.cn/tags/hive/"/>
     
   </entry>
   
