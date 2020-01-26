@@ -4,6 +4,85 @@
   
     
     <entry>
+      <title>HBase 安装和配置</title>
+      <link href="/articles/hbase/an-zhuang-he-pei-zhi.html"/>
+      <url>/articles/hbase/an-zhuang-he-pei-zhi.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>系统环境：MacOS<br>Hadoop 版本：1.3.5</p></blockquote><h2 id="Homebrew安装HBase"><a href="#Homebrew安装HBase" class="headerlink" title="Homebrew安装HBase"></a>Homebrew安装HBase</h2><pre><code>$ brew info hbase$ brew install hbase$ cd /usr/local/Cellar/hbase/1.3.5/libexec</code></pre><h2 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h2><pre><code>$ vim ~/.zshrcexport HBASE_HOME="/usr/local/Cellar/hbase/1.3.5/libexec"  export PATH="$HBASE_HOME/bin:$PATH"$ source ~/.zshrc</code></pre><h2 id="配置文件设置"><a href="#配置文件设置" class="headerlink" title="配置文件设置"></a>配置文件设置</h2><blockquote><p>配置文件路径：/usr/local/Cellar/hbase/1.3.5/libexec/conf</p></blockquote><h3 id="hbase-env-sh"><a href="#hbase-env-sh" class="headerlink" title="hbase-env.sh"></a>hbase-env.sh</h3><pre><code>export HBASE_CLASSPATH=/usr/local/Celler/hadoop/3.2.1/libexec/etc/hadoopexport HBASE_MANAGES_ZK=trueexport HBASE_LOG_DIR=$HBASE_HOME/logsexport HBASE_REGIONSERVERS=$HBASE_HOME/conf/regionservers</code></pre><h3 id="hbase-site-xml"><a href="#hbase-site-xml" class="headerlink" title="hbase-site.xml"></a>hbase-site.xml</h3><pre><code>&lt;configuration&gt;    &lt;property&gt;        &lt;name&gt;hbase.rootdir&lt;/name&gt;        &lt;value&gt;hdfs://localhost:9000/hbase&lt;/value&gt;    &lt;/property&gt;    &lt;property&gt;        &lt;name&gt;hbase.zookeeper.property.clientPort&lt;/name&gt;        &lt;value&gt;2181&lt;/value&gt;    &lt;/property&gt;    &lt;property&gt;        &lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;        &lt;value&gt;/usr/local/var/zookeeper&lt;/value&gt;    &lt;/property&gt;    &lt;property&gt;        &lt;name&gt;hbase.zookeeper.dns.interface&lt;/name&gt;        &lt;value&gt;lo0&lt;/value&gt;    &lt;/property&gt;    &lt;property&gt;        &lt;name&gt;hbase.regionserver.dns.interface&lt;/name&gt;        &lt;value&gt;lo0&lt;/value&gt;    &lt;/property&gt;    &lt;property&gt;        &lt;name&gt;hbase.master.dns.interface&lt;/name&gt;        &lt;value&gt;lo0&lt;/value&gt;    &lt;/property&gt;    &lt;property&gt;        &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;        &lt;value&gt;true&lt;/value&gt;    &lt;/property&gt;    &lt;property&gt;        &lt;name&gt;dfs.replication&lt;/name&gt;        &lt;value&gt;1&lt;/value&gt;    &lt;/property&gt;    &lt;property&gt;        &lt;name&gt;hbase.master.info.port&lt;/name&gt;        &lt;value&gt;16010&lt;/value&gt;    &lt;/property&gt;&lt;/configuration&gt;</code></pre><h3 id="regionservers"><a href="#regionservers" class="headerlink" title="regionservers"></a>regionservers</h3><pre><code>$ vim regionserverslocalhost</code></pre><h2 id="启动和关闭服务"><a href="#启动和关闭服务" class="headerlink" title="启动和关闭服务"></a>启动和关闭服务</h2><ul><li>启动服务</li></ul><pre><code>$ /usr/local/opt/hbase/bin/start-hbase.sh$ jps -ml86336 NodeManager85456 NameNode84672 HRegionServer85731 SecondaryNameNode85574 DataNode87355 HMaster87294 HQuorumPeer86222 ResourceManager</code></pre><ul><li>关闭服务</li></ul><pre><code>$ /usr/local/opt/hbase/bin/stop-hbase.sh$ jps -ml</code></pre><h2 id="访问监控页面"><a href="#访问监控页面" class="headerlink" title="访问监控页面"></a>访问监控页面</h2><p>HBase 默认提供了一个 webui 界面来监控它的健康状态，可以通过 <a href="http://localhost:16010/master-status" target="_blank" rel="noopener">http://localhost:16010/master-status</a> 访问。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大数据 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HBase </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PySpark之RDD入门</title>
+      <link href="/articles/spark/pyspark-zhi-rdd-ru-men.html"/>
+      <url>/articles/spark/pyspark-zhi-rdd-ru-men.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="RDD的基本运算"><a href="#RDD的基本运算" class="headerlink" title="RDD的基本运算"></a>RDD的基本运算</h2><table><thead><tr><th align="left">RDD运算类型</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">转换（Transformation）</td><td align="left">转换运算将一个RDD转换为另一个RDD，但是由于RDD的lazy特性，转换运算不会立刻实际执行，它会等到执行到“动作”运算，才会实际执行。</td></tr><tr><td align="left">动作（Action）</td><td align="left">RDD执行动作运算之后，不会产生另一个RDD，它会产生数值、数组或写入文件系统；RDD执行动作运算后会立刻实际执行，并且连同之前的转换运算一起执行。</td></tr><tr><td align="left">持久化（Persistence）</td><td align="left">对于那些会重复使用的RDD， 可以将RDD持久化在内存中作为后续使用，以提高执行性能。</td></tr></tbody></table><h2 id="初始化-Spark-的上下环境"><a href="#初始化-Spark-的上下环境" class="headerlink" title="初始化 Spark 的上下环境"></a>初始化 Spark 的上下环境</h2><pre><code>from pyspark import SparkConf, SparkContextconf = SparkConf().setMaster("local").setAppName("My App")sc = SparkContext(conf = conf)</code></pre><h2 id="单个-RDD-“转换”运算"><a href="#单个-RDD-“转换”运算" class="headerlink" title="单个 RDD “转换”运算"></a>单个 RDD “转换”运算</h2><ol><li>创建RDD<blockquote><p>使用parallelize方法创建一个RDD</p></blockquote></li></ol><pre><code>intRDD = sc.parallelize([3,1,2,5,5])stringRDD = sc.parallelize(['Apple','Orange','Grape','Banana','Apple'])</code></pre><ol start="2"><li>collect()<blockquote><p>collect 可以把 RDD 类型的数据转换为 python 的数据类型</p></blockquote></li></ol><pre><code>print (intRDD.collect())[3, 1, 2, 5, 5]print (stringRDD.collect())['APPLE', 'Orange', 'Grape', 'Banana','Apple']</code></pre><ol start="3"><li>map()<blockquote><p>map 运算可以通过传入的函数，对RDD内每一个元素经过函数运算，并产生一个新的RDD；<br>下面的例子中，将intRDD中的每个元素加1之后返回，并转换为python数组；</p></blockquote></li></ol><pre><code>print (intRDD.map(lambda x:x+1).collect())[4, 2, 3, 6, 6]</code></pre><ol start="4"><li>filter()<blockquote><p>filter 运算可以用于对RDD内每一个元素进行筛选，并产生一个新的RDD；<br>下面的例子中，筛选intRDD中数字小于3的元素，筛选stringRDD中包含ra的字符串；</p></blockquote></li></ol><pre><code>print (intRDD.filter(lambda x: x&lt;3).collect())[1, 2]print (stringRDD.filter(lambda x:'ra' in x).collect())['Orange', 'Grape']</code></pre><ol start="5"><li>distinct()<blockquote><p>distinct 运算可以用于对RDD内重复的元素进行删除，并产生一个新的RDD；<br>下面的例子中，去除 intRDD 中的重复元素1；</p></blockquote></li></ol><pre><code>print (intRDD.distinct().collect())[1, 2, 3, 5]</code></pre><ol start="6"><li>randomSplit(weighs, *seed)<blockquote><p>randomSplit 运算将整个集合以随机数的方式按照比例分为多个RDD；<br>weights: 是一个数组,数组的长度即为划分成RDD的数量；<br>根据weight（权重值）将一个RDD划分成多个RDD,权重越高划分得到的元素较多的几率就越大；<br>seed: 是可选参数 ，作为random的种子；<br>下面的例子中，intRDD 按照0.4和0.6的比例将intRDD分为两个RDD；</p></blockquote></li></ol><pre><code>sRDD = intRDD.randomSplit([0.4,0.6])print (len(sRDD))2print (sRDD[0].collect())[3, 1]print (sRDD[1].collect())[2, 5, 5]</code></pre><ol start="7"><li>groupBy()<blockquote><p>groupBy 运算可以按照传入匿名函数的规则，将数据分为多个Array；<br>下面的例子中，将intRDD分为偶数和奇数：</p></blockquote></li></ol><pre><code>result = intRDD.groupBy(lambda x : x % 2).collect()print (sorted([(x, sorted(y)) for (x, y) in result]))[(0, [2]), (1, [1, 3, 5, 5])]</code></pre><h2 id="多个-RDD-“转换”运算"><a href="#多个-RDD-“转换”运算" class="headerlink" title="多个 RDD “转换”运算"></a>多个 RDD “转换”运算</h2><ol><li>创建RDD<blockquote><p>使用parallelize方法创建一个RDD</p></blockquote></li></ol><pre><code>intRDD1 = sc.parallelize([3,1,2,5,5])intRDD2 = sc.parallelize([5,6])intRDD3 = sc.parallelize([2,7])</code></pre><ol start="2"><li>union()<blockquote><p>使用union进行并集运算</p></blockquote></li></ol><pre><code>print (intRDD1.union(intRDD2).union(intRDD3).collect())[3, 1, 2, 5, 5, 5, 6, 2, 7] </code></pre><ol start="3"><li>intersection()<blockquote><p>使用intersection进行交集运算，取 RDD 的相同部分</p></blockquote></li></ol><pre><code>print (intRDD1.intersection(intRDD2).collect())[5] </code></pre><ol start="4"><li>subtract()<blockquote><p>使用subtract进行差集运算，取 RDD 的重复部分</p></blockquote></li></ol><pre><code>print (intRDD1.subtract(intRDD2).collect())[2, 1, 3]</code></pre><ol start="5"><li>cartesian()<blockquote><p>使用cartesian进行笛卡尔乘积运算</p></blockquote></li></ol><pre><code>print (intRDD1.cartesian(intRDD2).collect())[(3, 5), (3, 6), (1, 5), (1, 6), (2, 5), (2, 6), (5, 5), (5, 6), (5, 5), (5, 6)]</code></pre><h2 id="单个-RDD-“动作”运算"><a href="#单个-RDD-“动作”运算" class="headerlink" title="单个 RDD “动作”运算"></a>单个 RDD “动作”运算</h2><ol><li>创建RDD<blockquote><p>使用parallelize方法创建一个RDD</p></blockquote></li></ol><pre><code>intRDD = sc.parallelize([3,1,2,5,5])</code></pre><ol start="2"><li>读取元素<blockquote><p>可以使用下列命令读取RDD内的元素，这是Actions运算，所以会马上执行</p></blockquote></li></ol><pre><code># 取第一条数据print (intRDD.first())3# 取前两条数据print (intRDD.take(2))[3, 1]# 升序排列，并取前3条数据print (intRDD.takeOrdered(3))[1, 2, 3]# 降序排列，并取前3条数据print (intRDD.takeOrdered(3,lambda x:-x))[5, 5, 3]</code></pre><ol start="3"><li>统计功能<blockquote><p>可以将RDD内的元素进行统计运算</p></blockquote></li></ol><pre><code># 统计print (intRDD.stats())(count: 5, mean: 3.2, stdev: 1.6, max: 5, min: 1)# 最小值print (intRDD.min())1# 最大值print (intRDD.max())5# 标准差print (intRDD.stdev())1.6# 计数print (intRDD.count())5# 求和print (intRDD.sum())16# 平均print (intRDD.mean())3.2</code></pre><h2 id="单个-RDD-键值的“转换”运算"><a href="#单个-RDD-键值的“转换”运算" class="headerlink" title="单个 RDD 键值的“转换”运算"></a>单个 RDD 键值的“转换”运算</h2><blockquote><p>Spark RDD支持键值对运算，Key-Value运算是 mapreduce 运算的基础</p></blockquote><ol><li>创建RDD<blockquote><p>使用parallelize方法创建一个 RDD；<br>用元素类型为tuple元组的数组初始化 RDD；<br>每个tuple的第一个值将作为键，第二个元素将作为值；</p></blockquote></li></ol><pre><code>kvRDD1 = sc.parallelize([(3,4),(3,6),(5,6),(1,2)])</code></pre><ol start="2"><li>得到key和value值<blockquote><p>可以使用keys和values函数分别得到RDD的键数组和值数组</p></blockquote></li></ol><pre><code>print (kvRDD1.keys().collect())[3, 3, 5, 1]print (kvRDD1.values().collect())[4, 6, 6, 2]</code></pre><ol start="3"><li>筛选元素<blockquote><p>使用filter函数，可以按照键进行元素筛选，也可以通过值进行元素筛选；<br>注意：虽然RDD中是以键值对形式存在，但是本质上还是一个二元组，二元组的第一个值代表键，第二个值代表值；</p></blockquote></li></ol><pre><code># 筛选键的值小于5的数据print (kvRDD1.filter(lambda x:x[0] &lt; 5).collect())[(3, 4), (3, 6), (1, 2)]# 筛选值的值小于5的数据print (kvRDD1.filter(lambda x:x[1] &lt; 5).collect())[(3, 4), (1, 2)]</code></pre><ol start="4"><li>值运算<blockquote><p>可以使用mapValues方法处理value值；<br>下面的代码将value值进行了平方处理；</p></blockquote></li></ol><pre><code>print (kvRDD1.mapValues(lambda x:x**2).collect())[(3, 16), (3, 36), (5, 36), (1, 4)]</code></pre><ol start="5"><li>按照key排序<blockquote><p>可以使用sortByKey按照key进行排序，传入参数的默认值为true；<br>true 表示升序，false 表示倒序;</p></blockquote></li></ol><pre><code>print (kvRDD1.sortByKey().collect())[(1, 2), (3, 4), (3, 6), (5, 6)]print (kvRDD1.sortByKey(True).collect())[(1, 2), (3, 4), (3, 6), (5, 6)]print (kvRDD1.sortByKey(False).collect())[(5, 6), (3, 4), (3, 6), (1, 2)]</code></pre><ol start="6"><li>合并相同key值的数据<blockquote><p>可以使用reduceByKey函数对具有相同key值的数据进行合并；</p></blockquote></li></ol><pre><code>print (kvRDD1.reduceByKey(lambda x,y:x+y).collect())[(1, 2), (3, 10), (5, 6)]</code></pre><h2 id="多个-RDD-键值“转换”运算"><a href="#多个-RDD-键值“转换”运算" class="headerlink" title="多个 RDD 键值“转换”运算"></a>多个 RDD 键值“转换”运算</h2><ol><li>创建RDD<blockquote><p>使用parallelize方法创建一个 RDD；<br>用元素类型为tuple元组的数组初始化 RDD；<br>每个tuple的第一个值将作为键，第二个元素将作为值；</p></blockquote></li></ol><pre><code>kvRDD1 = sc.parallelize([(3,4),(3,6),(5,6),(1,2)])kvRDD2 = sc.parallelize([(3,8)])</code></pre><ol start="2"><li>内连接<blockquote><p>join运算可以将两个 RDD 按照相同的key值join起来；</p></blockquote></li></ol><pre><code>print (kvRDD1.join(kvRDD2).collect())[(3, (4, 8)), (3, (6, 8))] </code></pre><ol start="3"><li>左外连接<blockquote><p>leftOuterJoin运算可以将两个 RDD 左外连接起来；<br>如果kvRDD1的key值对应不到kvRDD2，就会显示None</p></blockquote></li></ol><pre><code>print (kvRDD1.leftOuterJoin(kvRDD2).collect())[(1, (2, None)), (3, (4, 8)), (3, (6, 8)), (5, (6, None))]</code></pre><ol start="4"><li>右外连接<blockquote><p>rightOuterJoin运算可以将两个 RDD 右外连接起来；<br>如果kvRDD2的key值对应不到kvRDD1，就会显示None</p></blockquote></li></ol><pre><code>print (kvRDD1.rightOuterJoin(kvRDD2).collect())[(3, (4, 8)), (3, (6, 8))]</code></pre><ol start="5"><li>删除相同key值数据<blockquote><p>使用subtractByKey运算会删除相同key值得数据：</p></blockquote></li></ol><pre><code>print (kvRDD1.subtractByKey(kvRDD2).collect())[(1, 2), (5, 6)] </code></pre><h2 id="单个-RDD-键值“动作”运算"><a href="#单个-RDD-键值“动作”运算" class="headerlink" title="单个 RDD 键值“动作”运算"></a>单个 RDD 键值“动作”运算</h2><ol><li>创建RDD<blockquote><p>使用parallelize方法创建一个 RDD；<br>用元素类型为tuple元组的数组初始化 RDD；<br>每个tuple的第一个值将作为键，第二个元素将作为值；</p></blockquote></li></ol><pre><code>kvRDD1 = sc.parallelize([(3,4),(3,6),(5,6),(1,2)])</code></pre><ol start="2"><li>读取数据<blockquote><p>可以使用下面的几种方式读取RDD的数据：</p></blockquote></li></ol><pre><code># 读取第一条数据print (kvRDD1.first())(3, 4)# 读取前两条数据print (kvRDD1.take(2))[(3, 4), (3, 6)]# 读取第一条数据的key值print (kvRDD1.first()[0])3# 读取第一条数据的value值print (kvRDD1.first()[1])4</code></pre><ol start="3"><li>按key值统计：<blockquote><p>使用countByKey函数可以统计各个key值对应的数据的条数；</p></blockquote></li></ol><pre><code>print (kvRDD1.countByKey().collect())defaultdict(&lt;type 'int'&gt;, {1: 1, 3: 2, 5: 1})</code></pre><ol start="4"><li>查找运算<blockquote><p>使用lookup函数可以根据输入的key值来查找对应的Value值：</p></blockquote></li></ol><pre><code>print (kvRDD1.lookup(3))[4, 6]</code></pre><h2 id="持久化操作"><a href="#持久化操作" class="headerlink" title="持久化操作"></a>持久化操作</h2><blockquote><p>spark RDD的持久化机制，可以将需要重复运算的RDD存储在内存中，以便大幅提升运算效率</p></blockquote><ol><li>persist()<blockquote><p>使用persist函数对RDD进行持久化</p></blockquote></li></ol><pre><code>from pyspark.storagelevel import StorageLevelkvRDD1.persist(StorageLevel.MEMORY_ONLY)</code></pre><p>在持久化的同时可以指定持久化存储等级：</p><table><thead><tr><th align="left">等级</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">MEMORY_ONLY</td><td align="left">以反序列化的JAVA对象的方式存储在JVM中. 如果内存不够， RDD的一些分区将不会被缓存， 这样当再次需要这些分区的时候，将会重新计算。这是默认的级别。</td></tr><tr><td align="left">MEMORY_AND_DISK</td><td align="left">以反序列化的JAVA对象的方式存储在JVM中. 如果内存不够， RDD的一些分区将将会缓存在磁盘上，再次需要的时候从磁盘读取。</td></tr><tr><td align="left">MEMORY_ONLY_SER</td><td align="left">以序列化JAVA对象的方式存储 (每个分区一个字节数组). 相比于反序列化的方式,这样更高效的利用空间， 尤其是使用快速序列化时。但是读取是CPU操作很密集。</td></tr><tr><td align="left">MEMORY_AND_DISK_SER</td><td align="left">与MEMORY_ONLY_SER相似, 区别是但内存不足时，存储在磁盘上而不是每次重新计算。</td></tr><tr><td align="left">DISK_ONLY</td><td align="left">只存储RDD在磁盘</td></tr><tr><td align="left">MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.</td><td align="left">与上面的级别相同，只不过每个分区的副本只存储在两个集群节点上。</td></tr><tr><td align="left">OFF_HEAP (experimental)</td><td align="left">将RDD以序列化的方式存储在 Tachyon. 与 MEMORY_ONLY_SER相比, OFF_HEAP减少了垃圾回收。允许执行体更小通过共享一个内存池。因此对于拥有较大堆内存和高并发的环境有较大的吸引力。更重要的是，因为RDD存储在Tachyon上，执行体的崩溃不会造成缓存的丢失。在这种模式下.Tachyon中的内存是可丢弃的，这样 Tachyon 对于从内存中挤出的块不会试图重建它。如果你打算使用Tachyon作为堆缓存，Spark提供了与Tachyon相兼容的版本。</td></tr></tbody></table><ol start="2"><li>unpersist()<blockquote><p>使用unpersist函数对RDD进行取消持久化；</p></blockquote></li></ol><pre><code>kvRDD1.unpersist()</code></pre><h2 id="整理回顾"><a href="#整理回顾" class="headerlink" title="整理回顾"></a>整理回顾</h2><p>想要了解更多，可以参照官网给出的官方文档：<a href="http://spark.apache.org/docs/latest/api/python/pyspark.html#pyspark.RDD" target="_blank" rel="noopener">http://spark.apache.org/docs/latest/api/python/pyspark.html#pyspark.RDD</a></p><p>今天主要介绍了两种RDD，基本的RDD和Key-Value形式的RDD，介绍了他们的几种“转换”运算和“动作”运算，整理如下：</p><table><thead><tr><th align="left">RDD运算</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">基本RDD“转换”运算</td><td align="left">map（对各数据进行转换），filter（过滤符合条件的数据），distinct（去重运算），randomSplit（根据指定的比例随机分为N各RDD），groupBy（根据条件对数据进行分组），union（两个RDD取并集），intersection（两个RDD取交集），subtract（两个RDD取差集），cartesian（两个RDD进行笛卡尔积运算）</td></tr><tr><td align="left">基本RDD“动作”运算</td><td align="left">first（取第一条数据），take（取前几条数据），takeOrdered（排序后取前N条数据），统计函数</td></tr><tr><td align="left">Key-Value形式 RDD“转换”运算</td><td align="left">filter（过滤符合条件的数据），mapValues（对value值进行转换），sortByKey（根据key值进行排序），reduceByKey（合并相同key值的数据），join（内连接两个KDD），leftOuterJoin（左外连接两个KDD），rightOuterJoin（右外连接两个RDD），subtractByKey（相当于key值得差集运算）</td></tr><tr><td align="left">Key-Value形式 RDD“动作”运算</td><td align="left">first（取第一条数据），take（取前几条数据），countByKey（根据key值分组统计），lookup（根据key值查找value值）</td></tr><tr><td align="left">RDD持久化</td><td align="left">persist用于对RDD进行持久化，unpersist取消RDD的持久化，注意持久化的存储等级</td></tr></tbody></table><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大数据 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spark </tag>
+            
+            <tag> PySpark </tag>
+            
+            <tag> RDD </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Spark 安装和配置</title>
+      <link href="/articles/spark/an-zhuang-he-pei-zhi.html"/>
+      <url>/articles/spark/an-zhuang-he-pei-zhi.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>系统环境：MacOS<br>Hadoop 版本：2.4.4</p></blockquote><h2 id="Homebrew安装Spark"><a href="#Homebrew安装Spark" class="headerlink" title="Homebrew安装Spark"></a>Homebrew安装Spark</h2><pre><code>$ brew install apache-spark$ cd /usr/local/Cellar/apache-spark/2.4.4/libexec</code></pre><h2 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h2><pre><code>$ vim ~/.zshrcexport SPARK_HOME="/usr/local/Cellar/apache-spark/2.4.4/libexec"  export PATH="$SPARK_HOME/bin:$PATH"$ source ~/.zshrc</code></pre><h2 id="检测是否安装成功"><a href="#检测是否安装成功" class="headerlink" title="检测是否安装成功"></a>检测是否安装成功</h2><blockquote><p>在spark-shell中完成单词统计</p></blockquote><pre><code>$ spark-shell......scala&gt; val file = sc.textFile("/usr/local/Cellar/apache-spark/2.4.4/README.md")file: org.apache.spark.rdd.RDD[String] = /usr/local/Cellar/apache-spark/2.4.4/README.md MapPartitionsRDD[1] at textFile at &lt;console&gt;:24# 以空格为拆分标志，将文件中的每一行分割为多个单词scala&gt; val words = file.flatMap(line =&gt; line.split(" "))words: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[2] at flatMap at &lt;console&gt;:25# 对每一个单词进行计数scala&gt; val wordNumber = words.map(w =&gt; (w, 1))wordNumber: org.apache.spark.rdd.RDD[(String, Int)] = MapPartitionsRDD[3] at map at &lt;console&gt;:25# 将单词进行分类合并，计算每个单词总的出现次数scala&gt; val wordCounts = wordNumber.reduceByKey(_+_)wordCounts: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[4] at reduceByKey at &lt;console&gt;:25# 将所有单词及其出现次数打印出来scala&gt; wordsCounts.foreach(println)......</code></pre><h2 id="pyspark-启动Spark"><a href="#pyspark-启动Spark" class="headerlink" title="pyspark 启动Spark"></a>pyspark 启动Spark</h2><ul><li>环境变量设置</li></ul><pre><code>$ vim ~/.zshrc# 设置 python 版本，默认是2.7.xexport PYSPARK_PYTHON="python3"$ source ~/.zshrc</code></pre><ul><li>脚本的执行权限设置</li></ul><pre><code>$ cd /usr/local/Cellar/apache-spark/2.4.4/libexec/bin$ chmod a+x *$ cd /usr/local/Cellar/apache-spark/2.4.4/libexec/sbin$ chmod a+x *</code></pre><ul><li>启动 spark</li></ul><pre><code>$ pyspark......Using Python version 3.7.4 (default, Jul  9 2019 18:13:23)SparkSession available as 'spark'.# 初始化&gt;&gt;&gt; from pyspark import SparkConf, SparkContext&gt;&gt;&gt; conf = SparkConf().setMaster("local").setAppName("My App")&gt;&gt;&gt; sc = SparkContext(conf = conf)# 创建RDD&gt;&gt;&gt; intRDD = sc.parallelize([3,1,2,5,5])# collect（RDD -&gt; python 数据类型）&gt;&gt;&gt; print (intRDD.collect())[3, 1, 2, 5, 5]</code></pre><h2 id="启动和关闭"><a href="#启动和关闭" class="headerlink" title="启动和关闭"></a>启动和关闭</h2><ul><li>启动服务</li></ul><pre><code>$ /usr/local/opt/apache-spark/libexec/sbin/start-master.shstarting org.apache.spark.deploy.master.Master, logging to /usr/local/Cellar/apache-spark/2.4.4/libexec/logs/spark-bigo-org.apache.spark.deploy.master.Master-1-bigodeMBP.lan.out$ jps -lm</code></pre><ul><li>关闭服务</li></ul><pre><code>$ /usr/local/opt/apache-spark/libexec/sbin/stop-master.shstopping org.apache.spark.deploy.master.Master$ jps -lm</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大数据 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spark </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hive 安装和配置</title>
       <link href="/articles/hive/an-zhuang-he-pei-zhi.html"/>
       <url>/articles/hive/an-zhuang-he-pei-zhi.html</url>
@@ -21,6 +100,87 @@
         <tags>
             
             <tag> Hive </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hadoop 安装和配置</title>
+      <link href="/articles/hadoop/an-zhuang-he-pei-zhi.html"/>
+      <url>/articles/hadoop/an-zhuang-he-pei-zhi.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>系统环境：MacOS<br>Hadoop 版本：3.2.1</p></blockquote><h2 id="打开本地电脑的ssh登录方式"><a href="#打开本地电脑的ssh登录方式" class="headerlink" title="打开本地电脑的ssh登录方式"></a>打开本地电脑的ssh登录方式</h2><pre><code># 生成公钥$ ssh-keygen -t rsa -C "your.email@example.com" -b 4096# 一路默认# 拷贝$ cat ~/.ssh/id_rsa.pub# 拷贝至电脑信任列表$ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></pre><p>系统设置(System Preferences) -&gt; 共享(sharing) -&gt; 勾选☑️远程登录(Remote Login)</p><p>最后可以在终端(Terminal)测试下</p><pre><code>$ ssh localhost</code></pre><h2 id="使用Homebrew安装Hadoop"><a href="#使用Homebrew安装Hadoop" class="headerlink" title="使用Homebrew安装Hadoop"></a>使用Homebrew安装Hadoop</h2><pre><code>$ brew install hadoop$ cd /usr/local/Celler/hadoop/3.2.1/libexec</code></pre><h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><blockquote><p>Hadoop有三种安装模式：单机模式，伪分布式模式，分布式模式。Homebrew生成的默认是单机模式，下面只涉及伪分布式配置。<br>配置文件路径：/usr/local/Celler/hadoop/3.2.1/libexec/etc/hadoop</p></blockquote><ul><li>修改core-site.xml</li></ul><pre><code>&lt;configuration&gt;  &lt;property&gt;    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;    &lt;value&gt;/usr/local/Cellar/hadoop/hdfs/tmp&lt;/value&gt;    &lt;description&gt;A base for other temporary directories&lt;/description&gt;  &lt;/property&gt;  &lt;property&gt;    &lt;name&gt;fs.default.name&lt;/name&gt;    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;  &lt;/property&gt;&lt;/configuration&gt;</code></pre><ul><li>修改mapred-site.xml</li></ul><pre><code>&lt;configuration&gt;  &lt;property&gt;    &lt;name&gt;mapred.job.tracker&lt;/name&gt;    &lt;value&gt;localhost:9010&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;    &lt;value&gt;yarn&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;    &lt;name&gt;yarn.app.mapreduce.am.env&lt;/name&gt;    &lt;value&gt;HADOOP_MAPRED_HOME=$HADOOP_HOME&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;    &lt;name&gt;mapreduce.map.env&lt;/name&gt;    &lt;value&gt;HADOOP_MAPRED_HOME=$HADOOP_HOME&lt;/value&gt;  &lt;/property&gt;  &lt;property&gt;    &lt;name&gt;mapreduce.reduce.env&lt;/name&gt;    &lt;value&gt;HADOOP_MAPRED_HOME=$HADOOP_HOME&lt;/value&gt;  &lt;/property&gt;&lt;/configuration&gt;</code></pre><ul><li>修改hdfs-site.xml</li></ul><pre><code>&lt;configuration&gt;  &lt;!-- 伪分布式配置 --&gt;  &lt;property&gt;    &lt;name&gt;dfs.replication&lt;/name&gt;    &lt;value&gt;1&lt;/value&gt;  &lt;/property&gt;&lt;/configuration&gt;</code></pre><ul><li>yarn-site.xml</li></ul><pre><code>&lt;configuration&gt;  &lt;property&gt;    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;  &lt;/property&gt;&lt;/configuration&gt;</code></pre><ul><li>修改hadoop-env.sh</li></ul><pre><code>export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home"export HADOOP_OPTS="-Djava.net.preferIPv4Stack=true -Dsun.security.krb5.debug=true -Dsun.security.spnego.debug"export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}case ${HADOOP_OS_TYPE} in  Darwin*)    export HADOOP_OPTS="${HADOOP_OPTS} -Djava.security.krb5.realm= "    export HADOOP_OPTS="${HADOOP_OPTS} -Djava.security.krb5.kdc= "    export HADOOP_OPTS="${HADOOP_OPTS} -Djava.security.krb5.conf= "    export YARN_HOME=$HADOOP_HOME  ;;esac</code></pre><h2 id="初始化NameNode"><a href="#初始化NameNode" class="headerlink" title="初始化NameNode"></a>初始化NameNode</h2><blockquote><p>注意⚠️建议不要往~/.bash_profile里PATH变量添加hadoop相关的路径，楼主遇到过坑，每次在终端打开/usr/local/Celler/hadoop/3.2.1/</p></blockquote><pre><code>$ ./bin/hdfs namenode -format </code></pre><blockquote><p>只需要第一次,玩崩了也可以再执行下</p></blockquote><h2 id="启动和关闭"><a href="#启动和关闭" class="headerlink" title="启动和关闭"></a>启动和关闭</h2><blockquote><p>可以在终端任意位置使用jps查看启动的java应用程序，理论启动完毕其中会包括：NameNode, DataNode, NodeManager, ResoureManager四个java程序</p></blockquote><ul><li>启动NameNode和DataNode</li></ul><pre><code>$ /usr/local/opt/hadoop/libexec/sbin/start-dfs.sh$ jps -lm</code></pre><p>启动完毕即可登录：<a href="http://localhost:9870" target="_blank" rel="noopener">http://localhost:9870</a></p><ul><li>启动Yarn(ResourceManager和NodeManager)</li></ul><pre><code>$ /usr/local/opt/hadoop/libexec/sbin/start-yarn.sh$ jps -lm</code></pre><p>启动完毕即可登录：<a href="http://localhost:8088" target="_blank" rel="noopener">http://localhost:8088</a></p><ul><li>关闭NameNode和DataNode</li></ul><pre><code>$ /usr/local/opt/hadoop/libexec/sbin/stop-dfs.sh$ jps -lm</code></pre><ul><li>关闭Yarn(ResourceManager和NodeManager)</li></ul><pre><code>$ /usr/local/opt/hadoop/libexec/sbin/stop-yarn.sh$ jps -lm</code></pre><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code># 打开文件执行位置$ cd /usr/local/Cellar/hadoop/3.2.1/bin# 查看已启动内容$ jps# 查看信息$ hdfs dfsadmin -report# 创建文件夹$ hdfs dfs -mkdir /test# 查看文件夹下文件$ hdfs dfs -ls /# 查看所有命令$ hdfs dfs -help# 查看文件内容$ hdfs dfs -cat /test/mk.txt# 拷贝至hdfs$ hdfs dfs -copyFromLocal /Users/goddy/repo/hadoop/hdfs-file/mk.txt /test/# 拷贝至本地$ hdfs dfs -copyToLocal /test/mk.txt /Users/goddy/repo/hadoop/hdfs-file/mk2.txt# 更改文件权限$ hdfs dfs -chmod 777 /test/mk.txt备注：hdfs dfs 可以替换为：hadoop fs</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大数据 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hadoop </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Homebrew 镜像源</title>
+      <link href="/articles/homebrew-jing-xiang-yuan.html"/>
+      <url>/articles/homebrew-jing-xiang-yuan.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="镜像源"><a href="#镜像源" class="headerlink" title="镜像源"></a>镜像源</h2><ul><li>官方镜像源</li></ul><pre><code>https://github.com/Homebrew/brew.githttps://github.com/Homebrew/homebrew-core.git</code></pre><ul><li>中科大源</li></ul><pre><code>https://mirrors.ustc.edu.cn/brew.githttps://mirrors.ustc.edu.cn/homebrew-core.githttps://mirrors.ustc.edu.cn/homebrew-bottles</code></pre><ul><li>清华源</li></ul><pre><code>https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.githttps://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.githttps://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles</code></pre><h2 id="镜像源设置"><a href="#镜像源设置" class="headerlink" title="镜像源设置"></a>镜像源设置</h2><ul><li>替换 brew.git</li></ul><pre><code>$ cd "$(brew --repo)”$ git remote set-url origin https://mirrors.ustc.edu.cn/brew.gitor$ git -C "$(brew --repo)" remote set-url origin https://mirrors.ustc.edu.cn/brew.git</code></pre><ul><li>替换 homebrew-core.git</li></ul><pre><code>$ cd "$(brew --repo homebrew/core)”$ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.gitor$ git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git</code></pre><ul><li>执行更新</li></ul><pre><code>$ brew update</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> MacOS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MacOS </tag>
+            
+            <tag> Homebrew </tag>
+            
+            <tag> brew </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lrzsz 安装和配置</title>
+      <link href="/articles/lrzsz-an-zhuang-he-pei-zhi.html"/>
+      <url>/articles/lrzsz-an-zhuang-he-pei-zhi.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h2><ol><li>Homebrew 安装 lrzsz</li></ol><pre><code>$ brew install lrzsz</code></pre><ol start="2"><li>下载安装 iterm2 send、recv <blockquote><p><a href="https://pan.baidu.com/s/1IVr1wCeSw1NPMPlZRg9Q5w" target="_blank" rel="noopener">下载链接</a> (提取码: h467)</p></blockquote></li></ol><pre><code>$ cp iterm2-send-zmodem.sh /usr/local/bin$ cp iterm2-recv-zmodem.sh /usr/local/bin</code></pre><h1 id="添加可执行权限"><a href="#添加可执行权限" class="headerlink" title="添加可执行权限"></a>添加可执行权限</h1><pre><code>$ chmode +x /usr/local/bin/iterm2-send-zmodem.sh$ chmode +x /usr/local/bin/iterm2-recv-zmodem.sh</code></pre><ol start="3"><li>设置 iterm2，按 command+, 组合键，打开 iTerm2设置界面，切换到 Profiles-&gt; Default -&gt; Advanced，点击“Edit”</li></ol><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/lrzsz-01.png" alt=""></p><ol start="4"><li>在弹出的界面点 “+” 新增两项参数，完成后，点击“Close”关闭弹窗</li></ol><table><thead><tr><th align="left">Regular Expression</th><th align="left">Action</th><th align="left">Action</th></tr></thead><tbody><tr><td align="left">**B010</td><td align="left">Run Silent Coprocess</td><td align="left">/usr/local/bin/iterm2-send-zmodem.sh</td></tr><tr><td align="left">**B00000000000000</td><td align="left">Run Silent Coprocess</td><td align="left">/usr/local/bin/iterm2-recv-zmodem.sh</td></tr></tbody></table><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/lrzsz-02.png" alt=""></p><ol start="5"><li>重启iterm2</li></ol><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code># 链接远程linux（注意上传文件路径不能包含中文）$ rz # 上传文件$ sz # 下载文件</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> MacOS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MacOS </tag>
+            
+            <tag> lrzsz </tag>
             
         </tags>
       

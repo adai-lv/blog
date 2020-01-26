@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hive 安装和配置, flink, bigdata">
-    <meta name="description" content="MacOS 环境，基于 Homebrew 安装 Hive，基本配置设置。">
+    <meta name="keywords" content="lrzsz 安装和配置, flink, bigdata">
+    <meta name="description" content="MacOS Homebrew 镜像源替换为国内镜像，加速软件包更新速度。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hive 安装和配置 | 海韵学社</title>
+    <title>lrzsz 安装和配置 | 海韵学社</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
@@ -292,12 +292,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hive 安装和配置</h1>
+                    <h1 class="description center-align post-title">lrzsz 安装和配置</h1>
                 </div>
             </div>
         </div>
@@ -414,8 +414,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hive/">
-                                <span class="chip bg-color">Hive</span>
+                            <a href="/tags/macos/">
+                                <span class="chip bg-color">MacOS</span>
+                            </a>
+                        
+                            <a href="/tags/lrzsz/">
+                                <span class="chip bg-color">lrzsz</span>
                             </a>
                         
                     </div>
@@ -426,8 +430,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
-                                大数据
+                            <a href="/categories/macos/" class="post-category">
+                                MacOS
                             </a>
                         
                     </div>
@@ -446,7 +450,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-21
+                    2020-01-18
                 </div>
                 
 
@@ -455,14 +459,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    2.2k
+                    231
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>时长:&nbsp;
-                    11 分
+                    1 分
                 </div>
                 
 
@@ -478,243 +482,54 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>系统环境：MacOS<br>Hadoop 版本：3.1.2</p>
-</blockquote>
-<h2 id="Homebrew安装Hive"><a href="#Homebrew安装Hive" class="headerlink" title="Homebrew安装Hive"></a>Homebrew安装Hive</h2><pre><code>$ brew install hive
-$ cd /usr/local/Celler/hive/3.1.2/libexec</code></pre><h2 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h2><pre><code>$ vim ~/.zshrc
-
-export HIVE_HOME="/usr/local/Cellar/hive/3.1.2/libexec"  
-export PATH="$HIVE_HOME/bin:$PATH"
-
-$ source ~/.zshrc</code></pre><h2 id="配置文件设置"><a href="#配置文件设置" class="headerlink" title="配置文件设置"></a>配置文件设置</h2><blockquote>
-<p>在 <strong>libexec/conf</strong> 下提供了一些 <strong>.template</strong> 模板，拷贝文件并去掉 <strong>.template</strong> 后缀即可</p>
-</blockquote>
-<h3 id="修改日志文件"><a href="#修改日志文件" class="headerlink" title="修改日志文件"></a>修改日志文件</h3><pre><code>$ cp hive-log4j2.properties.template hive-log4j2.properties
-$ cp beeline-log4j2.properties.template beeline-log4j2.properties
-$ cp hive-exec-log4j2.properties.template hive-exec-log4j2.properties
-$ cp llap-daemon-log4j2.properties.template llap-daemon-log4j2.properties
-$ cp llap-cli-log4j2.properties.template llap-cli-log4j2.properties
-
-# 更改 hive log 目录，默认为：/tmp
-$ vim hive-log4j2.properties
-
-property.hive.log.dir = /usr/local/Cellar/hive/3.1.2/libexec/logs</code></pre><h3 id="hive-site-xml-配置"><a href="#hive-site-xml-配置" class="headerlink" title="hive-site.xml 配置"></a>hive-site.xml 配置</h3><blockquote>
-<p>将 <strong>hive-default.xml.template</strong> 文件复制一份，并且改名为 <strong>hive-site.xml</strong></p>
-</blockquote>
-<pre><code>$ cp hive-default.xml.template hive-site.xml</code></pre><ul>
-<li>在 hdfs 创建 hive 目录（在hive-site.xml中有这样的配置）<pre><code>&lt;property&gt;
-  &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;
-  &lt;value&gt;/user/hive/warehouse&lt;/value&gt;
-  &lt;description&gt;Hive 默认的数据文件存储路径，通常为 HDFS 可写的路径&lt;/description&gt;
-&lt;/property&gt;
-&lt;property&gt;
-  &lt;name&gt;hive.exec.scratchdir&lt;/name&gt;
-  &lt;value&gt;/tmp/hive&lt;/value&gt;
-  &lt;description&gt;HDFS路径，用于存储不同 map/reduce 阶段的执行计划和这些阶段的中间输出结果&lt;/description&gt;
-&lt;/property&gt;
-&lt;property&gt;
-  &lt;name&gt;hive.cli.print.header&lt;/name&gt;
-  &lt;value&gt;true&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-  &lt;name&gt;hive.cli.print.current.db&lt;/name&gt;
-  &lt;value&gt;true&lt;/value&gt;
-&lt;/property&gt;</code></pre></li>
-</ul>
-<p>在hdfs中新建目录 <strong>/user/hive/warehouse</strong> 和 <strong>/tmp/hive</strong>，赋予读写权限</p>
-<pre><code>$ hadoop fs -mkdir -p /user/hive/warehouse
-$ hadoop fs -chmod 777 /user/hive/warehouse
-$ hadoop fs -mkdir -p /tmp/hive
-$ hadoop fs -chmod 777 /tmp/hive</code></pre><ul>
-<li><p>修改 hive 临时目录</p>
-<blockquote>
-<p>将 ${system:java.io.tmpdir} 替换为本地hive的临时目录(/usr/local/Cellar/hive/3.1.2/tmp/hive)，并赋予读写权限；<br>将 ${system:user.name} 替换为root；</p>
-</blockquote>
-<pre><code>&lt;property&gt;
-  &lt;name&gt;hive.querylog.location&lt;/name&gt;
-  &lt;value&gt;${system:java.io.tmpdir}/${system:user.name}&lt;/value&gt;
-  &lt;description&gt;Location of Hive run time structured log file&lt;/description&gt;
-&lt;/property&gt;
-&lt;property&gt;
-  &lt;name&gt;hive.server2.logging.operation.log.location&lt;/name&gt;
-  &lt;value&gt;${system:java.io.tmpdir}/${system:user.name}/operation_logs&lt;/value&gt;
-  &lt;description&gt;Top level directory where operation logs are stored if logging functionality is enabled&lt;/description&gt;
-&lt;/property&gt;
-&lt;property&gt;
-  &lt;name&gt;hive.exec.local.scratchdir&lt;/name&gt;
-  &lt;value&gt;${system:java.io.tmpdir}/${system:user.name}&lt;/value&gt;
-  &lt;description&gt;Local scratch space for Hive jobs&lt;/description&gt;
-&lt;/property&gt;
-&lt;property&gt;
-  &lt;name&gt;hive.downloaded.resources.dir&lt;/name&gt;
-  &lt;value&gt;${system:java.io.tmpdir}/${hive.session.id}_resources&lt;/value&gt;
-  &lt;description&gt;Temporary local directory for added resources in the remote file system.&lt;/description&gt;
-&lt;/property&gt;</code></pre></li>
-<li><p>修改数据库相关的配置</p>
-<blockquote>
-<p>javax.jdo.option.ConnectionURL    将对应的value修改为MySQL的地址<br>javax.jdo.option.ConnectionDriverName    将对应的value修改为MySQL驱动类路径<br>javax.jdo.option.ConnectionUserName    将对应的value修改为MySQL数据库登录名<br>javax.jdo.option.ConnectionPassword    将对应的value修改为MySQL数据库的登录密码<br>hive.metastore.schema.verification    将对应的value修改为false</p>
+                <h2 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h2><ol>
+<li>Homebrew 安装 lrzsz</li>
+</ol>
+<pre><code>$ brew install lrzsz
+</code></pre><ol start="2">
+<li>下载安装 iterm2 send、recv <blockquote>
+<p><a href="https://pan.baidu.com/s/1IVr1wCeSw1NPMPlZRg9Q5w" target="_blank" rel="noopener">下载链接</a> (提取码: h467)</p>
 </blockquote>
 </li>
-</ul>
-<pre><code>&lt;property&gt;
-    &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;
-    &lt;value&gt;jdbc:mysql://127.0.0.1:3306/hive?createDatabaseIfNotExist=true&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;
-    &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;
-    &lt;value&gt;root&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;
-    &lt;value&gt;&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;hive.metastore.schema.verification&lt;/name&gt;
-    &lt;value&gt;false&lt;/value&gt;
-&lt;/property&gt;</code></pre><p>下载MySQL驱动包到lib目录<br><a href="https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-5.1.48.tar.gz" target="_blank" rel="noopener">https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-5.1.48.tar.gz</a></p>
-<ul>
-<li>WebUI<blockquote>
-<p>Hive从2.0版本开始，为HiveServer2提供了一个简单的WEB UI界面，界面中可以直观的看到当前链接的会话、历史日志、配置参数以及度量信息。</p>
-</blockquote>
-</li>
-</ul>
-<pre><code>&lt;property&gt;
-    &lt;name&gt;hive.server2.webui.host&lt;/name&gt;
-    &lt;value&gt;127.0.0.1&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;hive.server2.webui.port&lt;/name&gt;
-    &lt;value&gt;10002&lt;/value&gt;
-&lt;/property&gt;</code></pre><p>需要重启HiveServer2</p>
-<pre><code>$ hive --service hiveserver2 &amp;</code></pre><h3 id="hive-env-sh-配置"><a href="#hive-env-sh-配置" class="headerlink" title="hive-env.sh 配置"></a>hive-env.sh 配置</h3><blockquote>
-<p>将 <strong>hive-env.sh.template</strong> 文件复制一份，并且改名为 <strong>hive-env.sh</strong> 文件</p>
-</blockquote>
-<pre><code>$ cp hive-env.sh.template hive-env.sh
-$ vim hive-env.sh
-
-export HADOOP_HOME=/usr/local/Cellar/hadoop/3.2.1/libexec
-export HIVE_CONF_DIR=/usr/local/Cellar/hive/3.1.2/conf
-export HIVE_AUX_JARS_PATH=/usr/local/Cellar/hive/3.1.2/lib</code></pre><h2 id="启动和测试"><a href="#启动和测试" class="headerlink" title="启动和测试"></a>启动和测试</h2><h3 id="对MySQL数据库进行初始化"><a href="#对MySQL数据库进行初始化" class="headerlink" title="对MySQL数据库进行初始化"></a>对MySQL数据库进行初始化</h3><blockquote>
-<p>执行成功后，hive数据库里已经有一堆表创建好了</p>
-</blockquote>
-<pre><code>$ /usr/local/opt/hive/bin/schematool -initSchema -dbType mysql</code></pre><h3 id="启动hive"><a href="#启动hive" class="headerlink" title="启动hive"></a>启动hive</h3><pre><code>$ /usr/local/opt/hive/bin/hive
-or
-$ hive</code></pre><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><pre><code># 进入hive命令行
-
-&gt; show functions;</code></pre><h3 id="新建表以及导入数据的测试"><a href="#新建表以及导入数据的测试" class="headerlink" title="新建表以及导入数据的测试"></a>新建表以及导入数据的测试</h3><pre><code>&gt; create database db_hive_edu;
-&gt; use db_hive_edu;
-&gt; create table student(id int,name string) row format delimited fields terminated by '\t';
-
-# 将文件数据写入表中
-$ touch /opt/hive/student.txt
-001 zhangsan
-002 lisi
-003 wangwu
-004 zhaoliu
-005 chenqi
-
-# 载入表
-&gt; load data local inpath '/opt/hive/student.txt' into table db_hive_edu.student;
-
-# 测试
-&gt; select * from student;
-OK
-001 zhangsan
-002 lisi
-003 wangwu
-004 zhaoliu
-005 chenqi
-
-# 查看hdfs上数据
-/user/hive/warehouse/db_hive_edu.db/student
-
-# 在MySQL中查看
-$ SELECT * FROM hive.TBLS;</code></pre><h3 id="错误和解决"><a href="#错误和解决" class="headerlink" title="错误和解决"></a>错误和解决</h3><ol>
-<li>WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable</li>
 </ol>
-<p>解决方案：实际上其实这个警告可以不予理会。</p>
-<ol start="2">
-<li>There are 2 datanode(s) running and 2 node(s) areexcluded in this operation.</li>
+<pre><code>$ cp iterm2-send-zmodem.sh /usr/local/bin
+$ cp iterm2-recv-zmodem.sh /usr/local/bin
+</code></pre><h1 id="添加可执行权限"><a href="#添加可执行权限" class="headerlink" title="添加可执行权限"></a>添加可执行权限</h1><pre><code>$ chmode +x /usr/local/bin/iterm2-send-zmodem.sh
+$ chmode +x /usr/local/bin/iterm2-recv-zmodem.sh
+</code></pre><ol start="3">
+<li>设置 iterm2，按 command+, 组合键，打开 iTerm2设置界面，切换到 Profiles-&gt; Default -&gt; Advanced，点击“Edit”</li>
 </ol>
-<p>发生原因：hadoop中的datanode有问题，没法写入数据。</p>
-<p>解决方案：检查hadoop是否正常运行。</p>
-<ol start="3">
-<li>Class path contains multiple SLF4J bindings.<pre><code>SLF4J: Class path contains multiple SLF4J bindings.
-SLF4J: Found binding in [jar:file:/usr/local/Cellar/hive/3.1.2/libexec/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-SLF4J: Found binding in [jar:file:/usr/local/Cellar/hadoop/3.2.1/libexec/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
-SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]</code></pre></li>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/lrzsz-01.png" alt=""></p>
+<ol start="4">
+<li>在弹出的界面点 “+” 新增两项参数，完成后，点击“Close”关闭弹窗</li>
 </ol>
-<p>发生原因：hive 和 hadoop 依赖的 log4j-slf4j 包版本不一致，造成冲突</p>
-<p>解决方案：删除 hive lib 目录下的 log4j-slf4j 包；</p>
-<pre><code>$ rm /usr/local/Cellar/hive/3.1.2/libexec/lib/log4j-slf4j-impl-2.10.0.jar</code></pre><ol start="4">
-<li>Exception in thread “main” java.lang.NoSuchMethodError: com.google.common.base.Preconditions.checkArgument<pre><code>Exception in thread "main" java.lang.NoSuchMethodError: com.google.common.base.Preconditions.checkArgument(ZLjava/lang/String;Ljava/lang/Object;)V
- at org.apache.hadoop.conf.Configuration.set(Configuration.java:1357)
- at org.apache.hadoop.conf.Configuration.set(Configuration.java:1338)
- at org.apache.hadoop.mapred.JobConf.setJar(JobConf.java:536)
- at org.apache.hadoop.mapred.JobConf.setJarByClass(JobConf.java:554)
- at org.apache.hadoop.mapred.JobConf.&lt;init&gt;(JobConf.java:448)
- at org.apache.hadoop.hive.conf.HiveConf.initialize(HiveConf.java:5141)
- at org.apache.hadoop.hive.conf.HiveConf.&lt;init&gt;(HiveConf.java:5104)
- at org.apache.hive.beeline.HiveSchemaTool.&lt;init&gt;(HiveSchemaTool.java:96)
- at org.apache.hive.beeline.HiveSchemaTool.main(HiveSchemaTool.java:1473)
- at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
- at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
- at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
- at java.lang.reflect.Method.invoke(Method.java:498)
- at org.apache.hadoop.util.RunJar.run(RunJar.java:323)
- at org.apache.hadoop.util.RunJar.main(RunJar.java:236)</code></pre></li>
-</ol>
-<p>发生原因：hive内依赖的guava.jar和hadoop内的版本不一致造成的。</p>
-<p>解决方案：</p>
-<ul>
-<li>查看hadoop安装目录下share/hadoop/common/lib内guava.jar版本；</li>
-<li>查看hive安装目录下lib内guava.jar的版本；</li>
-<li>如果两者不一致，删除版本低的，并拷贝高版本的到相应的目录下；<pre><code>$ rm /usr/local/Cellar/hive/3.1.2/libexec/lib/guava-19.0.jar
-$ cp /usr/local/Cellar/hadoop/3.2.1/libexec/share/hadoop/common/lib/guava-27.0-jre.jar /usr/local/Cellar/hive/3.1.2/libexec/lib/</code></pre></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Regular Expression</th>
+<th align="left">Action</th>
+<th align="left">Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">**B010</td>
+<td align="left">Run Silent Coprocess</td>
+<td align="left">/usr/local/bin/iterm2-send-zmodem.sh</td>
+</tr>
+<tr>
+<td align="left">**B00000000000000</td>
+<td align="left">Run Silent Coprocess</td>
+<td align="left">/usr/local/bin/iterm2-recv-zmodem.sh</td>
+</tr>
+</tbody></table>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/lrzsz-02.png" alt=""></p>
 <ol start="5">
-<li>com.ctc.wstx.exc.WstxParsingException: Illegal character entity: expansion character<pre><code>Exception in thread "main" java.lang.RuntimeException: com.ctc.wstx.exc.WstxParsingException: Illegal character entity: expansion character (code 0x8
-at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf/hive-site.xml"]
- at org.apache.hadoop.conf.Configuration.loadResource(Configuration.java:3024)
- at org.apache.hadoop.conf.Configuration.loadResources(Configuration.java:2973)
- at org.apache.hadoop.conf.Configuration.getProps(Configuration.java:2848)
- at org.apache.hadoop.conf.Configuration.get(Configuration.java:1460)
- at org.apache.hadoop.hive.conf.HiveConf.getVar(HiveConf.java:4996)
- at org.apache.hadoop.hive.conf.HiveConf.getVar(HiveConf.java:5069)
- at org.apache.hadoop.hive.conf.HiveConf.initialize(HiveConf.java:5156)
- at org.apache.hadoop.hive.conf.HiveConf.&lt;init&gt;(HiveConf.java:5104)
- at org.apache.hive.beeline.HiveSchemaTool.&lt;init&gt;(HiveSchemaTool.java:96)
- at org.apache.hive.beeline.HiveSchemaTool.main(HiveSchemaTool.java:1473)
- at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
- at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
- at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
- at java.lang.reflect.Method.invoke(Method.java:498)
- at org.apache.hadoop.util.RunJar.run(RunJar.java:323)
- at org.apache.hadoop.util.RunJar.main(RunJar.java:236)</code></pre></li>
+<li>重启iterm2</li>
 </ol>
-<p>发生原因：hive-site.xml包括无效字符</p>
-<pre><code>&lt;property&gt;
-    &lt;name&gt;hive.txn.xlock.iow&lt;/name&gt;
-    &lt;value&gt;true&lt;/value&gt;
-    &lt;description&gt;
-      Ensures commands with OVERWRITE (such as INSERT OVERWRITE) acquire Exclusive locks for&amp;...8;transactional tables.  This ensures that inserts (w/o overwrite) running concurrently
-      are not hidden by the INSERT OVERWRITE.
-    &lt;/description&gt;
-&lt;/property</code></pre><p>解决方案：去掉无效字符</p>
-<pre><code>&lt;property&gt;
-    &lt;name&gt;hive.txn.xlock.iow&lt;/name&gt;
-    &lt;value&gt;true&lt;/value&gt;
-    &lt;description&gt;
-      Ensures commands with OVERWRITE (such as INSERT OVERWRITE) acquire Exclusive locks for;transactional tables.  This ensures that inserts (w/o overwrite) running concurrently
-      are not hidden by the INSERT OVERWRITE.
-    &lt;/description&gt;
-&lt;/property&gt;</code></pre><script>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code># 链接远程linux（注意上传文件路径不能包含中文）
+
+$ rz # 上传文件
+$ sz # 下载文件</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -745,8 +560,12 @@ at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hive/">
-                                    <span class="chip bg-color">Hive</span>
+                                <a href="/tags/macos/">
+                                    <span class="chip bg-color">MacOS</span>
+                                </a>
+                            
+                                <a href="/tags/lrzsz/">
+                                    <span class="chip bg-color">lrzsz</span>
                                 </a>
                             
                         </div>
@@ -781,13 +600,13 @@ at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/articles/spark/an-zhuang-he-pei-zhi.html">
+                <a href="/articles/homebrew-jing-xiang-yuan.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg" class="responsive-img" alt="Spark 安装和配置">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg" class="responsive-img" alt="Homebrew 镜像源">
                         
-                        <span class="card-title">Spark 安装和配置</span>
+                        <span class="card-title">Homebrew 镜像源</span>
                     </div>
                 </a>
             </div>
@@ -796,16 +615,16 @@ at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/articles/hadoop/an-zhuang-he-pei-zhi.html">
+                <a href="/articles/lrzsz-an-zhuang-he-pei-zhi.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/18.jpg" class="responsive-img" alt="Hadoop 安装和配置">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg" class="responsive-img" alt="lrzsz 安装和配置">
                         
-                        <span class="card-title">Hadoop 安装和配置</span>
+                        <span class="card-title">lrzsz 安装和配置</span>
                     </div>
                 </a>
             </div>
@@ -835,7 +654,7 @@ at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-21T23-20-15',
+        id: '2020-01-18T13-29-31',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 

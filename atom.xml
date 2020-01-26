@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvmaohai.cn/"/>
-  <updated>2020-01-20T15:20:15.000Z</updated>
+  <updated>2020-01-24T05:29:31.000Z</updated>
   <id>http://lvmaohai.cn/</id>
   
   <author>
@@ -17,11 +17,105 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>HBase 安装和配置</title>
+    <link href="http://lvmaohai.cn/articles/hbase/an-zhuang-he-pei-zhi.html"/>
+    <id>http://lvmaohai.cn/articles/hbase/an-zhuang-he-pei-zhi.html</id>
+    <published>2020-01-24T05:29:31.000Z</published>
+    <updated>2020-01-24T05:29:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;系统环境：MacOS&lt;br&gt;Hadoop 版本：1.3.5&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Homebrew安装HBase&quot;&gt;&lt;a href=&quot;#Homebrew安装HBase&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大数据" scheme="http://lvmaohai.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="HBase" scheme="http://lvmaohai.cn/tags/hbase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PySpark之RDD入门</title>
+    <link href="http://lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html"/>
+    <id>http://lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html</id>
+    <published>2020-01-23T05:29:31.000Z</published>
+    <updated>2020-01-23T05:29:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;RDD的基本运算&quot;&gt;&lt;a href=&quot;#RDD的基本运算&quot; class=&quot;headerlink&quot; title=&quot;RDD的基本运算&quot;&gt;&lt;/a&gt;RDD的基本运算&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大数据" scheme="http://lvmaohai.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="Spark" scheme="http://lvmaohai.cn/tags/spark/"/>
+    
+      <category term="PySpark" scheme="http://lvmaohai.cn/tags/pyspark/"/>
+    
+      <category term="RDD" scheme="http://lvmaohai.cn/tags/rdd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spark 安装和配置</title>
+    <link href="http://lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html"/>
+    <id>http://lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html</id>
+    <published>2020-01-22T05:29:31.000Z</published>
+    <updated>2020-01-22T05:29:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;系统环境：MacOS&lt;br&gt;Hadoop 版本：2.4.4&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Homebrew安装Spark&quot;&gt;&lt;a href=&quot;#Homebrew安装Spark&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大数据" scheme="http://lvmaohai.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="Spark" scheme="http://lvmaohai.cn/tags/spark/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hive 安装和配置</title>
     <link href="http://lvmaohai.cn/articles/hive/an-zhuang-he-pei-zhi.html"/>
     <id>http://lvmaohai.cn/articles/hive/an-zhuang-he-pei-zhi.html</id>
-    <published>2020-01-20T15:20:15.000Z</published>
-    <updated>2020-01-20T15:20:15.000Z</updated>
+    <published>2020-01-21T15:20:15.000Z</published>
+    <updated>2020-01-21T15:20:15.000Z</updated>
     
     <summary type="html">
     
@@ -43,6 +137,99 @@
     
     
       <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hadoop 安装和配置</title>
+    <link href="http://lvmaohai.cn/articles/hadoop/an-zhuang-he-pei-zhi.html"/>
+    <id>http://lvmaohai.cn/articles/hadoop/an-zhuang-he-pei-zhi.html</id>
+    <published>2020-01-20T05:29:31.000Z</published>
+    <updated>2020-01-20T05:29:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;系统环境：MacOS&lt;br&gt;Hadoop 版本：3.2.1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;打开本地电脑的ssh登录方式&quot;&gt;&lt;a href=&quot;#打开本地电脑的ssh登录方式&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大数据" scheme="http://lvmaohai.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="Hadoop" scheme="http://lvmaohai.cn/tags/hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Homebrew 镜像源</title>
+    <link href="http://lvmaohai.cn/articles/homebrew-jing-xiang-yuan.html"/>
+    <id>http://lvmaohai.cn/articles/homebrew-jing-xiang-yuan.html</id>
+    <published>2020-01-19T05:29:31.000Z</published>
+    <updated>2020-01-19T05:29:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;镜像源&quot;&gt;&lt;a href=&quot;#镜像源&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MacOS" scheme="http://lvmaohai.cn/categories/macos/"/>
+    
+    
+      <category term="MacOS" scheme="http://lvmaohai.cn/tags/macos/"/>
+    
+      <category term="Homebrew" scheme="http://lvmaohai.cn/tags/homebrew/"/>
+    
+      <category term="brew" scheme="http://lvmaohai.cn/tags/brew/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>lrzsz 安装和配置</title>
+    <link href="http://lvmaohai.cn/articles/lrzsz-an-zhuang-he-pei-zhi.html"/>
+    <id>http://lvmaohai.cn/articles/lrzsz-an-zhuang-he-pei-zhi.html</id>
+    <published>2020-01-18T05:29:31.000Z</published>
+    <updated>2020-01-18T05:29:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;安装和配置&quot;&gt;&lt;a href=&quot;#安装和配置&quot; class=&quot;headerlink&quot; title=&quot;安装和配置&quot;&gt;&lt;/a&gt;安装和配置&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Homebrew 安装 lrzsz&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;$ brew
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MacOS" scheme="http://lvmaohai.cn/categories/macos/"/>
+    
+    
+      <category term="MacOS" scheme="http://lvmaohai.cn/tags/macos/"/>
+    
+      <category term="lrzsz" scheme="http://lvmaohai.cn/tags/lrzsz/"/>
     
   </entry>
   
