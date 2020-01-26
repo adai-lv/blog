@@ -214,10 +214,8 @@
       
         
         
-          &lt;h2 id=&quot;安装和配置&quot;&gt;&lt;a href=&quot;#安装和配置&quot; class=&quot;headerlink&quot; title=&quot;安装和配置&quot;&gt;&lt;/a&gt;安装和配置&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Homebrew 安装 lrzsz&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;$ brew
+          &lt;blockquote&gt;
+&lt;p&gt;MacOS 自带的命令终端不支持使用 rz 和 sz 命令进行文件上传和下载。&lt;br&gt;可以安装另一种终端 iTerm2，然后对 iTerm2 进行扩展安装 lrzsz，这样 Mac 就可以使用 rz 和 sz
         
       
     

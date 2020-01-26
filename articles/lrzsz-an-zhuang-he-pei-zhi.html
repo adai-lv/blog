@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="lrzsz 安装和配置, flink, bigdata">
-    <meta name="description" content="MacOS Homebrew 镜像源替换为国内镜像，加速软件包更新速度。">
+    <meta name="description" content="MacOS 通过终端 iTerm2 安装扩展 lrzsz，lrzsz 使用 sz和rz 进行远程上传下载文件。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,17 +14,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>lrzsz 安装和配置 | 海韵学社</title>
-    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
     
-    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/jquery/jquery.min.js"></script>
+    <script src="/libs/jquery/jquery.min.js"></script>
     
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="海韵学社" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
@@ -37,7 +37,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">海韵学社</span>
                 </a>
@@ -123,7 +123,7 @@
 <div id="mobile-nav" class="side-nav sidenav">
     <div class="mobile-head bg-color">
         
-        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">海韵学社</div>
         <div class="logo-desc">
@@ -276,7 +276,7 @@
 </header>
 
     
-<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/cryptojs/crypto-js.min.js"></script>
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
         let pwd = '';
@@ -292,7 +292,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -310,7 +310,7 @@
 <main class="post-container content">
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
     #articleContent h1::before,
     #articleContent h2::before,
@@ -459,7 +459,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    231
+                    335
                 </div>
                 
 
@@ -482,7 +482,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h2><ol>
+                <blockquote>
+<p>MacOS 自带的命令终端不支持使用 rz 和 sz 命令进行文件上传和下载。<br>可以安装另一种终端 iTerm2，然后对 iTerm2 进行扩展安装 lrzsz，这样 Mac 就可以使用 rz 和 sz 命令进行文件传输了。</p>
+</blockquote>
+<h2 id="远程服务器安装"><a href="#远程服务器安装" class="headerlink" title="远程服务器安装"></a>远程服务器安装</h2><p>在 centOs下，可以用自带的包管理工具进行下载，命令如下:</p>
+<pre><code>$ yum -y install lrzsz
+</code></pre><h2 id="本地-MacOS-安装和配置"><a href="#本地-MacOS-安装和配置" class="headerlink" title="本地 MacOS 安装和配置"></a>本地 MacOS 安装和配置</h2><ol>
 <li>Homebrew 安装 lrzsz</li>
 </ol>
 <pre><code>$ brew install lrzsz
@@ -494,7 +499,9 @@
 </ol>
 <pre><code>$ cp iterm2-send-zmodem.sh /usr/local/bin
 $ cp iterm2-recv-zmodem.sh /usr/local/bin
-</code></pre><h1 id="添加可执行权限"><a href="#添加可执行权限" class="headerlink" title="添加可执行权限"></a>添加可执行权限</h1><pre><code>$ chmode +x /usr/local/bin/iterm2-send-zmodem.sh
+
+# 添加可执行权限
+$ chmode +x /usr/local/bin/iterm2-send-zmodem.sh
 $ chmode +x /usr/local/bin/iterm2-recv-zmodem.sh
 </code></pre><ol start="3">
 <li>设置 iterm2，按 command+, 组合键，打开 iTerm2设置界面，切换到 Profiles-&gt; Default -&gt; Advanced，点击“Edit”</li>
@@ -572,13 +579,13 @@ $ sz # 下载文件</code></pre><script>
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/share/css/share.min.css">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 
 <div id="article-share">
     
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/share/js/social-share.min.js"></script>
+    <script src="/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -604,7 +611,7 @@ $ sz # 下载文件</code></pre><script>
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg" class="responsive-img" alt="Homebrew 镜像源">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Homebrew 镜像源">
                         
                         <span class="card-title">Homebrew 镜像源</span>
                     </div>
@@ -622,7 +629,7 @@ $ sz # 下载文件</code></pre><script>
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg" class="responsive-img" alt="lrzsz 安装和配置">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="lrzsz 安装和配置">
                         
                         <span class="card-title">lrzsz 安装和配置</span>
                     </div>
@@ -635,8 +642,8 @@ $ sz # 下载文件</code></pre><script>
 
 
     
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/my-gitalk.css">
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
 
 <div class="card gitalk-card" data-aos="fade-up">
     <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
@@ -646,7 +653,7 @@ $ sz # 下载文件</code></pre><script>
     <div id="gitalk-container" class="card-content"></div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/gitalk/gitalk.min.js"></script>
+<script src="/libs/gitalk/gitalk.min.js"></script>
 <script>
     let gitalk = new Gitalk({
         clientID: 'd5a8d50ea0c5d7022842',
@@ -711,21 +718,21 @@ $ sz # 下载文件</code></pre><script>
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeLang.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeShrink.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 <!-- 代码块折行 -->
@@ -753,7 +760,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/tocbot/tocbot.min.js"></script>
+<script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
@@ -846,7 +853,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">7.3k</span>&nbsp;字
+                class="white-color">7.4k</span>&nbsp;字
             
             
             
@@ -909,10 +916,10 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/js/search.js"></script>
+<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("https://cdn.jsdelivr.net/gh/lvmaohai/blog/" + "search.xml", 'searchInput', 'searchResult');
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
 });
 </script>
     <!-- 回到顶部按钮 -->
@@ -923,12 +930,12 @@ $(function () {
 </div>
 
 
-    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/materialize/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/aos/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/js/matery.js"></script>
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
@@ -953,7 +960,7 @@ $(function () {
 
     
     
-    <script async src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/others/busuanzi.pure.mini.js"></script>
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
 
     
@@ -965,13 +972,13 @@ $(function () {
     
     
     <script type="text/javascript" size="150" alpha='0.6'
-        zIndex="-1" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/background/ribbon-refresh.min.js" async="async"></script>
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     
     
     
-    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
 </body>
