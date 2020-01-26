@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Kafka 安装配置和常用命令</title>
+      <link href="/articles/kafka/an-zhuang-pei-zhi-he-chang-yong-ming-ling.html"/>
+      <url>/articles/kafka/an-zhuang-pei-zhi-he-chang-yong-ming-ling.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>系统环境：MacOS<br>Kafka 版本：2.3.1</p></blockquote><h2 id="Homebrew安装Kafka"><a href="#Homebrew安装Kafka" class="headerlink" title="Homebrew安装Kafka"></a>Homebrew安装Kafka</h2><blockquote><p>安装 kafka 过程中会自动的安装好 zookeeper</p></blockquote><pre><code>$ brew info kafka$ brew install kafka$ cd /usr/local/Cellar/kafka/2.3.1/libexec</code></pre><h2 id="卸载-Kafka"><a href="#卸载-Kafka" class="headerlink" title="卸载 Kafka"></a>卸载 Kafka</h2><pre><code>$ brew uninstall kafka</code></pre><h2 id="配置文件设置"><a href="#配置文件设置" class="headerlink" title="配置文件设置"></a>配置文件设置</h2><blockquote><p>配置文件路径：/usr/local/etc/kafka</p></blockquote><h3 id="server-properties"><a href="#server-properties" class="headerlink" title="server.properties"></a>server.properties</h3><pre><code># the address the socket server listens onlisteners=PLAINTEXT://localhost:9092# zookeeper connection stringzookeeper.connect=localhost:2181# Timeout in ms for connecting to zookeeperzookeeper.connection.timeout.ms=6000</code></pre><h3 id="zookeeper-properties"><a href="#zookeeper-properties" class="headerlink" title="zookeeper.properties"></a>zookeeper.properties</h3><blockquote><p>启动 kafka 时，需要先启动 zookeeper 服务<br>可以启动 kafka 自带的 zookeeper，也可以启动外置的 zookeeper 服务</p></blockquote><pre><code># the directory where the snapshot is stored.dataDir=/usr/local/var/lib/zookeeper# the port at which the clients will connectclientPort=2181</code></pre><h2 id="启动和关闭服务"><a href="#启动和关闭服务" class="headerlink" title="启动和关闭服务"></a>启动和关闭服务</h2><ul><li>启动服务</li></ul><p>如果想以服务的方式启动，那么可以:</p><pre><code># 先安装 zookeeper（brew install zookeeper）$ brew services start zookeeper$ brew services start kafka</code></pre><p>如果只是临时启动，那么可以:</p><pre><code>$ bin/zookeeper-server-start.sh config/zookeeper.properties$ bin/kafka-server-start.sh config/server.properties$ jps -ml</code></pre><ul><li>关闭服务</li></ul><pre><code>$ bin/kafka-server-stop.sh stop$ bin/zookeeper-server-stop.sh stop$ jps -ml</code></pre><h2 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h2><ul><li>创建<code>topic</code></li></ul><pre><code>## 选项说明:##   --zookeeper zookeeper 服务 Host##   --topic 定义 topic 名称##   --replication-factor 定义副本数##   --partitions 定义分区数$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test_topic --replication-factor 1 --partitions 3</code></pre><ul><li>删除<code>topic</code></li></ul><pre><code>## 选项说明:##   --zookeeper zookeeper 服务 Host##   --topic 定义 topic 名称$ bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic test_topic</code></pre><ul><li>发送消息</li></ul><pre><code>## 选项说明:##   --broker-list kafka 服务连接的节点，支持多节点##   --topic 定义 topic 名称$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test_topic</code></pre><ul><li>消费消息</li></ul><pre><code>## 选项说明:##   --bootstrap-server kafka 服务连接的节点，支持多节点##   --from-beginning  标识从头消费（offset=1）##   --topic 定义 topic 名称$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic test_topic</code></pre><ul><li>查看某个 <code>Topic</code> 的详情</li></ul><pre><code>## 选项说明:##   --zookeeper zookeeper 服务 Host##   --topic 定义 topic 名称$ bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic test_topic</code></pre><ul><li>查看某个 <code>Topic</code> 的 <code>consumer_offsets</code> 详情 </li></ul><pre><code>## 选项说明:##   --zookeeper zookeeper 服务 Host##   --topic 定义 topic 名称bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic __consumer_offsets</code></pre><ul><li>验证消息生产成功</li></ul><pre><code>## 选项说明:##   --broker-list kafka 服务连接的节点，支持多节点##   --topic 定义 topic 名称##   --time -1表示显示获取当前offset最大值，-2表示offset的最小值$ bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic test_topic --time -1</code></pre><ul><li>创建一个console consumer group</li></ul><pre><code>## 选项说明:##   --bootstrap-server kafka 服务连接的节点，支持多节点##   --from-beginning  标识从头消费（offset=1）##   --topic 定义 topic 名称##   --group 定义消费组名称$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test_topic --from-beginning --group new-consumer</code></pre><ul><li>获取该consumer group的group id</li></ul><pre><code>## 选项说明:##   --bootstrap-server kafka 服务连接的节点，支持多节点##   --list 显示消费组列表$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大数据 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Kafka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HBase 安装和配置</title>
       <link href="/articles/hbase/an-zhuang-he-pei-zhi.html"/>
       <url>/articles/hbase/an-zhuang-he-pei-zhi.html</url>
