@@ -26,8 +26,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="海韵学社" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="海韵学社" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -42,9 +42,9 @@
                     <span class="logo-span">海韵学社</span>
                 </a>
             </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse">
+  <i class="fas fa-bars"></i>
+</a>
 <ul class="right nav-menu">
   
   <li class="hide-on-med-and-down nav-item">
@@ -60,44 +60,45 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/articles" class="waves-effect waves-light">
-
+    <a href="/categories" class="waves-effect waves-light">
       
-      <i class="fas fa-newspaper" style="zoom: 0.6;"></i>
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
       
-      <span>博文</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+      <span>分类</span>
     </a>
-    <ul class="sub-nav menus_item_child ">
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
       
-      <li>
-        <a href="/categories">
-          
-          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>分类</span>
-        </a>
-      </li>
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <li>
-        <a href="/tags">
-          
-          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>标签</span>
-        </a>
-      </li>
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
       
-      <li>
-        <a href="/archives">
-          
-          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>归档</span>
-        </a>
-      </li>
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
       
-    </ul>
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
     
   </li>
   
@@ -112,17 +113,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言</span>
-    </a>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -131,7 +121,6 @@
 </ul>
 
 <div id="mobile-nav" class="side-nav sidenav">
-
     <div class="mobile-head bg-color">
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
@@ -144,86 +133,72 @@
         </div>
     </div>
 
-    
-
     <ul class="menu-list mobile-menu-list">
-        
+    
         <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
+        
+            <a href="/" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-home"></i>
+            
+            首页
+            </a>
+        
         </li>
         
         <li class="m-nav-item">
-	  
-		<a href="javascript:;">
-			
-				<i class="fa-fw fas fa-newspaper"></i>
-			
-			文章
-			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-		</a>
-            <ul  style="background:  ;" >
-              
-                <li>   
-				
-                  <a href="/categories " style="margin-left:75px";>
-				  
-				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
-			      
-		          <span>分类</span>
-                  </a>
-                </li>
-              
-                <li>   
-				
-                  <a href="/tags " style="margin-left:75px";>
-				  
-				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
-			      
-		          <span>标签</span>
-                  </a>
-                </li>
-              
-                <li>   
-				
-                  <a href="/archives " style="margin-left:75px";>
-				  
-				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
-			      
-		          <span>归档</span>
-                  </a>
-                </li>
-               
-            </ul>
-          
+        
+            <a href="/categories" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-bookmark"></i>
+            
+            分类
+            </a>
+        
         </li>
         
         <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			我的
-		</a>
-          
+        
+            <a href="/tags" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-tags"></i>
+            
+            标签
+            </a>
+        
         </li>
         
         <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言
-		</a>
-          
+        
+            <a href="/archives" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-archive"></i>
+            
+            归档
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/contact" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-comments"></i>
+            
+            留言板
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/about" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-user-circle"></i>
+            
+            我的
+            </a>
+        
         </li>
         
         
@@ -802,12 +777,11 @@ at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/article/hive-an-zhuang-he-pei-zhi.html">
+                <a href="/article/hive-an-zhuang-he-pei-zhi-copy.html">
                     <div class="card-image">
                         
                         
@@ -908,7 +882,7 @@ at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf
         newdiv.innerHTML += '<br />'
             + '来源: 海韵学社<br />'
             + '作者: Bigo Lv<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '博文链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
         selection.selectAllChildren(newdiv);
@@ -1047,13 +1021,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2020</span>
-            <a href="http://www.lvmaohai.cn" target="_blank">Bigo Lv</a>
+            <a href="http://lvmaohai.cn" target="_blank">Bigo Lv</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.2k</span>&nbsp;字
+                class="white-color">91k</span>&nbsp;字
             
             
             
