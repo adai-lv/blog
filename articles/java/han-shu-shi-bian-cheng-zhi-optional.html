@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Kafka 安装配置和常用命令, flink, bigdata">
-    <meta name="description" content="MacOS 环境，基于 Homebrew 安装 Kafka，基本配置设置，常用操作命令使用。">
+    <meta name="keywords" content="java8 - 函数式编程之Optional, flink, bigdata">
+    <meta name="description" content="在java 8里，JDK引入了一个Optional类，该类是一个可以为null的容器对象。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Kafka 安装配置和常用命令 | 海韵学社</title>
+    <title>java8 - 函数式编程之Optional | 海韵学社</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
@@ -292,12 +292,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Kafka 安装配置和常用命令</h1>
+                    <h1 class="description center-align post-title">java8 - 函数式编程之Optional</h1>
                 </div>
             </div>
         </div>
@@ -414,8 +414,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/kafka/">
-                                <span class="chip bg-color">Kafka</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">函数式编程</span>
+                            </a>
+                        
+                            <a href="/tags/optional/">
+                                <span class="chip bg-color">Optional</span>
                             </a>
                         
                     </div>
@@ -426,8 +434,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
-                                大数据
+                            <a href="/categories/java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -446,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-13
+                    2020-01-04
                 </div>
                 
 
@@ -455,14 +463,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    712
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>时长:&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
 
@@ -478,131 +486,216 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>系统环境：MacOS<br>Kafka 版本：2.3.1</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在某些情况下，首先要判断某个参数或者某个方法的返回值是否为null，才能继续操作该参数。</p>
+<p>对于某些链式操作需要多次通过if语句判断是否为空，才能确保不抛出NullPointerException，这段非空判断的代码显得非常冗长和恶心。比如下面这段代码：</p>
+<pre><code>String isoCode = "default";
+if (user != null) {
+    Address address = user.getAddress();
+    if (address != null) {
+        Country country = address.getCountry();
+        if (country != null) {
+            isocode = country.getIosCode();
+            if (isocode != null) {
+                isocode = isocode.toUpperCase();
+            }
+        }
+    }
+}</code></pre><p>在java 8里，JDK引入了一个Optional类，该类是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。通过本文的学习，我们看下如何通过Optional类重写上面那段判空代码。</p>
+<h2 id="Optional初始化"><a href="#Optional初始化" class="headerlink" title="Optional初始化"></a>Optional初始化</h2><p>Optional类的构造方法是私有方法，所以只能通过它的静态工厂方法进行初始化。它的初始化方法有如下几种：</p>
+<ul>
+<li><strong>&lt;T&gt; Optional&lt;T&gt; of(T value)</strong><blockquote>
+<p>为非null的值创建一个Optional。如果传入参数为null，抛出NullPointerException。</p>
 </blockquote>
-<h2 id="Homebrew安装Kafka"><a href="#Homebrew安装Kafka" class="headerlink" title="Homebrew安装Kafka"></a>Homebrew安装Kafka</h2><blockquote>
-<p>安装 kafka 过程中会自动的安装好 zookeeper</p>
+</li>
+</ul>
+<pre><code>// 调用工厂方法创建Optional实例
+Optional&lt;String&gt; name = Optional.of("hello");
+
+// 传入参数为null，抛出NullPointerException.
+Optional&lt;String&gt; someNull = Optional.of(null);</code></pre><ul>
+<li><strong>&lt;T&gt; Optional&lt;T&gt; ofNullable(T value)</strong><blockquote>
+<p>为指定的值创建一个Optional，如果指定的值为null，则返回一个空的Optional。<br>它和 of 的区别是可以传null值。</p>
 </blockquote>
-<pre><code>$ brew info kafka
-$ brew install kafka
-$ cd /usr/local/Cellar/kafka/2.3.1/libexec
-</code></pre><h2 id="卸载-Kafka"><a href="#卸载-Kafka" class="headerlink" title="卸载 Kafka"></a>卸载 Kafka</h2><pre><code>$ brew uninstall kafka</code></pre><h2 id="配置文件设置"><a href="#配置文件设置" class="headerlink" title="配置文件设置"></a>配置文件设置</h2><blockquote>
-<p>配置文件路径：/usr/local/etc/kafka</p>
+</li>
+</ul>
+<pre><code>// 调用工厂方法创建Optional实例
+Optional&lt;String&gt; name = Optional.ofNullable("hello");
+
+// 传入参数为null，不抛出NullPointerException，返回一个空的Optional.
+Optional&lt;String&gt; someNull = Optional.ofNullable(null);</code></pre><ul>
+<li><strong>&lt;T&gt; Optional&lt;T&gt; empty()</strong><blockquote>
+<p>是 ofNullable静态工厂方法，传null值时的实现，返回一个空的Optional。</p>
 </blockquote>
-<h3 id="server-properties"><a href="#server-properties" class="headerlink" title="server.properties"></a>server.properties</h3><pre><code># the address the socket server listens on
-listeners=PLAINTEXT://localhost:9092
-
-# zookeeper connection string
-zookeeper.connect=localhost:2181
-
-# Timeout in ms for connecting to zookeeper
-zookeeper.connection.timeout.ms=6000
-</code></pre><h3 id="zookeeper-properties"><a href="#zookeeper-properties" class="headerlink" title="zookeeper.properties"></a>zookeeper.properties</h3><blockquote>
-<p>启动 kafka 时，需要先启动 zookeeper 服务<br>可以启动 kafka 自带的 zookeeper，也可以启动外置的 zookeeper 服务</p>
+</li>
+</ul>
+<pre><code>Optional empty = Optional.empty();</code></pre><h2 id="Optional类的其它方法"><a href="#Optional类的其它方法" class="headerlink" title="Optional类的其它方法"></a>Optional类的其它方法</h2><ul>
+<li><strong>boolean isPresent()</strong><blockquote>
+<p>如果值存在返回true，否则返回false。</p>
 </blockquote>
-<pre><code># the directory where the snapshot is stored.
-dataDir=/usr/local/var/lib/zookeeper
-
-# the port at which the clients will connect
-clientPort=2181
-</code></pre><h2 id="启动和关闭服务"><a href="#启动和关闭服务" class="headerlink" title="启动和关闭服务"></a>启动和关闭服务</h2><ul>
-<li>启动服务</li>
+</li>
 </ul>
-<p>如果想以服务的方式启动，那么可以:</p>
-<pre><code># 先安装 zookeeper（brew install zookeeper）
-$ brew services start zookeeper
+<pre><code>// false
+Optional&lt;String&gt; empty = Optional.ofNullable(null);
+System.out.println(empty.isPresent());
 
-$ brew services start kafka
-</code></pre><p>如果只是临时启动，那么可以:</p>
-<pre><code>$ bin/zookeeper-server-start.sh config/zookeeper.properties
-$ bin/kafka-server-start.sh config/server.properties
-
-$ jps -ml
-</code></pre><ul>
-<li>关闭服务</li>
+// true
+Optional&lt;String&gt; optionalS2 = Optional.of(s2);
+System.out.println(optionalS2.isPresent());</code></pre><ul>
+<li><strong>T get()</strong><blockquote>
+<p>如果Optional有值则将其返回，否则抛出NoSuchElementException</p>
+</blockquote>
+</li>
 </ul>
-<pre><code>$ bin/kafka-server-stop.sh stop
-$ bin/zookeeper-server-stop.sh stop
+<pre><code>// 获取hello
+Optional.of("hello").get();
 
-$ jps -ml
-</code></pre><h2 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h2><ul>
-<li>创建<code>topic</code></li>
+// 抛出NoSuchElementException
+Optional.empty().get();</code></pre><ul>
+<li><strong>void ifPresent (Consumer&lt;? super T&gt; consumer)</strong><blockquote>
+<p>如果Optional实例有值则调用consumer，否则不做处理。</p>
+</blockquote>
+</li>
 </ul>
-<pre><code>## 选项说明:
-##   --zookeeper zookeeper 服务 Host
-##   --topic 定义 topic 名称
-##   --replication-factor 定义副本数
-##   --partitions 定义分区数
-
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test_topic --replication-factor 1 --partitions 3
-</code></pre><ul>
-<li>删除<code>topic</code></li>
+<pre><code>//调用ifPresent方法里面的consumer
+Optional.of("hello")
+        .ifPresent(System.out::println);</code></pre><ul>
+<li><strong>T orElse(T other)</strong><blockquote>
+<p>如果有值则将其返回，否则返回指定的其它值</p>
+</blockquote>
+</li>
 </ul>
-<pre><code>## 选项说明:
-##   --zookeeper zookeeper 服务 Host
-##   --topic 定义 topic 名称
+<pre><code>// 输出null
+System.out.println(Optional.empty().orElse("null"));
 
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic test_topic
-</code></pre><ul>
-<li>发送消息</li>
+// 输出hello
+System.out.println(Optional.of("hello").orElse("null"));</code></pre><ul>
+<li><strong>T orElseGet (Supplier&lt;? extends T&gt; other)</strong><blockquote>
+<p>orElseGet与orElse方法类似，区别在于得到的默认值。<br>orElse方法将传入的字符串作为默认值，<br>orElseGet方法可以接受 Supplier 接口的实现用来生成默认值。</p>
+</blockquote>
+</li>
 </ul>
-<pre><code>## 选项说明:
-##   --broker-list kafka 服务连接的节点，支持多节点
-##   --topic 定义 topic 名称
+<pre><code>// 输出null
+System.out.println(Optional.empty().orElseGet(() -&gt; "null"));
 
-$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test_topic
-</code></pre><ul>
-<li>消费消息</li>
+// 输出hello
+System.out.println(Optional.of("hello").orElseGet(() -&gt; "null"));</code></pre><ul>
+<li><strong>&lt;X extends Throwable&gt; T orElseThrow (Supplier&lt;? extends X&gt; exceptionSupplier) throws X</strong><blockquote>
+<p>如果有值则将其返回，否则抛出 supplier 接口创建的异常。</p>
+</blockquote>
+</li>
 </ul>
-<pre><code>## 选项说明:
-##   --bootstrap-server kafka 服务连接的节点，支持多节点
-##   --from-beginning  标识从头消费（offset=1）
-##   --topic 定义 topic 名称
-
-$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic test_topic
-</code></pre><ul>
-<li>查看某个 <code>Topic</code> 的详情</li>
+<pre><code>// 抛出exception
+try {
+    Optional.empty()
+            .orElseThrow(()-&gt;new Exception("为空"));
+} catch (Exception e) {
+    e.printStackTrace();
+}</code></pre><ul>
+<li><strong>&lt;U&gt; Optional&lt;U&gt; map (Function&lt;? super T, ? extends U&gt; mapper)</strong><blockquote>
+<p>如果参数 mapper 有值，则调用map方法执行mapper参数的Function方法得到返回值。<br>如果mapper的返回值不为null，则创建包含mapping返回值的Optional作为map方法返回值，否则返回空Optional。<br>如果传入的mapper参数是null，抛出NullPointerException。</p>
+</blockquote>
+</li>
 </ul>
-<pre><code>## 选项说明:
-##   --zookeeper zookeeper 服务 Host
-##   --topic 定义 topic 名称
+<pre><code>// 输出 JACK
+Optional&lt;String&gt; stringOptional = Optional.of("jack")
+    .map((value) -&gt; value.toUpperCase());
 
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic test_topic
-</code></pre><ul>
-<li>查看某个 <code>Topic</code> 的 <code>consumer_offsets</code> 详情 </li>
+System.out.println(stringOptional.orElse("default"));
+
+// 输出 default
+Optional&lt;String&gt; stringOptional1 = Optional.of("jack")
+    .map((value) -&gt; null);
+
+System.out.println(stringOptional1.orElse("default"));
+
+// 输出 default，并且不会调用mapper
+String s2 = null;
+Optional&lt;String&gt; stringOptional2 = Optional.ofNullable(s2)
+    .map((value) -&gt; value.toUpperCase());
+
+System.out.println(stringOptional2.orElse("default"));
+
+// 如果参数mapper为null，抛NullPointerException异常
+try {
+
+    String s3 = null;
+    Optional&lt;String&gt; stringOptional3 = Optional.ofNullable(s3)
+        .map(null);
+
+    System.out.println(stringOptional3.orElse("default"));
+
+} catch (Exception e) {}</code></pre><ul>
+<li><strong>&lt;U&gt; Optional&lt;U&gt; flatMap (Function&lt;? super T, Optional&lt;U&gt;&gt; mapper)</strong><blockquote>
+<p>flatMap与map方法类似，区别在于flatMap中的mapper返回值必须是Optional。调用结束时，flatMap不会对结果用Optional封装。</p>
+</blockquote>
+</li>
 </ul>
-<pre><code>## 选项说明:
-##   --zookeeper zookeeper 服务 Host
-##   --topic 定义 topic 名称
+<pre><code>// flatMap，输出 JACK
+Optional&lt;String&gt; stringOptional4 = Optional.of("jack")
+    .flatMap(value -&gt; Optional.ofNullable(value.toUpperCase()));
 
-bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic __consumer_offsets
-</code></pre><ul>
-<li>验证消息生产成功</li>
+System.out.println(stringOptional4.orElse("default"));
+
+// flatMap，输出 default
+Optional&lt;String&gt; stringOptional5 = Optional.of("jack")
+    .flatMap(value -&gt; Optional.ofNullable(null));
+
+System.out.println(stringOptional5.orElse("default"));
+
+// flatMap，输出 default，并且不会调用mapper
+String s6 = null;
+Optional&lt;String&gt; stringOptional6 = Optional.ofNullable(s6)
+    .flatMap(value -&gt; Optional.ofNullable(value.toUpperCase()));
+
+System.out.println(stringOptional6.orElse("default"));
+
+// flatMap 如果map的参数mapper为null，抛NullPointerException异常
+try {
+    String s7 = null;
+    Optional&lt;String&gt; stringOptional7 = Optional.ofNullable(s7)
+        .flatMap(null);
+
+    System.out.println(stringOptional7.orElse("default"));
+
+} catch (Exception e) {
+    System.out.println("出错了");
+}</code></pre><ul>
+<li><strong>Optional&lt;T&gt; filter (Predicate&lt;? super T&gt; predicate)</strong><blockquote>
+<p>如果有值并且满足断言条件返回包含该值的Optional，否则返回空Optional。</p>
+</blockquote>
+</li>
 </ul>
-<pre><code>## 选项说明:
-##   --broker-list kafka 服务连接的节点，支持多节点
-##   --topic 定义 topic 名称
-##   --time -1表示显示获取当前offset最大值，-2表示offset的最小值
+<pre><code>// 输出default
+String filterString = Optional.of("hugo")
+        .filter(s -&gt; "jack".equals(s))
+        .orElse("default");
 
-$ bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic test_topic --time -1
-</code></pre><ul>
-<li>创建一个console consumer group</li>
-</ul>
-<pre><code>## 选项说明:
-##   --bootstrap-server kafka 服务连接的节点，支持多节点
-##   --from-beginning  标识从头消费（offset=1）
-##   --topic 定义 topic 名称
-##   --group 定义消费组名称
+System.out.println(filterString);
 
-$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test_topic --from-beginning --group new-consumer</code></pre><ul>
-<li>获取该consumer group的group id</li>
-</ul>
-<pre><code>## 选项说明:
-##   --bootstrap-server kafka 服务连接的节点，支持多节点
-##   --list 显示消费组列表
+// 输出hugo
+String filterString2 = Optional.of("hugo")
+        .filter(s -&gt; "hugo".equals(s))
+        .orElse("default");
 
-$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></pre><script>
+System.out.println(filterString2);
+
+// 输出default，断言接口里面的语句不会执行
+String nullableString = null;
+String filterString3 = Optional.ofNullable(nullableString)
+        .filter(s -&gt; {
+            System.out.println("测试是否调用");
+            return "jack".equals(s);
+        })
+        .orElse("default");
+
+System.out.println(filterString3);</code></pre><h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>经过上面学习Optional的相关API，已经对它有了一定的了解。下面，我们运用上面的知识解决在前言中遗留的问题。</p>
+<pre><code>ioscode = Optional.ofNullable(user)
+        .map(u -&gt; u.getAddress())
+        .map(addr -&gt; addr.getCountry())
+        .map(country -&gt; country.getIosCode())
+        .map(String::toUpperCase)
+        .orElse("default");</code></pre><p>从上面的学习可以知道，只有Optional是empty的，map方法不会被调用。</p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -633,8 +726,16 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/kafka/">
-                                    <span class="chip bg-color">Kafka</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">函数式编程</span>
+                                </a>
+                            
+                                <a href="/tags/optional/">
+                                    <span class="chip bg-color">Optional</span>
                                 </a>
                             
                         </div>
@@ -665,18 +766,17 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/articles/kafka/an-zhuang-pei-zhi-he-chang-yong-ming-ling.html">
+                <a href="/articles/java/han-shu-shi-bian-cheng-zhi-stream.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg" class="responsive-img" alt="Kafka 安装配置和常用命令">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/17.jpg" class="responsive-img" alt="java8 - 函数式编程之Stream">
                         
-                        <span class="card-title">Kafka 安装配置和常用命令</span>
+                        <span class="card-title">java8 - 函数式编程之Stream</span>
                     </div>
                 </a>
             </div>
@@ -688,13 +788,13 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/articles/hbase/an-zhuang-he-pei-zhi.html">
+                <a href="/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/2.jpg" class="responsive-img" alt="HBase 安装和配置">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/22.jpg" class="responsive-img" alt="java8 - 函数式编程之Lambda">
                         
-                        <span class="card-title">HBase 安装和配置</span>
+                        <span class="card-title">java8 - 函数式编程之Lambda</span>
                     </div>
                 </a>
             </div>
@@ -724,7 +824,7 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-13T13-29-31',
+        id: '2020-01-04T06-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 

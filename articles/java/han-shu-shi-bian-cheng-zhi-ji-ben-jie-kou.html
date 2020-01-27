@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Kafka 安装配置和常用命令, flink, bigdata">
-    <meta name="description" content="MacOS 环境，基于 Homebrew 安装 Kafka，基本配置设置，常用操作命令使用。">
+    <meta name="keywords" content="java8 - 函数式编程之基本接口, flink, bigdata">
+    <meta name="description" content="Function、Consumer、Supplier、Predicate 四个接口是一切函数式编程的基础。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Kafka 安装配置和常用命令 | 海韵学社</title>
+    <title>java8 - 函数式编程之基本接口 | 海韵学社</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
@@ -292,12 +292,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Kafka 安装配置和常用命令</h1>
+                    <h1 class="description center-align post-title">java8 - 函数式编程之基本接口</h1>
                 </div>
             </div>
         </div>
@@ -414,8 +414,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/kafka/">
-                                <span class="chip bg-color">Kafka</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">函数式编程</span>
                             </a>
                         
                     </div>
@@ -426,8 +430,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
-                                大数据
+                            <a href="/categories/java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -446,7 +450,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-13
+                    2020-01-02
                 </div>
                 
 
@@ -455,14 +459,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    712
+                    857
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>时长:&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -478,131 +482,112 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>系统环境：MacOS<br>Kafka 版本：2.3.1</p>
+                <p>不管lambda表达式还是Stream流式编程，Function、Consumer、Supplier、Predicate 四个接口是一切函数式编程的基础。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/java-function-01.jpg" alt=""></p>
+<ul>
+<li>Supplier<t>：T get()；无输入，“生产”一个T类型的返回值。</t></li>
+<li>Consumer<t>：void accept(T t)；输入类型T，“消费”掉，无返回。</t></li>
+<li>Function&lt;T, R&gt;：R apply(T t)；输入类型T返回类型R。</li>
+<li>Predicate<t>：boolean test(T t)；输入类型T，并进行条件“判断”，返回true|false。</t></li>
+</ul>
+<h2 id="interface-Supplier-lt-T-gt"><a href="#interface-Supplier-lt-T-gt" class="headerlink" title="interface Supplier<T>"></a>interface Supplier&lt;T&gt;</h2><blockquote>
+<p>该接口的中文直译是“提供者”，可以理解为定义一个lambda表达式，没有输入参数，返回一个T类型的值。</p>
 </blockquote>
-<h2 id="Homebrew安装Kafka"><a href="#Homebrew安装Kafka" class="headerlink" title="Homebrew安装Kafka"></a>Homebrew安装Kafka</h2><blockquote>
-<p>安装 kafka 过程中会自动的安装好 zookeeper</p>
+<pre><code>Supplier&lt;Integer&gt; supplier = () -&gt; 10;
+
+// 输出10
+System.out.println(supplier.get());</code></pre><h2 id="interface-Consumer-lt-T-gt"><a href="#interface-Consumer-lt-T-gt" class="headerlink" title="interface Consumer<T>"></a>interface Consumer&lt;T&gt;</h2><blockquote>
+<p>该接口的中文直译是“消费”，可以理解为定义一个lambda表达式，接收一个T类型的参数，并且没有返回值。</p>
 </blockquote>
-<pre><code>$ brew info kafka
-$ brew install kafka
-$ cd /usr/local/Cellar/kafka/2.3.1/libexec
-</code></pre><h2 id="卸载-Kafka"><a href="#卸载-Kafka" class="headerlink" title="卸载 Kafka"></a>卸载 Kafka</h2><pre><code>$ brew uninstall kafka</code></pre><h2 id="配置文件设置"><a href="#配置文件设置" class="headerlink" title="配置文件设置"></a>配置文件设置</h2><blockquote>
-<p>配置文件路径：/usr/local/etc/kafka</p>
+<ul>
+<li><strong>accept</strong> ：接收参数，并调用Consumer接口里的方法</li>
+</ul>
+<pre><code>Consumer&lt;Integer&gt; consumer = x -&gt; System.out.println(x);
+
+// 输出10
+consumer.accept(10);</code></pre><ul>
+<li><strong>andThen</strong>：调用完consumer自己后，还调用andThen方法参数中指定的Consumer</li>
+</ul>
+<pre><code>Consumer&lt;Integer&gt; consumer = x -&gt; System.out.println(x);
+Consumer&lt;Integer&gt; plusSelf = x -&gt; System.out.println(x + x);
+
+// 输出10以及20
+consumer.andThen(plusSelf).accept(10);</code></pre><h2 id="interface-Function-lt-T-R-gt"><a href="#interface-Function-lt-T-R-gt" class="headerlink" title="interface Function<T, R>"></a>interface Function&lt;T, R&gt;</h2><blockquote>
+<p>该接口的中文直译是“函数”，可以理解为：定义一个lambda表达式，接收一个T类型的参数，返回一个R类型的值。</p>
 </blockquote>
-<h3 id="server-properties"><a href="#server-properties" class="headerlink" title="server.properties"></a>server.properties</h3><pre><code># the address the socket server listens on
-listeners=PLAINTEXT://localhost:9092
+<ul>
+<li><strong>apply</strong>：传入一个T类型的参数，返回一个R类型的值</li>
+</ul>
+<pre><code>Function&lt;Integer, Integer&gt; function = x -&gt; x + x;
 
-# zookeeper connection string
-zookeeper.connect=localhost:2181
+// 输出20
+System.out.println(function.apply(10));</code></pre><ul>
+<li><strong>compose</strong>：accept获取到的参数，先执行compose里面的Function，再执行原Function</li>
+</ul>
+<pre><code>Function&lt;Integer, Integer&gt; plusSelf = x -&gt; {
+    System.out.println("plusSelf");
+    return x + x;
+};
 
-# Timeout in ms for connecting to zookeeper
-zookeeper.connection.timeout.ms=6000
-</code></pre><h3 id="zookeeper-properties"><a href="#zookeeper-properties" class="headerlink" title="zookeeper.properties"></a>zookeeper.properties</h3><blockquote>
-<p>启动 kafka 时，需要先启动 zookeeper 服务<br>可以启动 kafka 自带的 zookeeper，也可以启动外置的 zookeeper 服务</p>
+Function&lt;Integer, String&gt; toString = x -&gt; {
+    System.out.println("toString");
+    return String.valueOf(x);
+};
+
+// 输出20，整数10先自加变成20，然后由toString转换成字符串
+String string1 = toString.compose(plusSelf).apply(10);
+
+System.out.println(string1);</code></pre><ul>
+<li><strong>andThen</strong>：与compose相反。先执行原Function，在执行andThen里面的Function。</li>
+</ul>
+<pre><code>Function&lt;Integer, Integer&gt; plusSelf = x -&gt; {
+    System.out.println("plusSelf");
+    return x + x;
+};
+
+Function&lt;Integer, String&gt; toString = x -&gt; {
+    System.out.println("toString");
+    return String.valueOf(x);
+};
+
+// 输出20, 先自加，再转换成字符串
+String string2 = plusSelf.andThen(toString).apply(10);
+
+System.out.println(string2);</code></pre><h2 id="interface-Predicate-lt-T-gt"><a href="#interface-Predicate-lt-T-gt" class="headerlink" title="interface Predicate<T>"></a>interface Predicate&lt;T&gt;</h2><blockquote>
+<p>该接口的中文直译是“断言”，用于返回false/true。T是lambda表达式的输入参数类型。</p>
 </blockquote>
-<pre><code># the directory where the snapshot is stored.
-dataDir=/usr/local/var/lib/zookeeper
-
-# the port at which the clients will connect
-clientPort=2181
-</code></pre><h2 id="启动和关闭服务"><a href="#启动和关闭服务" class="headerlink" title="启动和关闭服务"></a>启动和关闭服务</h2><ul>
-<li>启动服务</li>
+<ul>
+<li><strong>test</strong>：测试test方法中输入参数是否满足接口中定义的lambda表达式</li>
 </ul>
-<p>如果想以服务的方式启动，那么可以:</p>
-<pre><code># 先安装 zookeeper（brew install zookeeper）
-$ brew services start zookeeper
+<pre><code>Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
+Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
 
-$ brew services start kafka
-</code></pre><p>如果只是临时启动，那么可以:</p>
-<pre><code>$ bin/zookeeper-server-start.sh config/zookeeper.properties
-$ bin/kafka-server-start.sh config/server.properties
+// 输出 true
+System.out.println(test.test("test"));
 
-$ jps -ml
-</code></pre><ul>
-<li>关闭服务</li>
+// 输出 false
+System.out.println(test.test("test_false"));</code></pre><ul>
+<li><strong>and</strong>：原 Predicate 接口和 and 方法中指定的 Predicate 接口要同时为true，test方法才为true。与逻辑运算符 &amp;&amp; 一致。</li>
 </ul>
-<pre><code>$ bin/kafka-server-stop.sh stop
-$ bin/zookeeper-server-stop.sh stop
+<pre><code>Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
+Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
 
-$ jps -ml
-</code></pre><h2 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h2><ul>
-<li>创建<code>topic</code></li>
+// 输出 false
+System.out.println(test.and(test2).test("test"));</code></pre><ul>
+<li><strong>negate</strong>：对结果取反后再输出</li>
 </ul>
-<pre><code>## 选项说明:
-##   --zookeeper zookeeper 服务 Host
-##   --topic 定义 topic 名称
-##   --replication-factor 定义副本数
-##   --partitions 定义分区数
+<pre><code>Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
+Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
 
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test_topic --replication-factor 1 --partitions 3
-</code></pre><ul>
-<li>删除<code>topic</code></li>
+// 输出 false
+System.out.println(test.negate().test("test"));</code></pre><ul>
+<li><strong>or</strong>：原 Predicate 接口和 or 方法中指定的 Predicate 接口只要一个为true，test方法为true。与逻辑运算符 || 一致。</li>
 </ul>
-<pre><code>## 选项说明:
-##   --zookeeper zookeeper 服务 Host
-##   --topic 定义 topic 名称
+<pre><code>Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
+Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
 
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic test_topic
-</code></pre><ul>
-<li>发送消息</li>
-</ul>
-<pre><code>## 选项说明:
-##   --broker-list kafka 服务连接的节点，支持多节点
-##   --topic 定义 topic 名称
-
-$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test_topic
-</code></pre><ul>
-<li>消费消息</li>
-</ul>
-<pre><code>## 选项说明:
-##   --bootstrap-server kafka 服务连接的节点，支持多节点
-##   --from-beginning  标识从头消费（offset=1）
-##   --topic 定义 topic 名称
-
-$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic test_topic
-</code></pre><ul>
-<li>查看某个 <code>Topic</code> 的详情</li>
-</ul>
-<pre><code>## 选项说明:
-##   --zookeeper zookeeper 服务 Host
-##   --topic 定义 topic 名称
-
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic test_topic
-</code></pre><ul>
-<li>查看某个 <code>Topic</code> 的 <code>consumer_offsets</code> 详情 </li>
-</ul>
-<pre><code>## 选项说明:
-##   --zookeeper zookeeper 服务 Host
-##   --topic 定义 topic 名称
-
-bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic __consumer_offsets
-</code></pre><ul>
-<li>验证消息生产成功</li>
-</ul>
-<pre><code>## 选项说明:
-##   --broker-list kafka 服务连接的节点，支持多节点
-##   --topic 定义 topic 名称
-##   --time -1表示显示获取当前offset最大值，-2表示offset的最小值
-
-$ bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic test_topic --time -1
-</code></pre><ul>
-<li>创建一个console consumer group</li>
-</ul>
-<pre><code>## 选项说明:
-##   --bootstrap-server kafka 服务连接的节点，支持多节点
-##   --from-beginning  标识从头消费（offset=1）
-##   --topic 定义 topic 名称
-##   --group 定义消费组名称
-
-$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test_topic --from-beginning --group new-consumer</code></pre><ul>
-<li>获取该consumer group的group id</li>
-</ul>
-<pre><code>## 选项说明:
-##   --bootstrap-server kafka 服务连接的节点，支持多节点
-##   --list 显示消费组列表
-
-$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></pre><script>
+// 输出 false
+System.out.println(test.or(test2).test("test"));</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -633,8 +618,12 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/kafka/">
-                                    <span class="chip bg-color">Kafka</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">函数式编程</span>
                                 </a>
                             
                         </div>
@@ -665,18 +654,17 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/articles/kafka/an-zhuang-pei-zhi-he-chang-yong-ming-ling.html">
+                <a href="/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg" class="responsive-img" alt="Kafka 安装配置和常用命令">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/22.jpg" class="responsive-img" alt="java8 - 函数式编程之Lambda">
                         
-                        <span class="card-title">Kafka 安装配置和常用命令</span>
+                        <span class="card-title">java8 - 函数式编程之Lambda</span>
                     </div>
                 </a>
             </div>
@@ -688,13 +676,13 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/articles/hbase/an-zhuang-he-pei-zhi.html">
+                <a href="/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/2.jpg" class="responsive-img" alt="HBase 安装和配置">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/18.jpg" class="responsive-img" alt="java8 - 函数式编程之简介">
                         
-                        <span class="card-title">HBase 安装和配置</span>
+                        <span class="card-title">java8 - 函数式编程之简介</span>
                     </div>
                 </a>
             </div>
@@ -724,7 +712,7 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-13T13-29-31',
+        id: '2020-01-02T06-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
