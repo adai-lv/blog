@@ -292,7 +292,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/cover/hive-face.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -426,8 +426,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-category">
-                                大数据
+                            <a href="/categories/hive/" class="post-category">
+                                Hive
                             </a>
                         
                     </div>
@@ -446,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-09
+                    2020-01-03
                 </div>
                 
 
@@ -576,7 +576,7 @@ $ hadoop fs -chmod 777 /tmp/hive</code></pre><ul>
 &lt;property&gt;
     &lt;name&gt;hive.metastore.schema.verification&lt;/name&gt;
     &lt;value&gt;false&lt;/value&gt;
-&lt;/property&gt;</code></pre><p>下载MySQL驱动包到lib目录<br><a href="https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-5.1.48.tar.gz" target="_blank" rel="noopener">https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-5.1.48.tar.gz</a></p>
+&lt;/property&gt;</code></pre><p><a href="https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-5.1.48.tar.gz" target="_blank" rel="noopener">下载MySQL驱动包</a> 并 copy 到lib目录下</p>
 <ul>
 <li>WebUI<blockquote>
 <p>Hive从2.0版本开始，为HiveServer2提供了一个简单的WEB UI界面，界面中可以直观的看到当前链接的会话、历史日志、配置参数以及度量信息。</p>
@@ -781,13 +781,12 @@ at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/articles/spark/an-zhuang-he-pei-zhi.html">
+                <a href="/articles/hive/chang-jian-shu-xing-pei-zhi.html">
                     <div class="card-image">
                         
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/cover/hive-face.png" class="responsive-img" alt="Hive 常见属性配置">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg" class="responsive-img" alt="Spark 安装和配置">
-                        
-                        <span class="card-title">Spark 安装和配置</span>
+                        <span class="card-title">Hive 常见属性配置</span>
                     </div>
                 </a>
             </div>
@@ -799,13 +798,12 @@ at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/articles/hadoop/an-zhuang-he-pei-zhi.html">
+                <a href="/articles/hive/ji-ben-gai-nian.html">
                     <div class="card-image">
                         
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/cover/hive-face.png" class="responsive-img" alt="Hive 基本概念">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/18.jpg" class="responsive-img" alt="Hadoop 安装和配置">
-                        
-                        <span class="card-title">Hadoop 安装和配置</span>
+                        <span class="card-title">Hive 基本概念</span>
                     </div>
                 </a>
             </div>
@@ -835,7 +833,7 @@ at [row,col,system-id]: [3215,96,"file:/usr/local/Cellar/hive/3.1.2/libexec/conf
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-09T23-20-15',
+        id: '2020-01-03T20-20-15',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -941,7 +939,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('5'),
+            collapseDepth: Number('0'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1027,23 +1025,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.5k</span>&nbsp;字
+                class="white-color">33.2k</span>&nbsp;字
             
             
             
             
             
             
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
             
             <br>
             
