@@ -455,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    712
+                    892
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>时长:&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -493,12 +493,44 @@ $ cd /usr/local/Cellar/kafka/2.3.1/libexec
 <h3 id="server-properties"><a href="#server-properties" class="headerlink" title="server.properties"></a>server.properties</h3><pre><code># the address the socket server listens on
 listeners=PLAINTEXT://localhost:9092
 
+# broker 的全局唯一编号，不能重复 
+broker.id=0
+
+# 删除 topic 功能
+delete.topic.enable=true
+
+# 处理网络请求的线程数量
+num.network.threads=3
+
+# 用来处理磁盘 IO 的现成数量
+num.io.threads=8 
+
+# 发送套接字的缓冲区大小 
+socket.send.buffer.bytes=102400
+
+# 接收套接字的缓冲区大小
+socket.receive.buffer.bytes=102400 
+
+# 请求套接字的缓冲区大小
+socket.request.max.bytes=104857600 
+
+# kafka 运行日志存放的路径 
+log.dirs=/usr/local/Cellar/kafka/2.3.1/libexec/logs
+
+# topic 在当前 broker 上的分区个数
+num.partitions=1
+
+# 用来恢复和清理 data 下数据的线程数量
+num.recovery.threads.per.data.dir=1 
+
+# segment 文件保留的最长时间，超时将被删除 
+log.retention.hours=168
+
 # zookeeper connection string
 zookeeper.connect=localhost:2181
 
 # Timeout in ms for connecting to zookeeper
-zookeeper.connection.timeout.ms=6000
-</code></pre><h3 id="zookeeper-properties"><a href="#zookeeper-properties" class="headerlink" title="zookeeper.properties"></a>zookeeper.properties</h3><blockquote>
+zookeeper.connection.timeout.ms=6000</code></pre><h3 id="zookeeper-properties"><a href="#zookeeper-properties" class="headerlink" title="zookeeper.properties"></a>zookeeper.properties</h3><blockquote>
 <p>启动 kafka 时，需要先启动 zookeeper 服务<br>可以启动 kafka 自带的 zookeeper，也可以启动外置的 zookeeper 服务</p>
 </blockquote>
 <pre><code># the directory where the snapshot is stored.
@@ -669,13 +701,13 @@ $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html">
+                <a href="/articles/kafka/gai-shu-he-ru-men.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/18.jpg" class="responsive-img" alt="java8 - 函数式编程之简介">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/7.jpg" class="responsive-img" alt="Kafka 概述和入门">
                         
-                        <span class="card-title">java8 - 函数式编程之简介</span>
+                        <span class="card-title">Kafka 概述和入门</span>
                     </div>
                 </a>
             </div>
@@ -915,7 +947,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37k</span>&nbsp;字
+                class="white-color">46.1k</span>&nbsp;字
             
             
             
