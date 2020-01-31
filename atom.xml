@@ -200,6 +200,122 @@
   </entry>
   
   <entry>
+    <title>Zookeeper API 应用实战</title>
+    <link href="http://lvmaohai.cn/articles/zookeeper/api-ying-yong-shi-zhan.html"/>
+    <id>http://lvmaohai.cn/articles/zookeeper/api-ying-yong-shi-zhan.html</id>
+    <published>2020-01-10T11:00:31.000Z</published>
+    <updated>2020-01-10T11:00:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;API-应用实战&quot;&gt;&lt;a href=&quot;#API-应用实战&quot; class=&quot;headerlink&quot; title=&quot;API 应用实战&quot;&gt;&lt;/a&gt;API 应用实战&lt;/h2&gt;&lt;h3 id=&quot;环境搭建&quot;&gt;&lt;a href=&quot;#环境搭建&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Zookeeper" scheme="http://lvmaohai.cn/categories/zookeeper/"/>
+    
+    
+      <category term="Zookeeper" scheme="http://lvmaohai.cn/tags/zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper 客户端命令操作</title>
+    <link href="http://lvmaohai.cn/articles/zookeeper/ke-hu-duan-ming-ling-cao-zuo.html"/>
+    <id>http://lvmaohai.cn/articles/zookeeper/ke-hu-duan-ming-ling-cao-zuo.html</id>
+    <published>2020-01-09T21:00:31.000Z</published>
+    <updated>2020-01-09T21:00:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;常见命令&quot;&gt;&lt;a href=&quot;#常见命令&quot; class=&quot;headerlink&quot; title=&quot;常见命令&quot;&gt;&lt;/a&gt;常见命令&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;命令基本语法&lt;/th&gt;
+&lt;th
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Zookeeper" scheme="http://lvmaohai.cn/categories/zookeeper/"/>
+    
+    
+      <category term="Zookeeper" scheme="http://lvmaohai.cn/tags/zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper 入门和内部原理</title>
+    <link href="http://lvmaohai.cn/articles/zookeeper/ru-men-he-nei-bu-yuan-li.html"/>
+    <id>http://lvmaohai.cn/articles/zookeeper/ru-men-he-nei-bu-yuan-li.html</id>
+    <published>2020-01-09T11:00:31.000Z</published>
+    <updated>2020-01-09T11:00:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Zookeeper是一个开源的分布式的，为分布式应用提供协调服务的Apache项目。&lt;/p&gt;
+&lt;h2 id=&quot;工作机制&quot;&gt;&lt;a href=&quot;#工作机制&quot; class=&quot;headerlink&quot; title=&quot;工作机制&quot;&gt;&lt;/a&gt;工作机制&lt;/h2&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Zookeeper" scheme="http://lvmaohai.cn/categories/zookeeper/"/>
+    
+    
+      <category term="Zookeeper" scheme="http://lvmaohai.cn/tags/zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper 安装和配置</title>
+    <link href="http://lvmaohai.cn/articles/zookeeper/an-zhuang-he-pei-zhi.html"/>
+    <id>http://lvmaohai.cn/articles/zookeeper/an-zhuang-he-pei-zhi.html</id>
+    <published>2020-01-08T21:00:31.000Z</published>
+    <updated>2020-01-08T21:00:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;系统环境：MacOS&lt;br&gt;Zookeeper 版本：3.4.14&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Homebrew安装Zookeeper&quot;&gt;&lt;a href=&quot;#Homebrew安装Zookeeper&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Zookeeper" scheme="http://lvmaohai.cn/categories/zookeeper/"/>
+    
+    
+      <category term="Zookeeper" scheme="http://lvmaohai.cn/tags/zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PySpark之RDD入门</title>
     <link href="http://lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html"/>
     <id>http://lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html</id>
@@ -247,7 +363,7 @@
         
         
           &lt;blockquote&gt;
-&lt;p&gt;系统环境：MacOS&lt;br&gt;Hadoop 版本：2.4.4&lt;/p&gt;
+&lt;p&gt;系统环境：MacOS&lt;br&gt;Spark 版本：2.4.4&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;Homebrew安装Spark&quot;&gt;&lt;a href=&quot;#Homebrew安装Spark&quot; class=&quot;headerlink&quot;
         
@@ -491,123 +607,6 @@ SELECT
     
     
       <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive 安装和配置</title>
-    <link href="http://lvmaohai.cn/articles/hive/an-zhuang-he-pei-zhi.html"/>
-    <id>http://lvmaohai.cn/articles/hive/an-zhuang-he-pei-zhi.html</id>
-    <published>2020-01-03T12:20:15.000Z</published>
-    <updated>2020-01-03T12:20:15.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;系统环境：MacOS&lt;br&gt;Hadoop 版本：3.1.2&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Homebrew安装Hive&quot;&gt;&lt;a href=&quot;#Homebrew安装Hive&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive 基本概念</title>
-    <link href="http://lvmaohai.cn/articles/hive/ji-ben-gai-nian.html"/>
-    <id>http://lvmaohai.cn/articles/hive/ji-ben-gai-nian.html</id>
-    <published>2020-01-02T21:20:15.000Z</published>
-    <updated>2020-01-02T21:20:15.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;什么是Hive&quot;&gt;&lt;a href=&quot;#什么是Hive&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HBase 安装和配置</title>
-    <link href="http://lvmaohai.cn/articles/hbase/an-zhuang-he-pei-zhi.html"/>
-    <id>http://lvmaohai.cn/articles/hbase/an-zhuang-he-pei-zhi.html</id>
-    <published>2020-01-02T12:00:31.000Z</published>
-    <updated>2020-01-02T12:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;系统环境：MacOS&lt;br&gt;Hadoop 版本：1.3.5&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Homebrew安装HBase&quot;&gt;&lt;a href=&quot;#Homebrew安装HBase&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="HBase" scheme="http://lvmaohai.cn/categories/hbase/"/>
-    
-    
-      <category term="HBase" scheme="http://lvmaohai.cn/tags/hbase/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hadoop 安装和配置</title>
-    <link href="http://lvmaohai.cn/articles/hadoop/an-zhuang-he-pei-zhi.html"/>
-    <id>http://lvmaohai.cn/articles/hadoop/an-zhuang-he-pei-zhi.html</id>
-    <published>2020-01-01T21:00:31.000Z</published>
-    <updated>2020-01-01T21:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;系统环境：MacOS&lt;br&gt;Hadoop 版本：3.2.1&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;打开本地电脑的ssh登录方式&quot;&gt;&lt;a href=&quot;#打开本地电脑的ssh登录方式&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hadoop" scheme="http://lvmaohai.cn/categories/hadoop/"/>
-    
-    
-      <category term="Hadoop" scheme="http://lvmaohai.cn/tags/hadoop/"/>
     
   </entry>
   
