@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvmaohai.cn/"/>
-  <updated>2020-01-16T22:00:00.000Z</updated>
+  <updated>2020-01-17T21:00:15.000Z</updated>
   <id>http://lvmaohai.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flink 简介</title>
+    <link href="http://lvmaohai.cn/articles/flink/jian-jie.html"/>
+    <id>http://lvmaohai.cn/articles/flink/jian-jie.html</id>
+    <published>2020-01-17T21:00:15.000Z</published>
+    <updated>2020-01-17T21:00:15.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;初识-Flink&quot;&gt;&lt;a href=&quot;#初识-Flink&quot; class=&quot;headerlink&quot; title=&quot;初识 Flink&quot;&gt;&lt;/a&gt;初识 Flink&lt;/h2&gt;&lt;p&gt;Flink 起源于 2010~2014
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Flink" scheme="http://lvmaohai.cn/categories/flink/"/>
+    
+    
+      <category term="Flink" scheme="http://lvmaohai.cn/tags/flink/"/>
+    
+      <category term="流式计算" scheme="http://lvmaohai.cn/tags/%E6%B5%81%E5%BC%8F%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="实时计算" scheme="http://lvmaohai.cn/tags/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97/"/>
+    
+  </entry>
   
   <entry>
     <title>java8 - 函数式编程之Stream</title>
@@ -557,35 +588,6 @@
           &lt;p&gt;查询语句语法&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[WITH CommonTableExpression (, CommonTableExpression)*] (Note: Only available starting with Hive 0.13.0)
 SELECT
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
-    
-      <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive DML数据操作</title>
-    <link href="http://lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html"/>
-    <id>http://lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html</id>
-    <published>2020-01-04T21:00:15.000Z</published>
-    <updated>2020-01-04T21:00:15.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;数据导入&quot;&gt;&lt;a href=&quot;#数据导入&quot; class=&quot;headerlink&quot; title=&quot;数据导入&quot;&gt;&lt;/a&gt;数据导入&lt;/h2&gt;&lt;h3 id=&quot;向表中装载数据（Load）&quot;&gt;&lt;a href=&quot;#向表中装载数据（Load）&quot;
         
       
     
