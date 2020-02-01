@@ -676,7 +676,9 @@ hive (default)&gt; load data local inpath '/opt/module/datas/dept.txt' into tabl
 <pre><code> desc formatted dept_partition;
 
  # Partition Information          
- # col_name              data_type               comment</code></pre><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4></li>
+ # col_name              data_type               comment</code></pre></li>
+</ol>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
 <li><p>创建二级分区表</p>
 <pre><code> create table dept_partition2(
      deptno int, 
@@ -694,41 +696,41 @@ hive (default)&gt; load data local inpath '/opt/module/datas/dept.txt' into tabl
 </ul>
 </li>
 <li><p>把数据直接上传到分区目录上，让分区表和数据产生关联的三种方式</p>
-</li>
-</ol>
-<p>方式一：上传数据后修复</p>
+<p> <strong>方式一：上传数据后修复</strong></p>
 <ul>
 <li><p>上传数据</p>
-<pre><code>   hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201912/day=12;
+<pre><code>  hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201912/day=12;
 
-   hive (default)&gt; dfs -put /opt/module/datas/dept.txt /user/hive/warehouse/dept_partition2/month=201912/day=12;</code></pre></li>
+  hive (default)&gt; dfs -put /opt/module/datas/dept.txt /user/hive/warehouse/dept_partition2/month=201912/day=12;</code></pre></li>
 <li><p>查询数据（查询不到刚上传的数据）</p>
-<pre><code>   hive (default)&gt; select * from dept_partition2 where month='201912' and day='12';</code></pre></li>
+<pre><code>  hive (default)&gt; select * from dept_partition2 where month='201912' and day='12';</code></pre></li>
 <li><p>执行修复命令</p>
-<pre><code>   hive&gt; msck repair table dept_partition2;</code></pre></li>
+<pre><code>  hive&gt; msck repair table dept_partition2;</code></pre></li>
 <li><p>再次查询数据</p>
-<pre><code>   hive (default)&gt; select * from dept_partition2 where month='201912' and day='12';</code></pre></li>
+<pre><code>  hive (default)&gt; select * from dept_partition2 where month='201912' and day='12';</code></pre></li>
 </ul>
-<p>方式二：上传数据后添加分区</p>
+<p> <strong>方式二：上传数据后添加分区</strong></p>
 <ul>
 <li><p>上传数据</p>
-<pre><code>   hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201912/day=11;
+<pre><code>  hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201912/day=11;
 
-   hive (default)&gt; dfs -put /opt/module/datas/dept.txt /user/hive/warehouse/dept_partition2/month=201912/day=11;</code></pre></li>
+  hive (default)&gt; dfs -put /opt/module/datas/dept.txt /user/hive/warehouse/dept_partition2/month=201912/day=11;</code></pre></li>
 <li><p>执行添加分区</p>
-<pre><code>   hive (default)&gt; alter table dept_partition2 add partition(month='201912', day='11');</code></pre></li>
+<pre><code>  hive (default)&gt; alter table dept_partition2 add partition(month='201912', day='11');</code></pre></li>
 <li><p>查询数据</p>
-<pre><code>   hive (default)&gt; select * from dept_partition2 where month='201912' and day='11';</code></pre></li>
+<pre><code>  hive (default)&gt; select * from dept_partition2 where month='201912' and day='11';</code></pre></li>
 </ul>
-<p>方式三：上传数据后load数据到分区</p>
+<p> <strong>方式三：上传数据后load数据到分区</strong></p>
 <ul>
 <li><p>创建目录</p>
-<pre><code>   hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201912/day=10;</code></pre></li>
+<pre><code>  hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201912/day=10;</code></pre></li>
 <li><p>上传数据</p>
-<pre><code>   hive (default)&gt; load data local inpath '/opt/module/datas/dept.txt' into table dept_partition2 partition(month='201912',day='10');</code></pre></li>
+<pre><code>  hive (default)&gt; load data local inpath '/opt/module/datas/dept.txt' into table dept_partition2 partition(month='201912',day='10');</code></pre></li>
 <li><p>查询数据</p>
-<pre><code>   hive (default)&gt; select * from dept_partition2 where month='201912' and day='10';</code></pre></li>
+<pre><code>  hive (default)&gt; select * from dept_partition2 where month='201912' and day='10';</code></pre></li>
 </ul>
+</li>
+</ol>
 <h2 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h2><h3 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h3><ol>
 <li><p>语法</p>
 <pre><code> ALTER TABLE table_name RENAME TO new_table_name</code></pre></li>

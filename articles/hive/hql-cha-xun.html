@@ -556,28 +556,27 @@ hive (default)&gt; select e.empno, e.ename, d.deptno from emp e join dept d on e
 </tbody></table>
 <p>查询出所有员工的薪水后加1显示</p>
 <pre><code>hive (default)&gt; select sal +1 from emp;</code></pre><h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><ul>
-<li>求总行数（count）</li>
+<li><p>求总行数（count）</p>
+<pre><code>  hive (default)&gt; select count(*) cnt from emp;</code></pre></li>
+<li><p>求工资的最大值（max）</p>
+<pre><code>  hive (default)&gt; select max(sal) max_sal from emp;</code></pre></li>
+<li><p>求工资的最小值（min）</p>
+<pre><code>  hive (default)&gt; select min(sal) min_sal from emp;</code></pre></li>
+<li><p>求工资的总和（sum）</p>
+<pre><code>  hive (default)&gt; select sum(sal) sum_sal from emp; </code></pre></li>
+<li><p>求工资的平均值（avg）</p>
+<pre><code>  hive (default)&gt; select avg(sal) avg_sal from emp;</code></pre></li>
 </ul>
-<pre><code>hive (default)&gt; select count(*) cnt from emp;</code></pre><ul>
-<li>求工资的最大值（max）</li>
-</ul>
-<pre><code>hive (default)&gt; select max(sal) max_sal from emp;</code></pre><ul>
-<li>求工资的最小值（min）</li>
-</ul>
-<pre><code>hive (default)&gt; select min(sal) min_sal from emp;</code></pre><ul>
-<li>求工资的总和（sum）</li>
-</ul>
-<pre><code>hive (default)&gt; select sum(sal) sum_sal from emp; </code></pre><ul>
-<li>求工资的平均值（avg）</li>
-</ul>
-<pre><code>hive (default)&gt; select avg(sal) avg_sal from emp;</code></pre><h3 id="Limit-语句"><a href="#Limit-语句" class="headerlink" title="Limit 语句"></a>Limit 语句</h3><p>LIMIT 子句用于限制返回的行数。</p>
+<h3 id="Limit-语句"><a href="#Limit-语句" class="headerlink" title="Limit 语句"></a>Limit 语句</h3><p>LIMIT 子句用于限制返回的行数。</p>
 <p>典型的查询会返回多行数据。</p>
 <pre><code>hive (default)&gt; select * from emp limit 5;</code></pre><h2 id="Where语句"><a href="#Where语句" class="headerlink" title="Where语句"></a>Where语句</h2><ul>
-<li>使用WHERE子句，将不满足条件的行过滤掉</li>
-<li>WHERE子句紧随FROM子句</li>
+<li><p>使用WHERE子句，将不满足条件的行过滤掉</p>
+</li>
+<li><p>WHERE子句紧随FROM子句</p>
+<p>  查询出薪水大于1000的所有员工</p>
+<pre><code>  hive (default)&gt; select * from emp where sal &gt; 1000;</code></pre></li>
 </ul>
-<p>查询出薪水大于1000的所有员工</p>
-<pre><code>hive (default)&gt; select * from emp where sal &gt; 1000;</code></pre><h3 id="比较运算符（Between-In-Is-Null）"><a href="#比较运算符（Between-In-Is-Null）" class="headerlink" title="比较运算符（Between / In / Is Null）"></a>比较运算符（Between / In / Is Null）</h3><p>下面表中描述了谓词操作符，这些操作符同样可以用于JOIN…ON和HAVING语句中。</p>
+<h3 id="比较运算符（Between-In-Is-Null）"><a href="#比较运算符（Between-In-Is-Null）" class="headerlink" title="比较运算符（Between / In / Is Null）"></a>比较运算符（Between / In / Is Null）</h3><p>下面表中描述了谓词操作符，这些操作符同样可以用于JOIN…ON和HAVING语句中。</p>
 <table>
 <thead>
 <tr>
@@ -663,22 +662,25 @@ hive (default)&gt; select * from emp where comm is null;
 
 # 查询工资是1500和5000的员工信息
 hive (default)&gt; select * from emp where sal IN (1500, 5000);</code></pre><h3 id="Like-和-RLike"><a href="#Like-和-RLike" class="headerlink" title="Like 和 RLike"></a>Like 和 RLike</h3><ul>
-<li>使用LIKE运算选择类似的值</li>
-<li>选择条件可以包含字符或数字:<ul>
+<li><p>使用LIKE运算选择类似的值</p>
+</li>
+<li><p>选择条件可以包含字符或数字:</p>
+<ul>
 <li><font color="red">% 代表零个或多个字符(任意个字符)</font>。</li>
 <li><font color="red">_ 代表一个字符</font>。</li>
 </ul>
 </li>
-<li>RLIKE子句是Hive中这个功能的一个扩展，其可以通过<font color="red">Java的正则表达式</font>这个更强大的语言来指定匹配条件。</li>
+<li><p>RLIKE子句是Hive中这个功能的一个扩展，其可以通过<font color="red">Java的正则表达式</font>这个更强大的语言来指定匹配条件。</p>
+<pre><code>  # 查找以2开头薪水的员工信息
+  hive (default)&gt; select * from emp where sal LIKE '2%';
+
+  # 查找第二个数值为2的薪水的员工信息
+  hive (default)&gt; select * from emp where sal LIKE '_2%';
+
+  # 查找薪水中含有2的员工信息
+  hive (default)&gt; select * from emp where sal RLIKE '[2]';</code></pre></li>
 </ul>
-<pre><code># 查找以2开头薪水的员工信息
-hive (default)&gt; select * from emp where sal LIKE '2%';
-
-# 查找第二个数值为2的薪水的员工信息
-hive (default)&gt; select * from emp where sal LIKE '_2%';
-
-# 查找薪水中含有2的员工信息
-hive (default)&gt; select * from emp where sal RLIKE '[2]';</code></pre><h3 id="逻辑运算符（And-Or-Not）"><a href="#逻辑运算符（And-Or-Not）" class="headerlink" title="逻辑运算符（And/Or/Not）"></a>逻辑运算符（And/Or/Not）</h3><table>
+<h3 id="逻辑运算符（And-Or-Not）"><a href="#逻辑运算符（And-Or-Not）" class="headerlink" title="逻辑运算符（And/Or/Not）"></a>逻辑运算符（And/Or/Not）</h3><table>
 <thead>
 <tr>
 <th align="left">操作符</th>
@@ -712,15 +714,18 @@ hive (default)&gt; select t.deptno, avg(t.sal) avg_sal from emp t group by t.dep
 # 计算emp每个部门中每个岗位的最高薪水
 hive (default)&gt; select t.deptno, t.job, max(t.sal) max_sal from emp t group by t.deptno, t.job;</code></pre><h3 id="Having-语句"><a href="#Having-语句" class="headerlink" title="Having 语句"></a>Having 语句</h3><p>having 与 where 不同点</p>
 <ul>
-<li><strong>where</strong> 针对表中的列发挥作用，查询数据；<strong>having</strong> 针对查询结果中的列发挥作用，筛选数据。</li>
-<li><strong>where</strong> 后面不能写分组函数，而 <strong>having</strong> 后面可以使用分组函数。</li>
-<li><strong>having</strong> 只用于 <strong>group by</strong> 分组统计语句。</li>
-</ul>
-<pre><code># 求每个部门的平均工资
-hive (default)&gt; select deptno, avg(sal) from emp group by deptno;
+<li><p><strong>where</strong> 针对表中的列发挥作用，查询数据；<strong>having</strong> 针对查询结果中的列发挥作用，筛选数据。</p>
+</li>
+<li><p><strong>where</strong> 后面不能写分组函数，而 <strong>having</strong> 后面可以使用分组函数。</p>
+</li>
+<li><p><strong>having</strong> 只用于 <strong>group by</strong> 分组统计语句。</p>
+<pre><code>  # 求每个部门的平均工资
+  hive (default)&gt; select deptno, avg(sal) from emp group by deptno;
 
-# 求每个部门的平均薪水大于2000的部门
-hive (default)&gt; select deptno, avg(sal) avg_sal from emp group by deptno having avg_sal &gt; 2000;</code></pre><h2 id="Join-语句"><a href="#Join-语句" class="headerlink" title="Join 语句"></a>Join 语句</h2><p>Hive支持通常的SQL JOIN语句，但是<font color="red">只支持等值连接，不支持非等值连接</font>。</p>
+  # 求每个部门的平均薪水大于2000的部门
+  hive (default)&gt; select deptno, avg(sal) avg_sal from emp group by deptno having avg_sal &gt; 2000;</code></pre></li>
+</ul>
+<h2 id="Join-语句"><a href="#Join-语句" class="headerlink" title="Join 语句"></a>Join 语句</h2><p>Hive支持通常的SQL JOIN语句，但是<font color="red">只支持等值连接，不支持非等值连接</font>。</p>
 <pre><code># 根据员工表和部门表中的部门编号相等，查询员工编号、员工名称和部门编号；
 hive (default)&gt; select e.empno, e.ename, d.deptno, d.dname from emp e join dept d on e.deptno = d.deptno;</code></pre><p>连接谓词(ON)中不支持or，以下 HQL 是错误的</p>
 <pre><code>hive (default)&gt; select e.empno, e.ename, d.deptno from emp e join dept d on e.deptno = d.deptno or e.ename = d.ename;</code></pre><h3 id="内连接-JOIN"><a href="#内连接-JOIN" class="headerlink" title="内连接(JOIN)"></a>内连接(JOIN)</h3><p><strong>JOIN</strong> 只有进行连接的两个表中都存在与连接条件相匹配的数据才会被保留下来。</p>
@@ -742,39 +747,49 @@ ON     d.loc = l.loc;</code></pre><p>大多数情况下，Hive会对每对JOIN�
 </blockquote>
 <h3 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h3><p>笛卡尔集会在下面条件下产生:</p>
 <ul>
-<li>省略连接条件</li>
-<li>连接条件无效</li>
-<li>所有表中的所有行互相连接</li>
+<li><p>省略连接条件</p>
+</li>
+<li><p>连接条件无效</p>
+</li>
+<li><p>所有表中的所有行互相连接</p>
+<pre><code>  hive (default)&gt; select empno, dname from emp, dept;</code></pre></li>
 </ul>
-<pre><code>hive (default)&gt; select empno, dname from emp, dept;</code></pre><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="全局排序（Order-By）"><a href="#全局排序（Order-By）" class="headerlink" title="全局排序（Order By）"></a>全局排序（Order By）</h3><p><strong>Order By</strong> 全局排序，一个 MapReduce Job</p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="全局排序（Order-By）"><a href="#全局排序（Order-By）" class="headerlink" title="全局排序（Order By）"></a>全局排序（Order By）</h3><p><strong>Order By</strong> 全局排序，一个 MapReduce Job</p>
 <ul>
-<li>使用 ORDER BY 子句排序，ASC（ascend）: 升序（默认），DESC（descend）: 降序</li>
-<li>ORDER BY 子句在SELECT语句的结尾</li>
-<li>可以对列的别名进行排序</li>
-<li>支持多个列排序</li>
+<li><p>使用 ORDER BY 子句排序，ASC（ascend）: 升序（默认），DESC（descend）: 降序</p>
+</li>
+<li><p>ORDER BY 子句在SELECT语句的结尾</p>
+</li>
+<li><p>可以对列的别名进行排序</p>
+</li>
+<li><p>支持多个列排序</p>
+<pre><code>  # 查询员工信息按工资升序排列
+  hive (default)&gt; select * from emp order by sal;
+
+  # 查询员工信息按工资降序排列
+  hive (default)&gt; select * from emp order by sal desc;
+
+  # 按照员工薪水的2倍排序（按照别名排序）
+  hive (default)&gt; select ename, sal*2 twosal from emp order by twosal;
+
+  # 按照部门升序排序和工资倒序排序（多个列排序）
+  hive (default)&gt; select ename, deptno, sal from emp order by deptno, sal desc;</code></pre></li>
 </ul>
-<pre><code># 查询员工信息按工资升序排列
-hive (default)&gt; select * from emp order by sal;
-
-# 查询员工信息按工资降序排列
-hive (default)&gt; select * from emp order by sal desc;
-
-# 按照员工薪水的2倍排序（按照别名排序）
-hive (default)&gt; select ename, sal*2 twosal from emp order by twosal;
-
-# 按照部门升序排序和工资倒序排序（多个列排序）
-hive (default)&gt; select ename, deptno, sal from emp order by deptno, sal desc;</code></pre><h3 id="每个MapReduce内部排序（Sort-By）"><a href="#每个MapReduce内部排序（Sort-By）" class="headerlink" title="每个MapReduce内部排序（Sort By）"></a>每个MapReduce内部排序（Sort By）</h3><p><strong>Sort By</strong> 每个MapReduce内部进行排序，对全局结果集来说不是排序。</p>
+<h3 id="每个MapReduce内部排序（Sort-By）"><a href="#每个MapReduce内部排序（Sort-By）" class="headerlink" title="每个MapReduce内部排序（Sort By）"></a>每个MapReduce内部排序（Sort By）</h3><p><strong>Sort By</strong> 每个MapReduce内部进行排序，对全局结果集来说不是排序。</p>
 <ol>
-<li>设置reduce个数</li>
+<li><p>设置reduce个数</p>
+<pre><code> hive (default)&gt; set mapreduce.job.reduces=3;</code></pre></li>
 </ol>
-<pre><code>hive (default)&gt; set mapreduce.job.reduces=3;</code></pre><p>2．查看设置reduce个数</p>
-<pre><code>hive (default)&gt; set mapreduce.job.reduces;</code></pre><ol start="3">
-<li>根据部门编号降序查看员工信息</li>
+<p>2．查看设置reduce个数</p>
+<pre><code>```
+hive (default)&gt; set mapreduce.job.reduces;
+```</code></pre><ol start="3">
+<li><p>根据部门编号降序查看员工信息</p>
+<pre><code> hive (default)&gt; select * from emp sort by empno desc;</code></pre></li>
+<li><p>将查询结果导入到文件中（按照部门编号降序排序）</p>
+<pre><code> hive (default)&gt; insert overwrite local directory '/opt/module/datas/sortby-result' select * from emp sort by deptno desc;</code></pre></li>
 </ol>
-<pre><code>hive (default)&gt; select * from emp sort by empno desc;</code></pre><ol start="4">
-<li>将查询结果导入到文件中（按照部门编号降序排序）</li>
-</ol>
-<pre><code>hive (default)&gt; insert overwrite local directory '/opt/module/datas/sortby-result' select * from emp sort by deptno desc;</code></pre><h3 id="分区排序（Distribute-By）"><a href="#分区排序（Distribute-By）" class="headerlink" title="分区排序（Distribute By）"></a>分区排序（Distribute By）</h3><p><strong>Distribute By</strong> 类似MR中partition，进行分区，结合sort by使用。</p>
+<h3 id="分区排序（Distribute-By）"><a href="#分区排序（Distribute-By）" class="headerlink" title="分区排序（Distribute By）"></a>分区排序（Distribute By）</h3><p><strong>Distribute By</strong> 类似MR中partition，进行分区，结合sort by使用。</p>
 <blockquote>
 <p>注意，Hive要求DISTRIBUTE BY语句要写在SORT BY语句之前。</p>
 </blockquote>

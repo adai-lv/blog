@@ -503,192 +503,184 @@ if (user != null) {
 }</code></pre><p>在java 8里，JDK引入了一个Optional类，该类是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。通过本文的学习，我们看下如何通过Optional类重写上面那段判空代码。</p>
 <h2 id="Optional初始化"><a href="#Optional初始化" class="headerlink" title="Optional初始化"></a>Optional初始化</h2><p>Optional类的构造方法是私有方法，所以只能通过它的静态工厂方法进行初始化。它的初始化方法有如下几种：</p>
 <ul>
-<li><strong>&lt;T&gt; Optional&lt;T&gt; of(T value)</strong><blockquote>
+<li><p><strong>&lt;T&gt; Optional&lt;T&gt; of(T value)</strong></p>
+<blockquote>
 <p>为非null的值创建一个Optional。如果传入参数为null，抛出NullPointerException。</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>// 调用工厂方法创建Optional实例
-Optional&lt;String&gt; name = Optional.of("hello");
+<pre><code>  // 调用工厂方法创建Optional实例
+  Optional&lt;String&gt; name = Optional.of("hello");
 
-// 传入参数为null，抛出NullPointerException.
-Optional&lt;String&gt; someNull = Optional.of(null);</code></pre><ul>
-<li><strong>&lt;T&gt; Optional&lt;T&gt; ofNullable(T value)</strong><blockquote>
+  // 传入参数为null，抛出NullPointerException.
+  Optional&lt;String&gt; someNull = Optional.of(null);</code></pre></li>
+<li><p><strong>&lt;T&gt; Optional&lt;T&gt; ofNullable(T value)</strong></p>
+<blockquote>
 <p>为指定的值创建一个Optional，如果指定的值为null，则返回一个空的Optional。<br>它和 of 的区别是可以传null值。</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>// 调用工厂方法创建Optional实例
-Optional&lt;String&gt; name = Optional.ofNullable("hello");
+<pre><code>  // 调用工厂方法创建Optional实例
+  Optional&lt;String&gt; name = Optional.ofNullable("hello");
 
-// 传入参数为null，不抛出NullPointerException，返回一个空的Optional.
-Optional&lt;String&gt; someNull = Optional.ofNullable(null);</code></pre><ul>
-<li><strong>&lt;T&gt; Optional&lt;T&gt; empty()</strong><blockquote>
+  // 传入参数为null，不抛出NullPointerException，返回一个空的Optional.
+  Optional&lt;String&gt; someNull = Optional.ofNullable(null);</code></pre></li>
+<li><p><strong>&lt;T&gt; Optional&lt;T&gt; empty()</strong></p>
+<blockquote>
 <p>是 ofNullable静态工厂方法，传null值时的实现，返回一个空的Optional。</p>
 </blockquote>
-</li>
+<pre><code>  Optional empty = Optional.empty();</code></pre></li>
 </ul>
-<pre><code>Optional empty = Optional.empty();</code></pre><h2 id="Optional类的其它方法"><a href="#Optional类的其它方法" class="headerlink" title="Optional类的其它方法"></a>Optional类的其它方法</h2><ul>
-<li><strong>boolean isPresent()</strong><blockquote>
+<h2 id="Optional类的其它方法"><a href="#Optional类的其它方法" class="headerlink" title="Optional类的其它方法"></a>Optional类的其它方法</h2><ul>
+<li><p><strong>boolean isPresent()</strong></p>
+<blockquote>
 <p>如果值存在返回true，否则返回false。</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>// false
-Optional&lt;String&gt; empty = Optional.ofNullable(null);
-System.out.println(empty.isPresent());
+<pre><code>  // false
+  Optional&lt;String&gt; empty = Optional.ofNullable(null);
+  System.out.println(empty.isPresent());
 
-// true
-Optional&lt;String&gt; optionalS2 = Optional.of(s2);
-System.out.println(optionalS2.isPresent());</code></pre><ul>
-<li><strong>T get()</strong><blockquote>
+  // true
+  Optional&lt;String&gt; optionalS2 = Optional.of(s2);
+  System.out.println(optionalS2.isPresent());</code></pre></li>
+<li><p><strong>T get()</strong></p>
+<blockquote>
 <p>如果Optional有值则将其返回，否则抛出NoSuchElementException</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>// 获取hello
-Optional.of("hello").get();
+<pre><code>  // 获取hello
+  Optional.of("hello").get();
 
-// 抛出NoSuchElementException
-Optional.empty().get();</code></pre><ul>
-<li><strong>void ifPresent (Consumer&lt;? super T&gt; consumer)</strong><blockquote>
+  // 抛出NoSuchElementException
+  Optional.empty().get();</code></pre></li>
+<li><p><strong>void ifPresent (Consumer&lt;? super T&gt; consumer)</strong></p>
+<blockquote>
 <p>如果Optional实例有值则调用consumer，否则不做处理。</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>//调用ifPresent方法里面的consumer
-Optional.of("hello")
-        .ifPresent(System.out::println);</code></pre><ul>
-<li><strong>T orElse(T other)</strong><blockquote>
+<pre><code>  //调用ifPresent方法里面的consumer
+  Optional.of("hello")
+          .ifPresent(System.out::println);</code></pre></li>
+<li><p><strong>T orElse(T other)</strong></p>
+<blockquote>
 <p>如果有值则将其返回，否则返回指定的其它值</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>// 输出null
-System.out.println(Optional.empty().orElse("null"));
+<pre><code>  // 输出null
+  System.out.println(Optional.empty().orElse("null"));
 
-// 输出hello
-System.out.println(Optional.of("hello").orElse("null"));</code></pre><ul>
-<li><strong>T orElseGet (Supplier&lt;? extends T&gt; other)</strong><blockquote>
+  // 输出hello
+  System.out.println(Optional.of("hello").orElse("null"));</code></pre></li>
+<li><p><strong>T orElseGet (Supplier&lt;? extends T&gt; other)</strong></p>
+<blockquote>
 <p>orElseGet与orElse方法类似，区别在于得到的默认值。<br>orElse方法将传入的字符串作为默认值，<br>orElseGet方法可以接受 Supplier 接口的实现用来生成默认值。</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>// 输出null
-System.out.println(Optional.empty().orElseGet(() -&gt; "null"));
+<pre><code>  // 输出null
+  System.out.println(Optional.empty().orElseGet(() -&gt; "null"));
 
-// 输出hello
-System.out.println(Optional.of("hello").orElseGet(() -&gt; "null"));</code></pre><ul>
-<li><strong>&lt;X extends Throwable&gt; T orElseThrow (Supplier&lt;? extends X&gt; exceptionSupplier) throws X</strong><blockquote>
+  // 输出hello
+  System.out.println(Optional.of("hello").orElseGet(() -&gt; "null"));</code></pre></li>
+<li><p><strong>&lt;X extends Throwable&gt; T orElseThrow (Supplier&lt;? extends X&gt; exceptionSupplier) throws X</strong></p>
+<blockquote>
 <p>如果有值则将其返回，否则抛出 supplier 接口创建的异常。</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>// 抛出exception
-try {
-    Optional.empty()
-            .orElseThrow(()-&gt;new Exception("为空"));
-} catch (Exception e) {
-    e.printStackTrace();
-}</code></pre><ul>
-<li><strong>&lt;U&gt; Optional&lt;U&gt; map (Function&lt;? super T, ? extends U&gt; mapper)</strong><blockquote>
+<pre><code>  // 抛出exception
+  try {
+      Optional.empty()
+              .orElseThrow(()-&gt;new Exception("为空"));
+  } catch (Exception e) {
+      e.printStackTrace();
+  }</code></pre></li>
+<li><p><strong>&lt;U&gt; Optional&lt;U&gt; map (Function&lt;? super T, ? extends U&gt; mapper)</strong></p>
+<blockquote>
 <p>如果参数 mapper 有值，则调用map方法执行mapper参数的Function方法得到返回值。<br>如果mapper的返回值不为null，则创建包含mapping返回值的Optional作为map方法返回值，否则返回空Optional。<br>如果传入的mapper参数是null，抛出NullPointerException。</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>// 输出 JACK
-Optional&lt;String&gt; stringOptional = Optional.of("jack")
-    .map((value) -&gt; value.toUpperCase());
+<pre><code>  // 输出 JACK
+  Optional&lt;String&gt; stringOptional = Optional.of("jack")
+      .map((value) -&gt; value.toUpperCase());
 
-System.out.println(stringOptional.orElse("default"));
+  System.out.println(stringOptional.orElse("default"));
 
-// 输出 default
-Optional&lt;String&gt; stringOptional1 = Optional.of("jack")
-    .map((value) -&gt; null);
+  // 输出 default
+  Optional&lt;String&gt; stringOptional1 = Optional.of("jack")
+      .map((value) -&gt; null);
 
-System.out.println(stringOptional1.orElse("default"));
+  System.out.println(stringOptional1.orElse("default"));
 
-// 输出 default，并且不会调用mapper
-String s2 = null;
-Optional&lt;String&gt; stringOptional2 = Optional.ofNullable(s2)
-    .map((value) -&gt; value.toUpperCase());
+  // 输出 default，并且不会调用mapper
+  String s2 = null;
+  Optional&lt;String&gt; stringOptional2 = Optional.ofNullable(s2)
+      .map((value) -&gt; value.toUpperCase());
 
-System.out.println(stringOptional2.orElse("default"));
+  System.out.println(stringOptional2.orElse("default"));
 
-// 如果参数mapper为null，抛NullPointerException异常
-try {
+  // 如果参数mapper为null，抛NullPointerException异常
+  try {
 
-    String s3 = null;
-    Optional&lt;String&gt; stringOptional3 = Optional.ofNullable(s3)
-        .map(null);
+      String s3 = null;
+      Optional&lt;String&gt; stringOptional3 = Optional.ofNullable(s3)
+          .map(null);
 
-    System.out.println(stringOptional3.orElse("default"));
+      System.out.println(stringOptional3.orElse("default"));
 
-} catch (Exception e) {}</code></pre><ul>
-<li><strong>&lt;U&gt; Optional&lt;U&gt; flatMap (Function&lt;? super T, Optional&lt;U&gt;&gt; mapper)</strong><blockquote>
+  } catch (Exception e) {}</code></pre></li>
+<li><p><strong>&lt;U&gt; Optional&lt;U&gt; flatMap (Function&lt;? super T, Optional&lt;U&gt;&gt; mapper)</strong></p>
+<blockquote>
 <p>flatMap与map方法类似，区别在于flatMap中的mapper返回值必须是Optional。调用结束时，flatMap不会对结果用Optional封装。</p>
 </blockquote>
-</li>
-</ul>
-<pre><code>// flatMap，输出 JACK
-Optional&lt;String&gt; stringOptional4 = Optional.of("jack")
-    .flatMap(value -&gt; Optional.ofNullable(value.toUpperCase()));
+<pre><code>  // flatMap，输出 JACK
+  Optional&lt;String&gt; stringOptional4 = Optional.of("jack")
+      .flatMap(value -&gt; Optional.ofNullable(value.toUpperCase()));
 
-System.out.println(stringOptional4.orElse("default"));
+  System.out.println(stringOptional4.orElse("default"));
 
-// flatMap，输出 default
-Optional&lt;String&gt; stringOptional5 = Optional.of("jack")
-    .flatMap(value -&gt; Optional.ofNullable(null));
+  // flatMap，输出 default
+  Optional&lt;String&gt; stringOptional5 = Optional.of("jack")
+      .flatMap(value -&gt; Optional.ofNullable(null));
 
-System.out.println(stringOptional5.orElse("default"));
+  System.out.println(stringOptional5.orElse("default"));
 
-// flatMap，输出 default，并且不会调用mapper
-String s6 = null;
-Optional&lt;String&gt; stringOptional6 = Optional.ofNullable(s6)
-    .flatMap(value -&gt; Optional.ofNullable(value.toUpperCase()));
+  // flatMap，输出 default，并且不会调用mapper
+  String s6 = null;
+  Optional&lt;String&gt; stringOptional6 = Optional.ofNullable(s6)
+      .flatMap(value -&gt; Optional.ofNullable(value.toUpperCase()));
 
-System.out.println(stringOptional6.orElse("default"));
+  System.out.println(stringOptional6.orElse("default"));
 
-// flatMap 如果map的参数mapper为null，抛NullPointerException异常
-try {
-    String s7 = null;
-    Optional&lt;String&gt; stringOptional7 = Optional.ofNullable(s7)
-        .flatMap(null);
+  // flatMap 如果map的参数mapper为null，抛NullPointerException异常
+  try {
+      String s7 = null;
+      Optional&lt;String&gt; stringOptional7 = Optional.ofNullable(s7)
+          .flatMap(null);
 
-    System.out.println(stringOptional7.orElse("default"));
+      System.out.println(stringOptional7.orElse("default"));
 
-} catch (Exception e) {
-    System.out.println("出错了");
-}</code></pre><ul>
-<li><strong>Optional&lt;T&gt; filter (Predicate&lt;? super T&gt; predicate)</strong><blockquote>
+  } catch (Exception e) {
+      System.out.println("出错了");
+  }</code></pre></li>
+<li><p><strong>Optional&lt;T&gt; filter (Predicate&lt;? super T&gt; predicate)</strong></p>
+<blockquote>
 <p>如果有值并且满足断言条件返回包含该值的Optional，否则返回空Optional。</p>
 </blockquote>
-</li>
+<pre><code>  // 输出default
+  String filterString = Optional.of("hugo")
+          .filter(s -&gt; "jack".equals(s))
+          .orElse("default");
+
+  System.out.println(filterString);
+
+  // 输出hugo
+  String filterString2 = Optional.of("hugo")
+          .filter(s -&gt; "hugo".equals(s))
+          .orElse("default");
+
+  System.out.println(filterString2);
+
+  // 输出default，断言接口里面的语句不会执行
+  String nullableString = null;
+  String filterString3 = Optional.ofNullable(nullableString)
+          .filter(s -&gt; {
+              System.out.println("测试是否调用");
+              return "jack".equals(s);
+          })
+          .orElse("default");
+
+  System.out.println(filterString3);</code></pre></li>
 </ul>
-<pre><code>// 输出default
-String filterString = Optional.of("hugo")
-        .filter(s -&gt; "jack".equals(s))
-        .orElse("default");
-
-System.out.println(filterString);
-
-// 输出hugo
-String filterString2 = Optional.of("hugo")
-        .filter(s -&gt; "hugo".equals(s))
-        .orElse("default");
-
-System.out.println(filterString2);
-
-// 输出default，断言接口里面的语句不会执行
-String nullableString = null;
-String filterString3 = Optional.ofNullable(nullableString)
-        .filter(s -&gt; {
-            System.out.println("测试是否调用");
-            return "jack".equals(s);
-        })
-        .orElse("default");
-
-System.out.println(filterString3);</code></pre><h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>经过上面学习Optional的相关API，已经对它有了一定的了解。下面，我们运用上面的知识解决在前言中遗留的问题。</p>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>经过上面学习Optional的相关API，已经对它有了一定的了解。下面，我们运用上面的知识解决在前言中遗留的问题。</p>
 <pre><code>ioscode = Optional.ofNullable(user)
         .map(u -&gt; u.getAddress())
         .map(addr -&gt; addr.getCountry())

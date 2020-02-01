@@ -455,7 +455,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    993
+                    994
                 </div>
                 
 
@@ -479,38 +479,39 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="API-应用实战"><a href="#API-应用实战" class="headerlink" title="API 应用实战"></a>API 应用实战</h2><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><ol>
-<li>创建一个Maven工程</li>
-<li>添加pom文件</li>
+<li><p>创建一个Maven工程</p>
+</li>
+<li><p>添加pom文件</p>
+<pre><code> &lt;dependencies&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;junit&lt;/groupId&gt;
+             &lt;artifactId&gt;junit&lt;/artifactId&gt;
+             &lt;version&gt;RELEASE&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
+             &lt;artifactId&gt;log4j-core&lt;/artifactId&gt;
+             &lt;version&gt;2.8.2&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper --&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+             &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+             &lt;version&gt;3.4.14&lt;/version&gt;
+         &lt;/dependency&gt;
+ &lt;/dependencies&gt;</code></pre></li>
+<li><p>拷贝log4j.properties文件到项目根目录</p>
+<p> 需要在项目的src/main/resources目录下，新建一个文件，命名为“log4j.properties”，在文件中填入。</p>
+<pre><code> log4j.rootLogger=INFO, stdout  
+ log4j.appender.stdout=org.apache.log4j.ConsoleAppender  
+ log4j.appender.stdout.layout=org.apache.log4j.PatternLayout  
+ log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m%n  
+ log4j.appender.logfile=org.apache.log4j.FileAppender  
+ log4j.appender.logfile.File=target/spring.log  
+ log4j.appender.logfile.layout=org.apache.log4j.PatternLayout  
+ log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - %m%n</code></pre></li>
 </ol>
-<pre><code>&lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;junit&lt;/groupId&gt;
-            &lt;artifactId&gt;junit&lt;/artifactId&gt;
-            &lt;version&gt;RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
-            &lt;artifactId&gt;log4j-core&lt;/artifactId&gt;
-            &lt;version&gt;2.8.2&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
-            &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
-            &lt;version&gt;3.4.14&lt;/version&gt;
-        &lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre><ol start="3">
-<li>拷贝log4j.properties文件到项目根目录</li>
-</ol>
-<p>需要在项目的src/main/resources目录下，新建一个文件，命名为“log4j.properties”，在文件中填入。</p>
-<pre><code>log4j.rootLogger=INFO, stdout  
-log4j.appender.stdout=org.apache.log4j.ConsoleAppender  
-log4j.appender.stdout.layout=org.apache.log4j.PatternLayout  
-log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m%n  
-log4j.appender.logfile=org.apache.log4j.FileAppender  
-log4j.appender.logfile.File=target/spring.log  
-log4j.appender.logfile.layout=org.apache.log4j.PatternLayout  
-log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - %m%n</code></pre><h3 id="创建ZooKeeper客户端"><a href="#创建ZooKeeper客户端" class="headerlink" title="创建ZooKeeper客户端"></a>创建ZooKeeper客户端</h3><pre><code>private static String connectString = "localhost:2181";
+<h3 id="创建ZooKeeper客户端"><a href="#创建ZooKeeper客户端" class="headerlink" title="创建ZooKeeper客户端"></a>创建ZooKeeper客户端</h3><pre><code>private static String connectString = "localhost:2181";
 private static int sessionTimeout = 2000;
 private ZooKeeper zkClient = null;
 

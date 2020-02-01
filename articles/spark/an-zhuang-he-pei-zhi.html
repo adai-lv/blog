@@ -516,25 +516,22 @@ scala&gt; wordsCounts.foreach(println)
 
 ......
 </code></pre><h2 id="pyspark-启动Spark"><a href="#pyspark-启动Spark" class="headerlink" title="pyspark 启动Spark"></a>pyspark 启动Spark</h2><ul>
-<li>环境变量设置</li>
-</ul>
+<li><p>环境变量设置</p>
 <pre><code>$ vim ~/.zshrc
 
 # 设置 python 版本，默认是2.7.x
 export PYSPARK_PYTHON="python3"
 
 $ source ~/.zshrc
-</code></pre><ul>
-<li>脚本的执行权限设置</li>
-</ul>
+</code></pre></li>
+<li><p>脚本的执行权限设置</p>
 <pre><code>$ cd /usr/local/Cellar/apache-spark/2.4.4/libexec/bin
 $ chmod a+x *
 
 $ cd /usr/local/Cellar/apache-spark/2.4.4/libexec/sbin
 $ chmod a+x *
-</code></pre><ul>
-<li>启动 spark</li>
-</ul>
+</code></pre></li>
+<li><p>启动 spark</p>
 <pre><code>$ pyspark
 
 ......
@@ -553,23 +550,25 @@ SparkSession available as 'spark'.
 # collect（RDD -&gt; python 数据类型）
 &gt;&gt;&gt; print (intRDD.collect())
 [3, 1, 2, 5, 5]
-</code></pre><h2 id="启动和关闭"><a href="#启动和关闭" class="headerlink" title="启动和关闭"></a>启动和关闭</h2><ul>
-<li>启动服务</li>
+</code></pre></li>
 </ul>
+<h2 id="启动和关闭"><a href="#启动和关闭" class="headerlink" title="启动和关闭"></a>启动和关闭</h2><ul>
+<li><p>启动服务</p>
 <pre><code>$ /usr/local/opt/apache-spark/libexec/sbin/start-master.sh
 
 starting org.apache.spark.deploy.master.Master, logging to /usr/local/Cellar/apache-spark/2.4.4/libexec/logs/spark-bigo-org.apache.spark.deploy.master.Master-1-bigodeMBP.lan.out
 
 $ jps -lm
-</code></pre><ul>
-<li>关闭服务</li>
-</ul>
+</code></pre></li>
+<li><p>关闭服务</p>
 <pre><code>$ /usr/local/opt/apache-spark/libexec/sbin/stop-master.sh
 
 stopping org.apache.spark.deploy.master.Master
 
 $ jps -lm
-</code></pre><script>
+</code></pre></li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }

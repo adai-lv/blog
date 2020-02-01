@@ -528,77 +528,73 @@
 </tbody></table>
 <p>其实，每个lambda表达式的返回值都是一个函数式编程的接口。</p>
 <h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><ul>
-<li>无参数，无返回值</li>
+<li><p>无参数，无返回值</p>
+<pre><code>  Runnable runnable = () -&gt; System.out.println("hello");
+  new Thread(runnable).start();</code></pre></li>
+<li><p>无参数，有返回值</p>
+<pre><code>  Supplier&lt;Integer&gt; supplier = () -&gt; 10;
+  Integer number = supplier.get();
+  System.out.println(number);</code></pre></li>
+<li><p>有一个参数，无返回值</p>
+<pre><code>  Consumer&lt;String&gt; consumer = x -&gt; System.out.println(x);
+
+  or 
+
+  Consumer&lt;String&gt; consumer = (x) -&gt; System.out.println(x);
+
+  or 
+
+  Consumer&lt;String&gt; consumer = (x) -&gt; {
+      System.out.println(x);
+  };
+
+  consumer.accept("hello");</code></pre></li>
+<li><p>有一个参数，有返回值</p>
+<pre><code>  Function&lt;Integer,Integer&gt; function = x -&gt; x + 10;
+
+  or
+
+  Function&lt;Integer,Integer&gt; function = (x) -&gt; x + 10;
+
+  or
+
+  Function&lt;Integer, Integer&gt; function = (x) -&gt; {
+      return x + 10;
+  };
+
+  int result = function.apply(20);
+  System.out.println(result);</code></pre></li>
+<li><p>多个参数，没有返回值</p>
+<pre><code>  BiConsumer&lt;Integer, String&gt; consumer = (x, y) -&gt; {
+      System.out.println(x);
+      System.out.println(y);
+  };
+
+  or
+
+  BiConsumer&lt;Integer, String&gt; consumer = (Integer x, String y) -&gt; {
+      System.out.println(x);
+      System.out.println(y);
+  };
+
+  consumer.accept(100, "hello");</code></pre></li>
+<li><p>多个参数，有返回值</p>
+<pre><code>  BiFunction&lt;Integer, Integer, Integer&gt; function = (x, y) -&gt; x + y;
+
+  or
+
+  BiFunction&lt;Integer, Integer, Integer&gt; function = (Integer x, Integer y) -&gt; x + y;
+
+  or
+
+  BiFunction&lt;Integer, Integer, Integer&gt; function = (Integer x, Integer y) -&gt; {
+      return x + y;
+  };
+
+  int result = function.apply(10, 10);
+  System.out.println(result);</code></pre></li>
 </ul>
-<pre><code>Runnable runnable = () -&gt; System.out.println("hello");
-new Thread(runnable).start();</code></pre><ul>
-<li>无参数，有返回值</li>
-</ul>
-<pre><code>Supplier&lt;Integer&gt; supplier = () -&gt; 10;
-Integer number = supplier.get();
-System.out.println(number);</code></pre><ul>
-<li>有一个参数，无返回值</li>
-</ul>
-<pre><code>Consumer&lt;String&gt; consumer = x -&gt; System.out.println(x);
-
-or 
-
-Consumer&lt;String&gt; consumer = (x) -&gt; System.out.println(x);
-
-or 
-
-Consumer&lt;String&gt; consumer = (x) -&gt; {
-    System.out.println(x);
-};
-
-consumer.accept("hello");</code></pre><ul>
-<li>有一个参数，有返回值</li>
-</ul>
-<pre><code>Function&lt;Integer,Integer&gt; function = x -&gt; x + 10;
-
-or
-
-Function&lt;Integer,Integer&gt; function = (x) -&gt; x + 10;
-
-or
-
-Function&lt;Integer, Integer&gt; function = (x) -&gt; {
-    return x + 10;
-};
-
-int result = function.apply(20);
-System.out.println(result);</code></pre><ul>
-<li>多个参数，没有返回值</li>
-</ul>
-<pre><code>BiConsumer&lt;Integer, String&gt; consumer = (x, y) -&gt; {
-    System.out.println(x);
-    System.out.println(y);
-};
-
-or
-
-BiConsumer&lt;Integer, String&gt; consumer = (Integer x, String y) -&gt; {
-    System.out.println(x);
-    System.out.println(y);
-};
-
-consumer.accept(100, "hello");</code></pre><ul>
-<li>多个参数，有返回值</li>
-</ul>
-<pre><code>BiFunction&lt;Integer, Integer, Integer&gt; function = (x, y) -&gt; x + y;
-
-or
-
-BiFunction&lt;Integer, Integer, Integer&gt; function = (Integer x, Integer y) -&gt; x + y;
-
-or
-
-BiFunction&lt;Integer, Integer, Integer&gt; function = (Integer x, Integer y) -&gt; {
-    return x + y;
-};
-
-int result = function.apply(10, 10);
-System.out.println(result);</code></pre><script>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }

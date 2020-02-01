@@ -685,17 +685,17 @@
 <p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/kafka-12.jpg" alt=""></p>
 <p><font color="red">Kafka 0.9 版本之前，consumer 默认将 offset 保存在 Zookeeper 中，从 0.9 版本开始， consumer 默认将 offset 保存在 Kafka 一个内置的 topic 中，该 topic 为__consumer_offsets。</font></p>
 <ul>
-<li>修改配置文件</li>
-</ul>
-<pre><code>consumer.properties exclude.internal.topics=false</code></pre><ul>
-<li>读取 offset</li>
-</ul>
+<li><p>修改配置文件</p>
+<pre><code>consumer.properties exclude.internal.topics=false</code></pre></li>
+<li><p>读取 offset</p>
 <pre><code>$ bin/kafka-console-consumer.sh 
   --topic __consumer_offsets 
   -- zookeeper localhost:2181 
   --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageForm atter" 
   --consumer.config config/consumer.properties 
-  --from- beginning</code></pre><h2 id="高效读写数据"><a href="#高效读写数据" class="headerlink" title="高效读写数据"></a>高效读写数据</h2><ul>
+  --from- beginning</code></pre></li>
+</ul>
+<h2 id="高效读写数据"><a href="#高效读写数据" class="headerlink" title="高效读写数据"></a>高效读写数据</h2><ul>
 <li><p><strong>顺序写磁盘</strong></p>
 <p>Kafka 的 producer 生产数据，要写入到 log 文件中，写的过程是一直追加到文件末端，为顺序写。</p>
 <p>官网有数据表明，同样的磁盘，顺序写能到 600M/s，而随机写只有 100K/s。</p>

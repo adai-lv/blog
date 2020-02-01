@@ -500,94 +500,91 @@ System.out.println(supplier.get());</code></pre><h2 id="interface-Consumer-lt-T-
 <p>该接口的中文直译是“消费”，可以理解为定义一个lambda表达式，接收一个T类型的参数，并且没有返回值。</p>
 </blockquote>
 <ul>
-<li><strong>accept</strong> ：接收参数，并调用Consumer接口里的方法</li>
-</ul>
-<pre><code>Consumer&lt;Integer&gt; consumer = x -&gt; System.out.println(x);
+<li><p><strong>accept</strong> ：接收参数，并调用Consumer接口里的方法</p>
+<pre><code>  Consumer&lt;Integer&gt; consumer = x -&gt; System.out.println(x);
 
-// 输出10
-consumer.accept(10);</code></pre><ul>
-<li><strong>andThen</strong>：调用完consumer自己后，还调用andThen方法参数中指定的Consumer</li>
-</ul>
-<pre><code>Consumer&lt;Integer&gt; consumer = x -&gt; System.out.println(x);
-Consumer&lt;Integer&gt; plusSelf = x -&gt; System.out.println(x + x);
+  // 输出10
+  consumer.accept(10);</code></pre></li>
+<li><p><strong>andThen</strong>：调用完consumer自己后，还调用andThen方法参数中指定的Consumer</p>
+<pre><code>  Consumer&lt;Integer&gt; consumer = x -&gt; System.out.println(x);
+  Consumer&lt;Integer&gt; plusSelf = x -&gt; System.out.println(x + x);
 
-// 输出10以及20
-consumer.andThen(plusSelf).accept(10);</code></pre><h2 id="interface-Function-lt-T-R-gt"><a href="#interface-Function-lt-T-R-gt" class="headerlink" title="interface Function<T, R>"></a>interface Function&lt;T, R&gt;</h2><blockquote>
+  // 输出10以及20
+  consumer.andThen(plusSelf).accept(10);</code></pre></li>
+</ul>
+<h2 id="interface-Function-lt-T-R-gt"><a href="#interface-Function-lt-T-R-gt" class="headerlink" title="interface Function<T, R>"></a>interface Function&lt;T, R&gt;</h2><blockquote>
 <p>该接口的中文直译是“函数”，可以理解为：定义一个lambda表达式，接收一个T类型的参数，返回一个R类型的值。</p>
 </blockquote>
 <ul>
-<li><strong>apply</strong>：传入一个T类型的参数，返回一个R类型的值</li>
+<li><p><strong>apply</strong>：传入一个T类型的参数，返回一个R类型的值</p>
+<pre><code>  Function&lt;Integer, Integer&gt; function = x -&gt; x + x;
+
+  // 输出20
+  System.out.println(function.apply(10));</code></pre></li>
+<li><p><strong>compose</strong>：accept获取到的参数，先执行compose里面的Function，再执行原Function</p>
+<pre><code>  Function&lt;Integer, Integer&gt; plusSelf = x -&gt; {
+      System.out.println("plusSelf");
+      return x + x;
+  };
+
+  Function&lt;Integer, String&gt; toString = x -&gt; {
+      System.out.println("toString");
+      return String.valueOf(x);
+  };
+
+  // 输出20，整数10先自加变成20，然后由toString转换成字符串
+  String string1 = toString.compose(plusSelf).apply(10);
+
+  System.out.println(string1);</code></pre></li>
+<li><p><strong>andThen</strong>：与compose相反。先执行原Function，在执行andThen里面的Function。</p>
+<pre><code>  Function&lt;Integer, Integer&gt; plusSelf = x -&gt; {
+      System.out.println("plusSelf");
+      return x + x;
+  };
+
+  Function&lt;Integer, String&gt; toString = x -&gt; {
+      System.out.println("toString");
+      return String.valueOf(x);
+  };
+
+  // 输出20, 先自加，再转换成字符串
+  String string2 = plusSelf.andThen(toString).apply(10);
+
+  System.out.println(string2);</code></pre></li>
 </ul>
-<pre><code>Function&lt;Integer, Integer&gt; function = x -&gt; x + x;
-
-// 输出20
-System.out.println(function.apply(10));</code></pre><ul>
-<li><strong>compose</strong>：accept获取到的参数，先执行compose里面的Function，再执行原Function</li>
-</ul>
-<pre><code>Function&lt;Integer, Integer&gt; plusSelf = x -&gt; {
-    System.out.println("plusSelf");
-    return x + x;
-};
-
-Function&lt;Integer, String&gt; toString = x -&gt; {
-    System.out.println("toString");
-    return String.valueOf(x);
-};
-
-// 输出20，整数10先自加变成20，然后由toString转换成字符串
-String string1 = toString.compose(plusSelf).apply(10);
-
-System.out.println(string1);</code></pre><ul>
-<li><strong>andThen</strong>：与compose相反。先执行原Function，在执行andThen里面的Function。</li>
-</ul>
-<pre><code>Function&lt;Integer, Integer&gt; plusSelf = x -&gt; {
-    System.out.println("plusSelf");
-    return x + x;
-};
-
-Function&lt;Integer, String&gt; toString = x -&gt; {
-    System.out.println("toString");
-    return String.valueOf(x);
-};
-
-// 输出20, 先自加，再转换成字符串
-String string2 = plusSelf.andThen(toString).apply(10);
-
-System.out.println(string2);</code></pre><h2 id="interface-Predicate-lt-T-gt"><a href="#interface-Predicate-lt-T-gt" class="headerlink" title="interface Predicate<T>"></a>interface Predicate&lt;T&gt;</h2><blockquote>
+<h2 id="interface-Predicate-lt-T-gt"><a href="#interface-Predicate-lt-T-gt" class="headerlink" title="interface Predicate<T>"></a>interface Predicate&lt;T&gt;</h2><blockquote>
 <p>该接口的中文直译是“断言”，用于返回false/true。T是lambda表达式的输入参数类型。</p>
 </blockquote>
 <ul>
-<li><strong>test</strong>：测试test方法中输入参数是否满足接口中定义的lambda表达式</li>
+<li><p><strong>test</strong>：测试test方法中输入参数是否满足接口中定义的lambda表达式</p>
+<pre><code>  Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
+  Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
+
+  // 输出 true
+  System.out.println(test.test("test"));
+
+  // 输出 false
+  System.out.println(test.test("test_false"));</code></pre></li>
+<li><p><strong>and</strong>：原 Predicate 接口和 and 方法中指定的 Predicate 接口要同时为true，test方法才为true。与逻辑运算符 &amp;&amp; 一致。</p>
+<pre><code>  Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
+  Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
+
+  // 输出 false
+  System.out.println(test.and(test2).test("test"));</code></pre></li>
+<li><p><strong>negate</strong>：对结果取反后再输出</p>
+<pre><code>  Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
+  Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
+
+  // 输出 false
+  System.out.println(test.negate().test("test"));</code></pre></li>
+<li><p><strong>or</strong>：原 Predicate 接口和 or 方法中指定的 Predicate 接口只要一个为true，test方法为true。与逻辑运算符 || 一致。</p>
+<pre><code>  Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
+  Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
+
+  // 输出 false
+  System.out.println(test.or(test2).test("test"));</code></pre></li>
 </ul>
-<pre><code>Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
-Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
-
-// 输出 true
-System.out.println(test.test("test"));
-
-// 输出 false
-System.out.println(test.test("test_false"));</code></pre><ul>
-<li><strong>and</strong>：原 Predicate 接口和 and 方法中指定的 Predicate 接口要同时为true，test方法才为true。与逻辑运算符 &amp;&amp; 一致。</li>
-</ul>
-<pre><code>Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
-Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
-
-// 输出 false
-System.out.println(test.and(test2).test("test"));</code></pre><ul>
-<li><strong>negate</strong>：对结果取反后再输出</li>
-</ul>
-<pre><code>Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
-Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
-
-// 输出 false
-System.out.println(test.negate().test("test"));</code></pre><ul>
-<li><strong>or</strong>：原 Predicate 接口和 or 方法中指定的 Predicate 接口只要一个为true，test方法为true。与逻辑运算符 || 一致。</li>
-</ul>
-<pre><code>Predicate&lt;String&gt; test = x -&gt; "test".equals(x);
-Predicate&lt;String&gt; test2 = x -&gt; "test2".equals(x);
-
-// 输出 false
-System.out.println(test.or(test2).test("test"));</code></pre><script>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }

@@ -539,102 +539,85 @@ dataDir=/usr/local/var/lib/zookeeper
 # the port at which the clients will connect
 clientPort=2181
 </code></pre><h2 id="启动和关闭服务"><a href="#启动和关闭服务" class="headerlink" title="启动和关闭服务"></a>启动和关闭服务</h2><ul>
-<li>启动服务</li>
-</ul>
+<li><p>启动服务</p>
 <p>如果想以服务的方式启动，那么可以:</p>
 <pre><code># 先安装 zookeeper（brew install zookeeper）
 $ brew services start zookeeper
 
-$ brew services start kafka
-</code></pre><p>如果只是临时启动，那么可以:</p>
+$ brew services start kafka</code></pre><p>如果只是临时启动，那么可以:</p>
 <pre><code>$ bin/zookeeper-server-start.sh config/zookeeper.properties
 $ bin/kafka-server-start.sh config/server.properties
 
-$ jps -ml
-</code></pre><ul>
-<li>关闭服务</li>
-</ul>
+$ jps -ml</code></pre></li>
+<li><p>关闭服务</p>
 <pre><code>$ bin/kafka-server-stop.sh stop
 $ bin/zookeeper-server-stop.sh stop
 
-$ jps -ml
-</code></pre><h2 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h2><ul>
-<li>创建<code>topic</code></li>
+$ jps -ml</code></pre></li>
 </ul>
+<h2 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h2><ul>
+<li><p>创建<code>topic</code></p>
 <pre><code>## 选项说明:
 ##   --zookeeper zookeeper 服务 Host
 ##   --topic 定义 topic 名称
 ##   --replication-factor 定义副本数
 ##   --partitions 定义分区数
 
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test_topic --replication-factor 1 --partitions 3
-</code></pre><ul>
-<li>删除<code>topic</code></li>
-</ul>
+$ bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test_topic --replication-factor 1 --partitions 3</code></pre></li>
+<li><p>删除<code>topic</code></p>
 <pre><code>## 选项说明:
 ##   --zookeeper zookeeper 服务 Host
 ##   --topic 定义 topic 名称
 
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic test_topic
-</code></pre><ul>
-<li>发送消息</li>
-</ul>
+$ bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic test_topic</code></pre></li>
+<li><p>发送消息</p>
 <pre><code>## 选项说明:
 ##   --broker-list kafka 服务连接的节点，支持多节点
 ##   --topic 定义 topic 名称
 
-$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test_topic
-</code></pre><ul>
-<li>消费消息</li>
-</ul>
+$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test_topic</code></pre></li>
+<li><p>消费消息</p>
 <pre><code>## 选项说明:
 ##   --bootstrap-server kafka 服务连接的节点，支持多节点
 ##   --from-beginning  标识从头消费（offset=1）
 ##   --topic 定义 topic 名称
 
-$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic test_topic
-</code></pre><ul>
-<li>查看某个 <code>Topic</code> 的详情</li>
-</ul>
+$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic test_topic</code></pre></li>
+<li><p>查看某个 <code>Topic</code> 的详情</p>
 <pre><code>## 选项说明:
 ##   --zookeeper zookeeper 服务 Host
 ##   --topic 定义 topic 名称
 
-$ bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic test_topic
-</code></pre><ul>
-<li>查看某个 <code>Topic</code> 的 <code>consumer_offsets</code> 详情 </li>
-</ul>
+$ bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic test_topic</code></pre></li>
+<li><p>查看某个 <code>Topic</code> 的 <code>consumer_offsets</code> 详情 </p>
 <pre><code>## 选项说明:
 ##   --zookeeper zookeeper 服务 Host
 ##   --topic 定义 topic 名称
 
-bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic __consumer_offsets
-</code></pre><ul>
-<li>验证消息生产成功</li>
-</ul>
+bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic __consumer_offsets</code></pre></li>
+<li><p>验证消息生产成功</p>
 <pre><code>## 选项说明:
 ##   --broker-list kafka 服务连接的节点，支持多节点
 ##   --topic 定义 topic 名称
 ##   --time -1表示显示获取当前offset最大值，-2表示offset的最小值
 
-$ bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic test_topic --time -1
-</code></pre><ul>
-<li>创建一个console consumer group</li>
-</ul>
+$ bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic test_topic --time -1</code></pre></li>
+<li><p>创建一个console consumer group</p>
 <pre><code>## 选项说明:
 ##   --bootstrap-server kafka 服务连接的节点，支持多节点
 ##   --from-beginning  标识从头消费（offset=1）
 ##   --topic 定义 topic 名称
 ##   --group 定义消费组名称
 
-$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test_topic --from-beginning --group new-consumer</code></pre><ul>
-<li>获取该consumer group的group id</li>
-</ul>
+$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test_topic --from-beginning --group new-consumer</code></pre></li>
+<li><p>获取该consumer group的group id</p>
 <pre><code>## 选项说明:
 ##   --bootstrap-server kafka 服务连接的节点，支持多节点
 ##   --list 显示消费组列表
 
-$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></pre><script>
+$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code></pre></li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
