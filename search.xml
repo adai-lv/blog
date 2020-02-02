@@ -4,6 +4,62 @@
   
     
     <entry>
+      <title>Redis 内存分析方法</title>
+      <link href="/articles/redis/nei-cun-fen-xi-fang-fa.html"/>
+      <url>/articles/redis/nei-cun-fen-xi-fang-fa.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>用户要怎么才能知道线上 Redis 实例中数据的内存分布情况？</p><p>为了不影响线上实例的使用，一般会采用 bgsave 生成 <strong>dump.rdb</strong> 文件，再结合 <strong>redis-rdb-tools</strong> 和 <strong>sqlite</strong> 来进行静态分析。</p><h2 id="创建备份"><a href="#创建备份" class="headerlink" title="创建备份"></a>创建备份</h2><p>自建 Redis 服务可在客户端执行 bgsave 生成 <strong>dump.rdb</strong> 文件。</p><p>阿里云数据库Redis版可以在控制台上可以进行数据备份和下载的操作，下载后的数据为rdb格式文件。</p><p>步骤详见下图：<br><img src="/images/article/redis-01.jpg" alt="阿里云数据库Redis版控制台"></p><h2 id="生成内存快照"><a href="#生成内存快照" class="headerlink" title="生成内存快照"></a>生成内存快照</h2><p>redis-rdb-tools 是一个 python 的解析 rdb 文件工具, 主要有以下三个功能：</p><ul><li>生成内存快照</li><li>转储成json格式</li><li>使用标准的diff工具比较两个dump文件</li></ul><p>我们主要用到它的生成内存快照功能。</p><h3 id="redis-rdb-tools安装"><a href="#redis-rdb-tools安装" class="headerlink" title="redis-rdb-tools安装"></a>redis-rdb-tools安装</h3><p>redis-rdb-tools有两种安装方式，任选其一即可。</p><ul><li><p>使用 PYPI 安装</p><pre><code>  pip install rdbtools</code></pre></li><li><p>从源码安装</p><pre><code>  $ git clone https://github.com/sripathikrishnan/redis-rdb-tools  $ cd redis-rdb-tools  $ sudo python setup.py install</code></pre></li></ul><h3 id="使用redis-rdb-tools生成内存快照"><a href="#使用redis-rdb-tools生成内存快照" class="headerlink" title="使用redis-rdb-tools生成内存快照"></a>使用redis-rdb-tools生成内存快照</h3><p>生成内存快照的命令为：</p><pre><code>rdb -c memory dump.rdb &gt; memory.csv</code></pre><p>生成CSV格式的内存报告。包含的列有：数据库ID，数据类型，key，内存使用量(byte)，编码。内存使用量包含key、value和其他值。</p><p>注意：内存使用量是理论上的近似值，在一般情况下，略低于实际值。</p><p>memory.csv例子：</p><pre><code>$ head memory.csvdatabase,type,key,size_in_bytes,encoding,num_elements,len_largest_element0,string,"orderAt:377671748",96,string,8,80,string,"orderAt:413052773",96,string,8,80,sortedset,"Artical:Comments:7386",81740,skiplist,479,410,sortedset,"pay:id:18029",2443,ziplist,84,160,string,"orderAt:452389458",96,string,8,8</code></pre><h2 id="分析内存快照"><a href="#分析内存快照" class="headerlink" title="分析内存快照"></a>分析内存快照</h2><p>SQLite，是一款轻型的数据库。我们可以将前面生成的csv导入到数据库中之后，就可以利用sql语句很方便的对Redis的内存数据进行各种分析了。</p><p><strong>导入方法：</strong></p><pre><code>sqlite3 memory.dbsqlite&gt;create table memory(database int,type varchar(128),key varchar(128),size_in_bytes int,encoding varchar(128),num_elements int,len_largest_element varchar(128));sqlite&gt;.mode csv memorysqlite&gt;.import memory.csv memory</code></pre><p>数据导入以后，接下来想怎么分析就怎么分析了，举几个简单的例子：</p><ul><li><p><strong>查询key个数</strong></p><pre><code>  sqlite&gt;select count(*) from memory;</code></pre></li><li><p><strong>查询总的内存占用</strong></p><pre><code>  sqlite&gt;select sum(size_in_bytes) from memory;</code></pre></li><li><p><strong>查询内存占用最高的10个key</strong></p><pre><code>  sqlite&gt; select * from memory order by size_in_bytes desc limit 10;</code></pre></li><li><p><strong>查询成员个数1000个以上的list</strong></p><pre><code>  sqlite&gt;select * from memory where type='list' and num_elements &gt; 1000;</code></pre></li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过使用redis-rdb-tools + sqlite的方式，可以方便的对redis实例的内存情况进行静态的分析。整个过程也比较简单,获取到rdb之后</p><pre><code>rdb -c memory dump.rdb &gt; memory.csv;sqlite3 memory.dbsqlite&gt;create table memory(database int,type varchar(128),key varchar(128),size_in_bytes int,encoding varchar(128),num_elements int,len_largest_element varchar(128));sqlite&gt;.mode csv memorysqlite&gt;.import memory.csv memory</code></pre><p>即可</p><p>总的来说，整个分析的过程简单而实用，是每一个Redis的用户都非常值得掌握的一个方法。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+            <tag> 缓存 </tag>
+            
+            <tag> Cache </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Homebrew 应该定期更新</title>
+      <link href="/articles/homebrew-ding-qi-geng-xin.html"/>
+      <url>/articles/homebrew-ding-qi-geng-xin.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="为什么要定期更新"><a href="#为什么要定期更新" class="headerlink" title="为什么要定期更新"></a>为什么要定期更新</h2><p>不少人都不会经常更新，或者只在必须用某个工具的新版本的时候才更新。他们的看法是，更新有可能产生一些意外的问题，反正当前环境足够稳定可以用，干嘛自找麻烦呢？</p><p>这个看法对也不对。对是因为，更新产生的潜在问题不可避免。不对是因为总有一天你需要升级的，也许是为了某个工具的新特性，也许是为了修复软件的漏洞，也许你安装的包非要依赖另一个包的新版本，等等。如果隔了很长一段时间才升级，那潜在的小问题可能就会变成大问题。</p><p>另一个有意思的现象是，当碰到比较破坏性的事情，比如 Mac OS 大版本更新后，很多人会选择重装 Homebrew 然后顺带安装最新版的包。很少人会去装一个指定的旧版本（除了特殊项目需要）。这说明他们不是不想用新版本，而是不想痛苦地更新。</p><p>既然总有一天需要更新，而更新带来问题不可避免，那为什么不更新得频繁点呢？这个道理跟 Git 的冲突解决有相似性。长时间不 pull/push 的代码更容易产生冲突，一个解决方法就是频繁地 commit &amp; merge 。</p><p>我现在试着一个月更新一次，两次下来发现这些好处：</p><ul><li>每次更新的包很少，更新风险也小。</li><li>更容易发现不需要的包，便于清理，不为不需要的东西买单。</li><li>定期清理旧版本，释放空间。</li><li>更新流程其实都差不多，下面列一下我常用的命令。</li></ul><h2 id="更新-Homebrew"><a href="#更新-Homebrew" class="headerlink" title="更新 Homebrew"></a>更新 Homebrew</h2><p>要获取最新的包的列表，先用命令 <strong><font color="red">brew update</font></strong> 更新一下 Homebrew。</p><pre><code>$ brew update</code></pre><p>更新完后会显示可以更新的包列表，其中 <strong><font color="red">打钩的</font></strong> 是已经安装的包。输出类似下面这样：</p><pre><code>Updated 4 taps (homebrew/core, homebrew/cask, homebrew/services and caskroom/cask).==&gt; New Formulaeansible@2.8     bandwhich     cppman                faissapollo-cli      celero        dhall-lsp-server      findomain==&gt; Updated Formulaeelasticsearch ✔                 docker-credential-helper-ecr    iozonegradle ✔                        docker-squash                   ipfskafka ✔                         doctl                           ipoptmemcached ✔                     docutils                        isc-dhcpmysql@5.7 ✔                     doitlive                        islnode ✔                          dovecot                         istioctlpython ✔                        doxygen                         jdupes==&gt; Deleted Formulaeapel             aws-sns-cli      hg-flow          leafnode         node@8</code></pre><h2 id="更新包-formula"><a href="#更新包-formula" class="headerlink" title="更新包 (formula)"></a>更新包 (formula)</h2><p>更新之前，可以用 <strong><font color="red">brew outdated</font></strong> 查看一下哪些包可以更新。</p><pre><code>brew outdated</code></pre><p>然后，就可以用 <strong><font color="red">brew upgrade</font></strong> 去更新了。Homebrew 会安装新版本的包，但旧版本仍然会保留。</p><pre><code># 更新所有的包brew upgrade# 更新指定的包brew upgrade $FORMULA</code></pre><h2 id="清理旧版本"><a href="#清理旧版本" class="headerlink" title="清理旧版本"></a>清理旧版本</h2><p>一般情况下，新版本安装了，旧版本就不需要了。可以用 <strong><font color="red">brew cleanup</font></strong> 清理旧版本和缓存文件。Homebrew 只会清除比当前安装的包更老的版本，所以不用担心有些包没更新但被删了。</p><pre><code># 清理所有包的旧版本brew cleanup # 清理指定包的旧版本brew cleanup $FORMULA# 查看可清理的旧版本包，不执行实际清理操作brew cleanup -n          </code></pre><h2 id="锁定不想更新的包"><a href="#锁定不想更新的包" class="headerlink" title="锁定不想更新的包"></a>锁定不想更新的包</h2><p>如果经常更新的话，<strong><font color="red">brew update</font></strong> 一次更新所有的包是非常方便的。但有时候会担心自动升级把一些不希望更新的包更新了。数据库就属于这一类，尤其是 PostgreSQL 跨 minor 版本升级都要迁移数据库的。更希望找个时间单独处理它。这时可用 <strong><font color="red">brew pin</font></strong> 去锁定这个包，然后 <strong><font color="red">brew update</font></strong> 就会略过它了。</p><pre><code># 锁定某个包brew pin $FORMULA# 取消锁定某个包brew unpin $FORMULA</code></pre><h2 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h2><ul><li><p><strong>brew info</strong> </p><p>  可以查看包的相关信息，最有用的应该是包依赖和相应的命令。比如 Nginx 会提醒你怎么加 launchctl，PostgreSQL 会告诉你如何迁移数据库。这些信息会在包安装完成后自动显示，如果忘了的话可以用这个命令很方便地查看。</p><pre><code>  # 显示某个包的信息  brew info $FORMULA  # 显示安装了包数量，文件数量，和总占用空间  brew info</code></pre></li><li><p><strong>brew deps</strong></p><p>  可以显示包的依赖关系，常用它来查看已安装的包的依赖，然后判断哪些包是可以安全删除的。</p><pre><code>  # 查看已安装的包的依赖，树形显示  brew deps --installed --tree  </code></pre><p>  输出类似如下信息：</p><pre><code>  apr-util  ├── apr  └── openssl@1.1  aria2  └── libssh2      └── openssl@1.1  elasticsearch  flume  └── hadoop</code></pre></li><li><p><strong>man brew</strong></p><p>  可以查看更多有用的命令和参数，没事 man brew 一下可以涨不少知识。</p></li></ul><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>不想更新 Homebrew 往往有两个原因，害怕潜在的风险和对工具的不熟悉，我之前也是这样。写这篇文章最开始是为了帮我记录常用的命令方便以后查阅的，希望它也能帮到你。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> MacOS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MacOS </tag>
+            
+            <tag> Homebrew </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Flink 快速上手</title>
       <link href="/articles/flink/kuai-su-shang-shou.html"/>
       <url>/articles/flink/kuai-su-shang-shou.html</url>
