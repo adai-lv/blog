@@ -306,46 +306,32 @@
     </div>
 </div>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/my-gitalk.css">
+<style>
+    .card-tips {
+        padding-top:20px ; 
+        color: #42b983;
+    }
+    .card .card-content .card-tips p { margin: 5px;}
+</style>
+
 <main class="content">
     <div id="contact" class="container chip-container">
         <div class="card">
-            <div class="card-content">
+            <div class="card-content" style="padding-bottom: 0px">
                 <div class="tag-title center-align">
                     <i class="fas fa-comments"></i>&nbsp;&nbsp;留言板
                 </div>
-                <script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+                <div class="card-tips">
+                    <p>1. 请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</p>
+                    <p>2. 网友留言仅供网友表达个人看法，并不表明本站同意其观点或证实其描述。</p>
+                </div>
             </div>
+            <div id="gitalk-container" style="padding: 0px 24px 24px"></div>
         </div>
-        <div class="card">
-            
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
     </div>
-    <div id="gitalk-container" class="card-content"></div>
-</div>
+</main>
 
 <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/gitalk/gitalk.min.js"></script>
 <script>
@@ -356,23 +342,11 @@
         owner: 'lvmaohai',
         admin: "lvmaohai",
         id: '2020-01-20T14-12-15',
-        distractionFreeMode: false  // Facebook-like distraction free mode
+        distractionFreeMode: true  // Facebook-like distraction free mode
     });
 
     gitalk.render('gitalk-container');
 </script>
-            
-
-            
-
-            
-
-            
-
-            
-        </div>
-    </div>
-</main>
 
 
     <footer class="page-footer bg-color">
