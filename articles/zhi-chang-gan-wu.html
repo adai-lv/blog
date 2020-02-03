@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Zookeeper API 应用实战, flink, bigdata">
-    <meta name="description" content="针对 Zookeeper 应用场景，对客户端、服务端 API 进行编程实战练习。">
+    <meta name="keywords" content="职场感悟, flink, bigdata">
+    <meta name="description" content="社会中的政治和经济密不可分，在职场中职场政治和个人能力同样密不可分。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Zookeeper API 应用实战 | 海韵学社</title>
+    <title>职场感悟 | 海韵学社</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
@@ -279,7 +279,7 @@
 <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = '2545f0f7849a35112210b230ab7c7dda4d97284ced371717f7b6d300eb2633d2';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -292,12 +292,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Zookeeper API 应用实战</h1>
+                    <h1 class="description center-align post-title">职场感悟</h1>
                 </div>
             </div>
         </div>
@@ -414,8 +414,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/zookeeper/">
-                                <span class="chip bg-color">Zookeeper</span>
+                            <a href="/tags/%E8%81%8C%E5%9C%BA%E6%84%9F%E6%82%9F/">
+                                <span class="chip bg-color">职场感悟</span>
                             </a>
                         
                     </div>
@@ -426,8 +426,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/zookeeper/" class="post-category">
-                                Zookeeper
+                            <a href="/categories/%E8%81%8C%E5%9C%BA/" class="post-category">
+                                职场
                             </a>
                         
                     </div>
@@ -446,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-10
+                    2020-02-02
                 </div>
                 
 
@@ -455,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    994
+                    803
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>时长:&nbsp;
-                    5 分
+                    2 分
                 </div>
                 
 
@@ -478,201 +478,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="API-应用实战"><a href="#API-应用实战" class="headerlink" title="API 应用实战"></a>API 应用实战</h2><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><ol>
-<li><p>创建一个Maven工程</p>
-</li>
-<li><p>添加pom文件</p>
-<pre><code> &lt;dependencies&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;junit&lt;/groupId&gt;
-             &lt;artifactId&gt;junit&lt;/artifactId&gt;
-             &lt;version&gt;RELEASE&lt;/version&gt;
-         &lt;/dependency&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
-             &lt;artifactId&gt;log4j-core&lt;/artifactId&gt;
-             &lt;version&gt;2.8.2&lt;/version&gt;
-         &lt;/dependency&gt;
-         &lt;!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper --&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
-             &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
-             &lt;version&gt;3.4.14&lt;/version&gt;
-         &lt;/dependency&gt;
- &lt;/dependencies&gt;</code></pre></li>
-<li><p>拷贝log4j.properties文件到项目根目录</p>
-<p> 需要在项目的src/main/resources目录下，新建一个文件，命名为“log4j.properties”，在文件中填入。</p>
-<pre><code> log4j.rootLogger=INFO, stdout  
- log4j.appender.stdout=org.apache.log4j.ConsoleAppender  
- log4j.appender.stdout.layout=org.apache.log4j.PatternLayout  
- log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m%n  
- log4j.appender.logfile=org.apache.log4j.FileAppender  
- log4j.appender.logfile.File=target/spring.log  
- log4j.appender.logfile.layout=org.apache.log4j.PatternLayout  
- log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - %m%n</code></pre></li>
-</ol>
-<h3 id="创建ZooKeeper客户端"><a href="#创建ZooKeeper客户端" class="headerlink" title="创建ZooKeeper客户端"></a>创建ZooKeeper客户端</h3><pre><code>private static String connectString = "localhost:2181";
-private static int sessionTimeout = 2000;
-private ZooKeeper zkClient = null;
-
-@Before
-public void init() throws Exception {
-
-    zkClient = new ZooKeeper(connectString, sessionTimeout, new Watcher() {
-
-        @Override
-        public void process(WatchedEvent event) {
-
-            // 收到事件通知后的回调函数（用户的业务逻辑）
-            System.out.println(event.getType() + "--" + event.getPath());
-
-            // 再次启动监听
-            try {
-                zkClient.getChildren("/", true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    });
-}</code></pre><h3 id="创建子节点"><a href="#创建子节点" class="headerlink" title="创建子节点"></a>创建子节点</h3><pre><code>@Test
-public void create() throws Exception {
-
-    // 参数1：要创建的节点的路径； 参数2：节点数据 ； 参数3：节点权限 ；参数4：节点的类型
-    String nodeCreated = zkClient.create("/sanguo", "jinlian".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
-}</code></pre><h3 id="获取子节点并监听节点变化"><a href="#获取子节点并监听节点变化" class="headerlink" title="获取子节点并监听节点变化"></a>获取子节点并监听节点变化</h3><pre><code>@Test
-public void getChildren() throws Exception {
-
-    List&lt;String&gt; children = zkClient.getChildren("/", true);
-
-    for (String child : children) {
-        System.out.println(child);
-    }
-
-    // 延时阻塞
-    Thread.sleep(Long.MAX_VALUE);
-}</code></pre><h3 id="判断Znode是否存在"><a href="#判断Znode是否存在" class="headerlink" title="判断Znode是否存在"></a>判断Znode是否存在</h3><pre><code>@Test
-public void exist() throws Exception {
-
-    Stat stat = zkClient.exists("/eclipse", false);
-
-    System.out.println(stat == null ? "not exist" : "exist");
-}</code></pre><h2 id="案例：集群服务器动态上下线"><a href="#案例：集群服务器动态上下线" class="headerlink" title="案例：集群服务器动态上下线"></a>案例：集群服务器动态上下线</h2><h3 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h3><p>某分布式系统中，主节点可以有多台，可以动态上下线，任意一台客户端都能实时感知到主节点服务器的上下线。</p>
-<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-07.jpg" alt=""></p>
-<h3 id="编程实现"><a href="#编程实现" class="headerlink" title="编程实现"></a>编程实现</h3><ul>
-<li><p>先在集群上创建/servers节点</p>
-<pre><code>  [zk: localhost:2181(CONNECTED) 20] create /servers "servers"
-  Created /servers</code></pre></li>
-<li><p>服务器端向Zookeeper注册代码</p>
-<pre><code>  package com.philcode.zkcase;
-
-  import java.io.IOException;
-  import org.apache.zookeeper.CreateMode;
-  import org.apache.zookeeper.WatchedEvent;
-  import org.apache.zookeeper.Watcher;
-  import org.apache.zookeeper.ZooKeeper;
-  import org.apache.zookeeper.ZooDefs.Ids;
-
-  public class DistributeServer {
-
-      private static String connectString = "hadoop102:2181,hadoop103:2181,hadoop104:2181";
-      private static int sessionTimeout = 2000;
-      private ZooKeeper zk = null;
-      private String parentNode = "/servers";
-
-      // 创建到zk的客户端连接
-      public void getConnect() throws IOException{
-
-          zk = new ZooKeeper(connectString, sessionTimeout, new Watcher() {
-
-              @Override
-              public void process(WatchedEvent event) {
-
-              }
-          });
-      }
-
-      // 注册服务器
-      public void registServer(String hostname) throws Exception{
-
-          String create = zk.create(parentNode + "/server", hostname.getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-
-          System.out.println(hostname +" is online "+ create);
-      }
-
-      // 业务功能
-      public void business(String hostname) throws Exception{
-          System.out.println(hostname+" is working ...");
-
-          Thread.sleep(Long.MAX_VALUE);
-      }
-
-      public static void main(String[] args) throws Exception {
-
-          // 1获取zk连接
-          DistributeServer server = new DistributeServer();
-          server.getConnect();
-
-          // 2 利用zk连接注册服务器信息
-          server.registServer(args[0]);
-
-          // 3 启动业务功能
-          server.business(args[0]);
-      }
-  }</code></pre></li>
-<li><p>客户端向Zookeeper请求代码</p>
-<pre><code>  package com.philcode.zkcase;
-
-  import java.io.IOException;
-  import java.util.ArrayList;
-  import java.util.List;
-  import org.apache.zookeeper.WatchedEvent;
-  import org.apache.zookeeper.Watcher;
-  import org.apache.zookeeper.ZooKeeper;
-
-  public class DistributeClient {
-
-      private static String connectString = "hadoop102:2181,hadoop103:2181,hadoop104:2181";
-      private static int sessionTimeout = 2000;
-      private ZooKeeper zk = null;
-      private String parentNode = "/servers";
-
-      // 创建到zk的客户端连接
-      public void getConnect() throws IOException {
-          zk = new ZooKeeper(connectString, sessionTimeout, new Watcher() {
-
-              @Override
-              public void process(WatchedEvent event) {
-
-                  // 再次启动监听
-                  try {
-                      getServerList();
-                  } catch (Exception e) {
-                      e.printStackTrace();
-                  }
-              }
-          });
-      }
-
-      // 获取服务器列表信息
-      public void getServerList() throws Exception {
-
-          // 1获取服务器子节点信息，并且对父节点进行监听
-          List&lt;String&gt; children = zk.getChildren(parentNode, true);
-
-          // 2存储服务器信息列表
-          ArrayList&lt;String&gt; servers = new ArrayList&lt;&gt;();
-
-          // 3遍历所有节点，获取节点中的主机名称信息
-          for (String child : children) {
-              byte[] data = zk.getData(parentNode + "/" + child, false, null);
-
-              servers.add(new String(data));
-          }
-
-          // 4打印服务器列表信息
-          System.out.println(servers);
-      }
-  }</code></pre></li>
+                <ul>
+<li>第01感悟：自学能力是竞争力之本。</li>
+<li>第02感悟：自信能让你与众不同，尽管有时的自信有点莫名其妙。</li>
+<li>第03感悟：兴趣是学习效率的催化剂，培养自己的职业兴趣。</li>
+<li>第04感悟：学习应给自己设置虚拟的项目目标，以做项目的形式提升学习效果，只有这样学到的内容才会深入而实用，切忌无目标地学到哪算哪。</li>
+<li>第05感悟：话语权首先来自能力，而不是职位权力。</li>
+<li>第06感悟：难学的技能一旦掌握更具竞争优势。</li>
+<li>第07感悟：用阶段性成果不断增强自己的自信，且最终支持自信的是能力，而不是自大。</li>
+<li>第08感悟：做自己喜欢的事，如果那是自己的兴趣最好。</li>
+<li>第09感悟：不论身处多么困难的环境，即使觉得前途渺茫，也不要放弃学习，否则就是“自断筋脉”。</li>
+<li>第10感悟：长期安逸的工作意味着将来更大的风险。</li>
+<li>第11感悟：机遇很重要，但你得有能力才能抓住它。</li>
+<li>第12感悟：职场首先比拼的不是智商，而是坚持与好习惯。</li>
+<li>第13感悟：当短期利益与长远利益无法得兼时，选择长远利益。</li>
+<li>第14感悟：学历是很重要的敲门砖，即便你的能力很强；学历尽管很重要，但能力才是最终的通行证。</li>
+<li>第15感悟：技术细节掌握得越深，解决问题时就越能游刃有余。</li>
+<li>第16感悟：技能的发展应采取深度先于广度且交替进行的方式，只有这样，面对大量的新知识才能更淡定。</li>
+<li>第17感悟：越难的技术问题，其所蕴藏的知识越丰富，也越具学习价值。</li>
+<li>第18感悟：每次积累的点滴知识，一定会在将来不知不觉地发挥效能。</li>
+<li>第19感悟：通过文档化的方式传承知识给后继者是你的基本责任，因为你作为后继者时也希望如此，这也是对自己负责的一种表现。</li>
+<li>第20感悟：别人对你价值的认可，其实不是简单地根据你的自身能力，而是根据你对他人和团队的贡献。</li>
+<li>第21感悟：英语的听说能力只要有合适的环境，并勇于张嘴练习的情况下能快速地提高，不必担心。</li>
+<li>第22感悟：在软件开发活动中，应设法通过有效的技术途径去解决工程困境。</li>
+<li>第23感悟：不要用沉默的方式一味地迎合别人的要求，据理力争或许才是作为的表现。</li>
+<li>第24感悟：流程、文档的作用，不只是引导我们做完事，更能规范我们的行为和帮助培养工作习惯。</li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -706,8 +536,8 @@ public void exist() throws Exception {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/zookeeper/">
-                                    <span class="chip bg-color">Zookeeper</span>
+                                <a href="/tags/%E8%81%8C%E5%9C%BA%E6%84%9F%E6%82%9F/">
+                                    <span class="chip bg-color">职场感悟</span>
                                 </a>
                             
                         </div>
@@ -738,19 +568,22 @@ public void exist() throws Exception {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/articles/kafka/an-zhuang-pei-zhi-he-chang-yong-ming-ling.html">
+                <a href="/articles/zhi-chang-gan-wu.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg" class="responsive-img" alt="Kafka 安装配置和常用命令">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg" class="responsive-img" alt="职场感悟">
                         
                         <span class="card-title">
                             
-                            Kafka 安装配置和常用命令
+                            <i class="fa fa-lock"></i>&nbsp;&nbsp;
+                            
+                            职场感悟
                         </span>
                     </div>
                 </a>
@@ -763,15 +596,15 @@ public void exist() throws Exception {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/articles/zookeeper/ke-hu-duan-ming-ling-cao-zuo.html">
+                <a href="/articles/redis/nei-cun-fen-xi-fang-fa.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg" class="responsive-img" alt="Zookeeper 客户端命令操作">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/22.jpg" class="responsive-img" alt="Redis 内存分析方法">
                         
                         <span class="card-title">
                             
-                            Zookeeper 客户端命令操作
+                            Redis 内存分析方法
                         </span>
                     </div>
                 </a>
@@ -802,7 +635,7 @@ public void exist() throws Exception {
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-10T19-00-31',
+        id: '2020-02-02T05-00-31',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 

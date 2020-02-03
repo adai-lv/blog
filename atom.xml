@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvmaohai.cn/"/>
-  <updated>2020-02-01T11:00:31.000Z</updated>
+  <updated>2020-02-01T21:00:31.000Z</updated>
   <id>http://lvmaohai.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>职场感悟</title>
+    <link href="http://lvmaohai.cn/articles/zhi-chang-gan-wu.html"/>
+    <id>http://lvmaohai.cn/articles/zhi-chang-gan-wu.html</id>
+    <published>2020-02-01T21:00:31.000Z</published>
+    <updated>2020-02-01T21:00:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;第01感悟：自学能力是竞争力之本。&lt;/li&gt;
+&lt;li&gt;第02感悟：自信能让你与众不同，尽管有时的自信有点莫名其妙。&lt;/li&gt;
+&lt;li&gt;第03感悟：兴趣是学习效率的催化剂，培养自己的职业兴趣。&lt;/li&gt;
+&lt;li&gt;第04感悟：学习应给自己设置虚拟的项目目标，以做项目
+        
+      
+    
+    </summary>
+    
+    
+      <category term="职场" scheme="http://lvmaohai.cn/categories/%E8%81%8C%E5%9C%BA/"/>
+    
+    
+      <category term="职场感悟" scheme="http://lvmaohai.cn/tags/%E8%81%8C%E5%9C%BA%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis 内存分析方法</title>
@@ -581,33 +612,6 @@
     
     
       <category term="Spark" scheme="http://lvmaohai.cn/tags/spark/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive 性能调优</title>
-    <link href="http://lvmaohai.cn/articles/hive/xing-neng-diao-you.html"/>
-    <id>http://lvmaohai.cn/articles/hive/xing-neng-diao-you.html</id>
-    <published>2020-01-06T21:00:15.000Z</published>
-    <updated>2020-01-06T21:00:15.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Fetch抓取&quot;&gt;&lt;a href=&quot;#Fetch抓取&quot; class=&quot;headerlink&quot; title=&quot;Fetch抓取&quot;&gt;&lt;/a&gt;Fetch抓取&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Fetch&lt;/strong&gt; 抓取是指 &lt;font
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
     
   </entry>
   

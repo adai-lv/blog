@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>职场感悟</title>
+      <link href="/articles/zhi-chang-gan-wu.html"/>
+      <url>/articles/zhi-chang-gan-wu.html</url>
+      
+        <content type="html"><![CDATA[<ul><li>第01感悟：自学能力是竞争力之本。</li><li>第02感悟：自信能让你与众不同，尽管有时的自信有点莫名其妙。</li><li>第03感悟：兴趣是学习效率的催化剂，培养自己的职业兴趣。</li><li>第04感悟：学习应给自己设置虚拟的项目目标，以做项目的形式提升学习效果，只有这样学到的内容才会深入而实用，切忌无目标地学到哪算哪。</li><li>第05感悟：话语权首先来自能力，而不是职位权力。</li><li>第06感悟：难学的技能一旦掌握更具竞争优势。</li><li>第07感悟：用阶段性成果不断增强自己的自信，且最终支持自信的是能力，而不是自大。</li><li>第08感悟：做自己喜欢的事，如果那是自己的兴趣最好。</li><li>第09感悟：不论身处多么困难的环境，即使觉得前途渺茫，也不要放弃学习，否则就是“自断筋脉”。</li><li>第10感悟：长期安逸的工作意味着将来更大的风险。</li><li>第11感悟：机遇很重要，但你得有能力才能抓住它。</li><li>第12感悟：职场首先比拼的不是智商，而是坚持与好习惯。</li><li>第13感悟：当短期利益与长远利益无法得兼时，选择长远利益。</li><li>第14感悟：学历是很重要的敲门砖，即便你的能力很强；学历尽管很重要，但能力才是最终的通行证。</li><li>第15感悟：技术细节掌握得越深，解决问题时就越能游刃有余。</li><li>第16感悟：技能的发展应采取深度先于广度且交替进行的方式，只有这样，面对大量的新知识才能更淡定。</li><li>第17感悟：越难的技术问题，其所蕴藏的知识越丰富，也越具学习价值。</li><li>第18感悟：每次积累的点滴知识，一定会在将来不知不觉地发挥效能。</li><li>第19感悟：通过文档化的方式传承知识给后继者是你的基本责任，因为你作为后继者时也希望如此，这也是对自己负责的一种表现。</li><li>第20感悟：别人对你价值的认可，其实不是简单地根据你的自身能力，而是根据你对他人和团队的贡献。</li><li>第21感悟：英语的听说能力只要有合适的环境，并勇于张嘴练习的情况下能快速地提高，不必担心。</li><li>第22感悟：在软件开发活动中，应设法通过有效的技术途径去解决工程困境。</li><li>第23感悟：不要用沉默的方式一味地迎合别人的要求，据理力争或许才是作为的表现。</li><li>第24感悟：流程、文档的作用，不只是引导我们做完事，更能规范我们的行为和帮助培养工作习惯。</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 职场 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 职场感悟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Redis 内存分析方法</title>
       <link href="/articles/redis/nei-cun-fen-xi-fang-fa.html"/>
       <url>/articles/redis/nei-cun-fen-xi-fang-fa.html</url>
