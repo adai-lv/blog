@@ -1,0 +1,1287 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="java8 - 函数式编程之Stream, flink, bigdata">
+    <meta name="description" content="Stream API 借助于 Lambda 表达式，极大的提高编程效率和程序可读性。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="baidu-site-verification" content="6EhrtReRo2" />
+    <title>java8 - 函数式编程之Stream | 海韵学社</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog@1.0.0/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog@1.0.0/css/my.css">
+    
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="海韵学社" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">海韵学社</span>
+                </a>
+            </div>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse">
+  <i class="fas fa-bars"></i>
+</a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>我的</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">海韵学社</div>
+        <div class="logo-desc">
+            
+            从来没有真正的绝境, 只有心灵的迷途
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+    
+        <li class="m-nav-item">
+        
+            <a href="/" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-home"></i>
+            
+            首页
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/categories" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-bookmark"></i>
+            
+            分类
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/tags" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-tags"></i>
+            
+            标签
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/archives" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-archive"></i>
+            
+            归档
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/contact" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-comments"></i>
+            
+            留言板
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/about" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-user-circle"></i>
+            
+            我的
+            </a>
+        
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lvmaohai" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lvmaohai" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">java8 - 函数式编程之Stream</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">函数式编程</span>
+                            </a>
+                        
+                            <a href="/tags/stream/">
+                                <span class="chip bg-color">Stream</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/java/" class="post-category">
+                                Java
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fas fa-user fa-fw"></i>作者:&nbsp;
+                
+                    Bigo Lv
+                
+                </div>
+                            
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
+                    2020-01-31
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
+                    2.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>时长:&nbsp;
+                    10 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="什么是Stream"><a href="#什么是Stream" class="headerlink" title="什么是Stream"></a>什么是Stream</h2><p>Stream API 借助于 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。通常编写并行代码很难而且容易出错, 但使用 Stream API 无需编写一行多线程的代码，就可以很方便地写出高性能的并发程序。</p>
+<p>流主要有三部分构成：获取一个数据源（source）→ 数据转换 → 执行操作获取想要的结果。每次转换原有 Stream 对象不改变，返回一个新的 Stream 对象（可以有多次转换），这就允许对其操作可以像链条一样排列，变成一个管道。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-stream-01.jpg" alt=""></p>
+<h2 id="Stream的特点"><a href="#Stream的特点" class="headerlink" title="Stream的特点"></a>Stream的特点</h2><ul>
+<li><p><strong>无存储性</strong></p>
+<p>流不是存储元素的数据结构；相反，它需要从数据结构，数组，生成器函数或IO管道中获取数据并通过流水线地(计算)操作对这些数据进行转换。</p>
+</li>
+<li><p><strong>函数式编程</strong></p>
+<p>Stream上操作会产生一个新结果，而不会去修改原始数据。比如filter过滤操作它只会根据原始集合中将未被过滤掉的元素生成一个新的Stream，而不是真的去删除集合中的元素。</p>
+</li>
+<li><p><strong>惰性求值</strong></p>
+<p>很多Stream操作(如filter,map,distinct等)都是惰性实现，这样做为了优化程序的计算。比如说，要从一串数字中找到第一个能被10整除的数，程序并不需要对这一串数字中的每个数字进行测试。流操作分为两种：中间操作(返回值仍为Stream，仍可执行操作)，终断操作(结束Stream操作)。中间操作都是惰性操作。</p>
+</li>
+<li><p><strong>无限数据处理</strong></p>
+<p>集合的大小是有限的，但是流可以对无限的数据执行操作。比如可以使用limit或findFirst这样的操作让Stream操作在有限的时间内结束。</p>
+</li>
+<li><p><strong>一次性消费</strong></p>
+<p>流只能使用(“消费”)一次，一旦调用终断操作，流就不能再次使用，必须重新创建一个流。就像迭代器一样，遍历一遍后，想要再次遍历需要重新创建一个迭代器。</p>
+</li>
+</ul>
+<h2 id="Stream的源的构建"><a href="#Stream的源的构建" class="headerlink" title="Stream的源的构建"></a>Stream的源的构建</h2><p>有多种方式可以构建流：</p>
+<ol>
+<li><p>静态工厂</p>
+<ul>
+<li>Stream.of()</li>
+<li>IntStream.of()</li>
+<li>LongStream.of()</li>
+<li>DoubleStream.of()</li>
+</ul>
+</li>
+<li><p>Collection 和 Array</p>
+<ul>
+<li>Collection.stream()</li>
+<li>Collection.parallelStream()</li>
+<li>Arrays.stream(T array)</li>
+</ul>
+</li>
+<li><p>字符流</p>
+<ul>
+<li>BufferdReader.lines()</li>
+</ul>
+</li>
+<li><p>文件路径</p>
+<ul>
+<li>Files.walk()</li>
+<li>Files.lines()</li>
+<li>Files.find()</li>
+</ul>
+</li>
+<li><p>其它</p>
+<ul>
+<li>Random.ints()</li>
+<li>BitSet.stream()</li>
+<li>Pattern.splitAsStream(java.lang.CharSequence)</li>
+<li>JarFile.stream()</li>
+</ul>
+</li>
+</ol>
+<p>生成流的时候，除了可以生成串行流，也可以生成并行流，即并行处理流的操作。</p>
+<pre><code>final List&lt;String&gt; strings = Arrays.asList("ab", "a", "abc", "b", "bc");
+
+//串行流
+long count1 = strings.stream()
+    .filter(s -&gt; {
+        System.out.println("thread:" + Thread.currentThread().getId());
+        return s.startsWith("a");
+    })
+    .count();
+System.out.println(count1);
+
+//并行流
+long count2 = strings.parallelStream()
+    .filter(s -&gt; {
+        System.out.println("thread:" + Thread.currentThread().getId());
+        return s.startsWith("a");
+    })
+    .count();
+System.out.println(count2);</code></pre><h2 id="Stream操作的分类"><a href="#Stream操作的分类" class="headerlink" title="Stream操作的分类"></a>Stream操作的分类</h2><table>
+<thead>
+<tr>
+<th align="left">Stream操作</th>
+<th align="left">操作分类</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">中间操作(Intermediate operations)</td>
+<td align="left">无状态(Stateless)</td>
+<td align="left">unordered(), filter(), map(), mapToInt(), mapToLong(), mapToDouble(), flatMap(), flatMapToInt(), flatMapToLong(), flatMapToDouble(), peek();</td>
+</tr>
+<tr>
+<td align="left">中间操作(Intermediate operations)</td>
+<td align="left">有状态(Stateful)</td>
+<td align="left">distinct();  sorted();  limit(), skip()</td>
+</tr>
+<tr>
+<td align="left">终断操作(Terminal operations)</td>
+<td align="left">非短路操作</td>
+<td align="left">forEach(), forEachOrdered(); reduce(), collect(), max(), min(), count(); toArray()</td>
+</tr>
+<tr>
+<td align="left">终断操作(Terminal operations)</td>
+<td align="left">短路操作(short-circuiting)</td>
+<td align="left">anyMatch(), allMatch(), noneMatch(); findFirst(), findAny()</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p><strong>中间操作</strong></p>
+<p>返回一个新的Stream。中间操作都是惰性的，它们不会对数据源执行任何操作，仅仅是创建一个新的Stream。在终断操作执行之前，数据源的遍历不会开始。</p>
+</li>
+<li><p><strong>终断操作</strong></p>
+<p>遍历流并生成结果或者副作用。执行完终断操作后，Stream就会被“消费”掉，如果想再次遍历数据源，则必须重新创建新的Stream。大多数情况下，终断操作的遍历都是即时的——在返回之前完成数据源的遍历和处理，只有iterator()和spliterator()不是，这两个方法用于提供额外的遍历功能——让开发者自己控制数据源的遍历以实现现有Stream操作中无法满足的操作(实际上现有的Stream操作基本能满足需求，所以这两个方法目前用的不多)。</p>
+</li>
+</ul>
+<h2 id="Stream的操作"><a href="#Stream的操作" class="headerlink" title="Stream的操作"></a>Stream的操作</h2><h3 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h3><h4 id="有状态操作"><a href="#有状态操作" class="headerlink" title="有状态操作"></a>有状态操作</h4><ul>
+<li><p><strong>map</strong></p>
+<blockquote>
+<p>使用传入的Function对象对Stream中的所有元素进行处理，返回的Stream对象中的元素为原元素处理后的结果。</p>
+</blockquote>
+<p>  <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-stream-02.jpg" alt=""></p>
+<pre><code>  // map，平方数
+  List&lt;Integer&gt; nums = Arrays.asList(1, 2, 3, 4);
+  Collection&lt;Integer&gt; squareNums = nums.stream()
+      .map(n -&gt; n * n)
+      .collect(Collectors.toList());
+
+  squareNums.forEach(integer -&gt; System.out.println(integer));</code></pre></li>
+<li><p><strong>flatMap</strong></p>
+<blockquote>
+<p>map 生成的是个 1:1 映射，每个输入元素，都按照规则转换成为另外一个元素。flatMap，则是一对多映射关系的。</p>
+</blockquote>
+<p>  <img src="https://cdn.jsdelivr.net/gh/lvmaohai/md-images/article/java-stream-03.jpg" alt=""></p>
+<pre><code>  Stream&lt;List&lt;Integer&gt;&gt; inputStream = Stream.of(
+          Arrays.asList(1),
+          Arrays.asList(2, 3),
+          Arrays.asList(4, 5, 6)
+  );
+
+  List&lt;Integer&gt; integerStream = inputStream
+      .flatMap(list -&gt; list.stream())
+      .map(n -&gt; n * n)
+      .collect(Collectors.toList());
+
+  integerStream.forEach(System.out::println);</code></pre></li>
+<li><p><strong>filter</strong></p>
+<blockquote>
+<p>filter 对原始 Stream 进行某项测试，通过测试的元素被留下来生成一个新 Stream</p>
+</blockquote>
+<p>  <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-stream-04.jpg" alt=""></p>
+<pre><code>  List&lt;String&gt; strings = Arrays.asList("ab", "a", "abc", "b", "bc");
+  strings.stream()
+      .filter(s -&gt; s.startsWith("a"))
+      .forEach(System.out::println);</code></pre></li>
+<li><p><strong>peek</strong></p>
+<blockquote>
+<p>peek，遍历Stream中的元素，和forEach类似，区别是peek不会“消费”掉Stream，而forEach会消费掉Stream；peek是中间操作所以也是惰性的，只有在Stream“消费”的时候生效。</p>
+</blockquote>
+<pre><code>  // peek
+  Stream.of("one", "two", "three", "four")
+      .peek(e -&gt; System.out.println("原来的值: " + e))
+      .map(String::toUpperCase)
+      .peek(e -&gt; System.out.println("转换后的值: " + e))
+      .collect(Collectors.toList());</code></pre></li>
+<li><p><strong>limit 和 skip</strong></p>
+<blockquote>
+<p>limit取头部的数据(或者说截取前面的元素)<br>skip取尾部的数据(跳过前面的元素)</p>
+</blockquote>
+<p>  <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-stream-05.jpg" alt=""></p>
+<pre><code>  //limit, 返回 Stream 的前面 n 个元素
+  List&lt;String&gt; strings = Arrays.asList("ab", "a", "abc", "b", "bc");
+  strings.stream()
+      .limit(3)
+      .forEach(System.out::println);
+
+  System.out.println("==============");
+
+  //skip 则是扔掉前 n 个元素
+  strings.stream()
+      .skip(3)
+      .forEach(System.out::println);</code></pre></li>
+</ul>
+<h4 id="无状态操作"><a href="#无状态操作" class="headerlink" title="无状态操作"></a>无状态操作</h4><ul>
+<li><p><strong>distinct</strong></p>
+<blockquote>
+<p>去除重复的元素</p>
+</blockquote>
+<p>  <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-stream-06.jpg" alt=""></p>
+<pre><code>  Stream&lt;String&gt; distinctString = Stream.of("a","b","b","c")
+      .distinct();
+
+  distinctString.forEach(System.out::println);</code></pre></li>
+<li><p><strong>sorted</strong></p>
+<blockquote>
+<p>对Stream中的元素进行排序。<br>有两个重载方法，其中 Stream&lt;T&gt; sorted() 需要元素实现了Comparable接口。</p>
+</blockquote>
+<pre><code>  Arrays.asList("ab", "a", "abc", "b", "bc").stream()
+      .sorted()
+      .forEach(System.out::println);
+
+  Arrays.asList("ab", "a", "abc", "b", "bc").stream()
+      .sorted((o1, o2) -&gt; {
+          return o1.compareTo(o2);
+      })
+      .forEach(System.out::println);</code></pre></li>
+</ul>
+<h3 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h3><h4 id="短路操作"><a href="#短路操作" class="headerlink" title="短路操作"></a>短路操作</h4><p>短路操作其实就和我们日常编程用到的&amp;&amp;和||运算符处理过程类似，遇到一个满足条件的就立即停止判断。</p>
+<ul>
+<li><p><strong>anyMatch</strong></p>
+<blockquote>
+<p>只要其中有一个元素满足传入的Predicate时返回True，否则返回False。<br>前面的中间操作只要anyMatch中的条件成立后，就不再执行。与逻辑运算符 || 类似。</p>
+</blockquote>
+<pre><code>  boolean anyMatchReturn = Arrays.asList("ab", "a", "abc", "b", "bc").stream()
+      .peek(s -&gt; System.out.println(s))
+      .anyMatch(s -&gt; s.startsWith("b"));
+
+  System.out.println(anyMatchReturn);</code></pre><p>  运行结果:</p>
+<pre><code>  ab
+  a
+  abc
+  b
+  true</code></pre></li>
+<li><p><strong>allMatch</strong></p>
+<blockquote>
+<p>所有元素均满足传入的Predicate时返回True，否则False。<br>只要allMatch条件有一个为false，中间操作将终止执行。与逻辑运算符&amp;&amp;类似</p>
+</blockquote>
+<pre><code>  boolean allMatchReturn = Arrays.asList("ab", "a", "abc", "b", "bc").stream()
+  .peek(s -&gt; System.out.println(s))
+  .allMatch(s -&gt; s.startsWith("b"));
+
+  System.out.println(allMatchReturn);</code></pre><p>  运行结果:</p>
+<pre><code>  ab
+  false</code></pre></li>
+<li><p><strong>noneMatch</strong></p>
+<blockquote>
+<p>所有元素均不满足传入的Predicate时返回True，否则False。<br>只要allMatch条件有一个为true，中间操作将终止执行。</p>
+</blockquote>
+<pre><code>  boolean noneMatchReturn = Arrays.asList("ab", "a", "abc", "b", "bc").stream()
+      .peek(s -&gt; System.out.println(s))
+      .noneMatch(s -&gt; s.startsWith("b"));
+
+  System.out.println(noneMatchReturn);</code></pre><p>  运行结果:</p>
+<pre><code>  ab
+  a
+  abc
+  b
+  false</code></pre></li>
+</ul>
+<h4 id="非短路操作"><a href="#非短路操作" class="headerlink" title="非短路操作"></a>非短路操作</h4><ul>
+<li><p><strong>forEach</strong></p>
+<blockquote>
+<p>对所有元素进行迭代处理，无返回值</p>
+</blockquote>
+<pre><code>  Arrays.asList("ab", "a", "abc", "b", "bc")
+      .forEach(System.out::println);</code></pre></li>
+<li><p><strong>reduce</strong></p>
+<blockquote>
+<p>计算机术语规约，通过累加器accumulator，对前面的序列进行累计操作，并最终返回一个值。<br>累加器accumulator有两个参数，第一个是前一次累加的结果，第二个是前面集合的下一个元素。<br>通过reduce，可以实现 average, sum, min, max, count。</p>
+</blockquote>
+<p>  reduce 有三个重载方法：</p>
+<ol>
+<li><p><strong>T reduce(T identity, BinaryOperator&lt;T&gt; accumulator)</strong></p>
+<blockquote>
+<p>这里的identity是初始值。</p>
+</blockquote>
+<p>下面将会把几个字符组装成一个字符串</p>
+<pre><code> String concat = Stream.of("A", "B", "C", "D")
+     .reduce("H", (x, y) -&gt; {
+         System.out.println("x=" + x + ", y=" + y);
+         return x.concat(y);
+     });
+
+ System.out.println(concat);</code></pre><p> 输出结果：</p>
+<pre><code> x=H, y=A
+ x=HA, y=B
+ x=HAB, y=C
+ x=HABC, y=D
+ HABCD</code></pre></li>
+<li><p><strong>Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; accumulator)</strong></p>
+<blockquote>
+<p>由于没有初始值，这里输出Optional类型，避免空指针</p>
+</blockquote>
+<pre><code> Optional&lt;String&gt; concat2Optional = Stream.of("A", "B", "C", "D").reduce((x, y) -&gt; {
+     System.out.println("x=" + x + ", y=" + y);
+     return x.concat(y);
+ });
+
+ System.out.println(concat2Optional.orElse("default"));</code></pre><p> 输出结果：</p>
+<pre><code> x=A, y=B
+ x=AB, y=C
+ x=ABC, y=D
+ ABCD</code></pre></li>
+<li><p><strong>&lt;U&gt; U reduce(U identity, BiFunction&lt;U, ? super T, U&gt; accumulator, BinaryOperator&lt;U&gt; combiner)</strong></p>
+<blockquote>
+<p>这个方法非常复杂，下次再细讲</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p><strong>collect</strong></p>
+<blockquote>
+<p>collect方法可以通过收集器collector将流转化为其他形式，比如字符串、list、set、map。</p>
+</blockquote>
+<p>  collect有两个重载方法，其中一个是最常用的：</p>
+<p>  <strong>&lt;R, A&gt; R collect(Collector&lt;? super T, A, R&gt; collector)</strong></p>
+<p>  官方为了我们转换方便，已经在Collectors类中封装了各种各样的collector，下面看一些常用的收集器。</p>
+<p>  <strong><em>拼接字符串</em></strong></p>
+<pre><code>  String collect1 = Stream.of("A", "B", "C", "D")
+  .collect(Collectors.joining());
+
+  System.out.println(collect1);</code></pre><p>  <strong><em>转成List</em></strong></p>
+<pre><code>  List&lt;String&gt; collect2 = Stream.of("A", "B", "C", "D")
+  .collect(Collectors.toList());</code></pre><p>  <strong><em>转成set</em></strong></p>
+<pre><code>  Set&lt;String&gt; collect3 = Stream.of("A", "B", "C", "D")
+  .collect(Collectors.toSet());</code></pre><p>  <strong><em>转成map</em></strong></p>
+<p>  Collectors的toMap方法签名如下所示，前一个mapper转换成map中的key,后一个mapper转换成map中的value</p>
+<pre><code>  Collector&lt;T, ?, Map&lt;K,U&gt;&gt; toMap(
+  Function&lt;? super T, ? extends K&gt; keyMapper, 
+  Function&lt;? super T, ? extends U&gt; valueMapper
+  )
+
+  Map&lt;String, String&gt; collect3 = Stream.of("A", "B", "C", "D")
+  .collect(Collectors.toMap(
+      s -&gt; s,
+      s -&gt; s
+  ));</code></pre></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">函数式编程</span>
+                                </a>
+                            
+                                <a href="/tags/stream/">
+                                    <span class="chip bg-color">Stream</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/articles/flink/jian-jie.html">
+                    <div class="card-image">
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/cover/flink-face.jpg" class="responsive-img" alt="Flink 简介">
+                        
+                        <span class="card-title">
+                            
+                            Flink 简介
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/articles/java/han-shu-shi-bian-cheng-zhi-optional.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/9.jpg" class="responsive-img" alt="java8 - 函数式编程之Optional">
+                        
+                        <span class="card-title">
+                            
+                            java8 - 函数式编程之Optional
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+
+    
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'd5a8d50ea0c5d7022842',
+        clientSecret: '84394c5a3ec389bf2f3a1ee68d4221163a5f96d6',
+        repo: 'blog',
+        owner: 'lvmaohai',
+        admin: "lvmaohai",
+        id: '2020-01-31T05-00-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+    
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 海韵学社<br />'
+            + '作者: Bigo Lv<br />'
+            + '博文链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="http://lvmaohai.cn" target="_blank">Bigo Lv</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">53.1k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lvmaohai" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:philcode@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=274294331" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 274294331" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("https://cdn.jsdelivr.net/gh/lvmaohai/blog/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6c34e77b2a9079e9a1160d636f3615b5";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
