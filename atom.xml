@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvmaohai.cn/"/>
-  <updated>2020-02-01T21:00:31.000Z</updated>
+  <updated>2020-02-02T06:00:00.000Z</updated>
   <id>http://lvmaohai.cn/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>职场感悟</title>
     <link href="http://lvmaohai.cn/articles/zhi-chang-gan-wu.html"/>
     <id>http://lvmaohai.cn/articles/zhi-chang-gan-wu.html</id>
-    <published>2020-02-01T21:00:31.000Z</published>
-    <updated>2020-02-01T21:00:31.000Z</updated>
+    <published>2020-02-02T06:00:00.000Z</published>
+    <updated>2020-02-02T06:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -48,72 +48,11 @@
   </entry>
   
   <entry>
-    <title>Redis 内存分析方法</title>
-    <link href="http://lvmaohai.cn/articles/redis/nei-cun-fen-xi-fang-fa.html"/>
-    <id>http://lvmaohai.cn/articles/redis/nei-cun-fen-xi-fang-fa.html</id>
-    <published>2020-02-01T11:00:31.000Z</published>
-    <updated>2020-02-01T11:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;用户要怎么才能知道线上 Redis 实例中数据的内存分布情况？&lt;/p&gt;
-&lt;p&gt;为了不影响线上实例的使用，一般会采用 bgsave 生成
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Redis" scheme="http://lvmaohai.cn/categories/redis/"/>
-    
-    
-      <category term="Redis" scheme="http://lvmaohai.cn/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://lvmaohai.cn/tags/%E7%BC%93%E5%AD%98/"/>
-    
-      <category term="Cache" scheme="http://lvmaohai.cn/tags/cache/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Homebrew 应该定期更新</title>
-    <link href="http://lvmaohai.cn/articles/homebrew-ding-qi-geng-xin.html"/>
-    <id>http://lvmaohai.cn/articles/homebrew-ding-qi-geng-xin.html</id>
-    <published>2020-01-31T21:00:31.000Z</published>
-    <updated>2020-01-31T21:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;为什么要定期更新&quot;&gt;&lt;a href=&quot;#为什么要定期更新&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="MacOS" scheme="http://lvmaohai.cn/categories/macos/"/>
-    
-    
-      <category term="MacOS" scheme="http://lvmaohai.cn/tags/macos/"/>
-    
-      <category term="Homebrew" scheme="http://lvmaohai.cn/tags/homebrew/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Flink 快速上手</title>
     <link href="http://lvmaohai.cn/articles/flink/kuai-su-shang-shou.html"/>
     <id>http://lvmaohai.cn/articles/flink/kuai-su-shang-shou.html</id>
-    <published>2020-01-18T21:00:15.000Z</published>
-    <updated>2020-01-18T21:00:15.000Z</updated>
+    <published>2020-02-01T21:00:00.000Z</published>
+    <updated>2020-02-01T21:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -134,9 +73,11 @@
     
       <category term="Flink" scheme="http://lvmaohai.cn/tags/flink/"/>
     
-      <category term="流式计算" scheme="http://lvmaohai.cn/tags/%E6%B5%81%E5%BC%8F%E8%AE%A1%E7%AE%97/"/>
-    
       <category term="实时计算" scheme="http://lvmaohai.cn/tags/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="大数据" scheme="http://lvmaohai.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="数据处理" scheme="http://lvmaohai.cn/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
@@ -144,8 +85,8 @@
     <title>Flink 简介</title>
     <link href="http://lvmaohai.cn/articles/flink/jian-jie.html"/>
     <id>http://lvmaohai.cn/articles/flink/jian-jie.html</id>
-    <published>2020-01-17T21:00:15.000Z</published>
-    <updated>2020-01-17T21:00:15.000Z</updated>
+    <published>2020-01-31T21:00:00.000Z</published>
+    <updated>2020-01-31T21:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -165,9 +106,11 @@
     
       <category term="Flink" scheme="http://lvmaohai.cn/tags/flink/"/>
     
-      <category term="流式计算" scheme="http://lvmaohai.cn/tags/%E6%B5%81%E5%BC%8F%E8%AE%A1%E7%AE%97/"/>
-    
       <category term="实时计算" scheme="http://lvmaohai.cn/tags/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97/"/>
+    
+      <category term="大数据" scheme="http://lvmaohai.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="数据处理" scheme="http://lvmaohai.cn/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
@@ -175,8 +118,8 @@
     <title>java8 - 函数式编程之Stream</title>
     <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-stream.html"/>
     <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-stream.html</id>
-    <published>2020-01-16T22:00:00.000Z</published>
-    <updated>2020-01-16T22:00:00.000Z</updated>
+    <published>2020-01-30T21:00:00.000Z</published>
+    <updated>2020-01-30T21:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -206,8 +149,8 @@
     <title>java8 - 函数式编程之Optional</title>
     <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-optional.html"/>
     <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-optional.html</id>
-    <published>2020-01-15T22:00:00.000Z</published>
-    <updated>2020-01-15T22:00:00.000Z</updated>
+    <published>2020-01-29T21:00:00.000Z</published>
+    <updated>2020-01-29T21:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -237,8 +180,8 @@
     <title>java8 - 函数式编程之Lambda</title>
     <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html"/>
     <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html</id>
-    <published>2020-01-14T22:00:00.000Z</published>
-    <updated>2020-01-14T22:00:00.000Z</updated>
+    <published>2020-01-28T21:00:00.000Z</published>
+    <updated>2020-01-28T21:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -269,8 +212,8 @@
     <title>java8 - 函数式编程之基本接口</title>
     <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-ji-ben-jie-kou.html"/>
     <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-ji-ben-jie-kou.html</id>
-    <published>2020-01-13T22:00:00.000Z</published>
-    <updated>2020-01-13T22:00:00.000Z</updated>
+    <published>2020-01-27T21:00:00.000Z</published>
+    <updated>2020-01-27T21:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -299,8 +242,8 @@
     <title>java8 - 函数式编程之简介</title>
     <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html"/>
     <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html</id>
-    <published>2020-01-12T22:00:00.000Z</published>
-    <updated>2020-01-12T22:00:00.000Z</updated>
+    <published>2020-01-26T21:00:00.000Z</published>
+    <updated>2020-01-26T21:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -325,238 +268,11 @@
   </entry>
   
   <entry>
-    <title>Kafka API 应用实战</title>
-    <link href="http://lvmaohai.cn/articles/kafka/api-ying-yong-shi-zhan.html"/>
-    <id>http://lvmaohai.cn/articles/kafka/api-ying-yong-shi-zhan.html</id>
-    <published>2020-01-12T11:00:31.000Z</published>
-    <updated>2020-01-12T11:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Producer-API&quot;&gt;&lt;a href=&quot;#Producer-API&quot; class=&quot;headerlink&quot; title=&quot;Producer API&quot;&gt;&lt;/a&gt;Producer API&lt;/h2&gt;&lt;h3 id=&quot;消息发送流程&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Kafka" scheme="http://lvmaohai.cn/categories/kafka/"/>
-    
-    
-      <category term="Kafka" scheme="http://lvmaohai.cn/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka 架构原理</title>
-    <link href="http://lvmaohai.cn/articles/kafka/jia-gou-yuan-li.html"/>
-    <id>http://lvmaohai.cn/articles/kafka/jia-gou-yuan-li.html</id>
-    <published>2020-01-11T21:00:31.000Z</published>
-    <updated>2020-01-11T21:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;工作流程&quot;&gt;&lt;a href=&quot;#工作流程&quot; class=&quot;headerlink&quot; title=&quot;工作流程&quot;&gt;&lt;/a&gt;工作流程&lt;/h2&gt;&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Kafka" scheme="http://lvmaohai.cn/categories/kafka/"/>
-    
-    
-      <category term="Kafka" scheme="http://lvmaohai.cn/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka 概述和入门</title>
-    <link href="http://lvmaohai.cn/articles/kafka/gai-shu-he-ru-men.html"/>
-    <id>http://lvmaohai.cn/articles/kafka/gai-shu-he-ru-men.html</id>
-    <published>2020-01-11T11:00:31.000Z</published>
-    <updated>2020-01-11T11:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;Kafka 是一个&lt;font color=&quot;red&quot;&gt;分布式&lt;/font&gt;的基于&lt;font
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Kafka" scheme="http://lvmaohai.cn/categories/kafka/"/>
-    
-    
-      <category term="Kafka" scheme="http://lvmaohai.cn/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka 安装配置和常用命令</title>
-    <link href="http://lvmaohai.cn/articles/kafka/an-zhuang-pei-zhi-he-chang-yong-ming-ling.html"/>
-    <id>http://lvmaohai.cn/articles/kafka/an-zhuang-pei-zhi-he-chang-yong-ming-ling.html</id>
-    <published>2020-01-10T21:00:31.000Z</published>
-    <updated>2020-01-10T21:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;系统环境：MacOS&lt;br&gt;Kafka 版本：2.3.1&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Homebrew安装Kafka&quot;&gt;&lt;a href=&quot;#Homebrew安装Kafka&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Kafka" scheme="http://lvmaohai.cn/categories/kafka/"/>
-    
-    
-      <category term="Kafka" scheme="http://lvmaohai.cn/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zookeeper API 应用实战</title>
-    <link href="http://lvmaohai.cn/articles/zookeeper/api-ying-yong-shi-zhan.html"/>
-    <id>http://lvmaohai.cn/articles/zookeeper/api-ying-yong-shi-zhan.html</id>
-    <published>2020-01-10T11:00:31.000Z</published>
-    <updated>2020-01-10T11:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;API-应用实战&quot;&gt;&lt;a href=&quot;#API-应用实战&quot; class=&quot;headerlink&quot; title=&quot;API 应用实战&quot;&gt;&lt;/a&gt;API 应用实战&lt;/h2&gt;&lt;h3 id=&quot;环境搭建&quot;&gt;&lt;a href=&quot;#环境搭建&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Zookeeper" scheme="http://lvmaohai.cn/categories/zookeeper/"/>
-    
-    
-      <category term="Zookeeper" scheme="http://lvmaohai.cn/tags/zookeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zookeeper 客户端命令操作</title>
-    <link href="http://lvmaohai.cn/articles/zookeeper/ke-hu-duan-ming-ling-cao-zuo.html"/>
-    <id>http://lvmaohai.cn/articles/zookeeper/ke-hu-duan-ming-ling-cao-zuo.html</id>
-    <published>2020-01-09T21:00:31.000Z</published>
-    <updated>2020-01-09T21:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;常见命令&quot;&gt;&lt;a href=&quot;#常见命令&quot; class=&quot;headerlink&quot; title=&quot;常见命令&quot;&gt;&lt;/a&gt;常见命令&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;命令基本语法&lt;/th&gt;
-&lt;th
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Zookeeper" scheme="http://lvmaohai.cn/categories/zookeeper/"/>
-    
-    
-      <category term="Zookeeper" scheme="http://lvmaohai.cn/tags/zookeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zookeeper 入门和内部原理</title>
-    <link href="http://lvmaohai.cn/articles/zookeeper/ru-men-he-nei-bu-yuan-li.html"/>
-    <id>http://lvmaohai.cn/articles/zookeeper/ru-men-he-nei-bu-yuan-li.html</id>
-    <published>2020-01-09T11:00:31.000Z</published>
-    <updated>2020-01-09T11:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Zookeeper是一个开源的分布式的，为分布式应用提供协调服务的Apache项目。&lt;/p&gt;
-&lt;h2 id=&quot;工作机制&quot;&gt;&lt;a href=&quot;#工作机制&quot; class=&quot;headerlink&quot; title=&quot;工作机制&quot;&gt;&lt;/a&gt;工作机制&lt;/h2&gt;&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Zookeeper" scheme="http://lvmaohai.cn/categories/zookeeper/"/>
-    
-    
-      <category term="Zookeeper" scheme="http://lvmaohai.cn/tags/zookeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zookeeper 安装和配置</title>
-    <link href="http://lvmaohai.cn/articles/zookeeper/an-zhuang-he-pei-zhi.html"/>
-    <id>http://lvmaohai.cn/articles/zookeeper/an-zhuang-he-pei-zhi.html</id>
-    <published>2020-01-08T21:00:31.000Z</published>
-    <updated>2020-01-08T21:00:31.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;系统环境：MacOS&lt;br&gt;Zookeeper 版本：3.4.14&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Homebrew安装Zookeeper&quot;&gt;&lt;a href=&quot;#Homebrew安装Zookeeper&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Zookeeper" scheme="http://lvmaohai.cn/categories/zookeeper/"/>
-    
-    
-      <category term="Zookeeper" scheme="http://lvmaohai.cn/tags/zookeeper/"/>
-    
-  </entry>
-  
-  <entry>
     <title>PySpark之RDD入门</title>
     <link href="http://lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html"/>
     <id>http://lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html</id>
-    <published>2020-01-08T12:00:31.000Z</published>
-    <updated>2020-01-08T12:00:31.000Z</updated>
+    <published>2020-01-25T21:00:00.000Z</published>
+    <updated>2020-01-25T21:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -589,8 +305,8 @@
     <title>Spark 安装和配置</title>
     <link href="http://lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html"/>
     <id>http://lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html</id>
-    <published>2020-01-07T21:00:31.000Z</published>
-    <updated>2020-01-07T21:00:31.000Z</updated>
+    <published>2020-01-24T21:00:00.000Z</published>
+    <updated>2020-01-24T21:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -612,6 +328,294 @@
     
     
       <category term="Spark" scheme="http://lvmaohai.cn/tags/spark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive 性能调优</title>
+    <link href="http://lvmaohai.cn/articles/hive/xing-neng-diao-you.html"/>
+    <id>http://lvmaohai.cn/articles/hive/xing-neng-diao-you.html</id>
+    <published>2020-01-23T21:00:00.000Z</published>
+    <updated>2020-01-23T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Fetch抓取&quot;&gt;&lt;a href=&quot;#Fetch抓取&quot; class=&quot;headerlink&quot; title=&quot;Fetch抓取&quot;&gt;&lt;/a&gt;Fetch抓取&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Fetch&lt;/strong&gt; 抓取是指 &lt;font
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive 压缩和存储</title>
+    <link href="http://lvmaohai.cn/articles/hive/ya-suo-he-cun-chu.html"/>
+    <id>http://lvmaohai.cn/articles/hive/ya-suo-he-cun-chu.html</id>
+    <published>2020-01-22T21:00:00.000Z</published>
+    <updated>2020-01-22T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Hadoop压缩配置&quot;&gt;&lt;a href=&quot;#Hadoop压缩配置&quot; class=&quot;headerlink&quot; title=&quot;Hadoop压缩配置&quot;&gt;&lt;/a&gt;Hadoop压缩配置&lt;/h2&gt;&lt;h3 id=&quot;MR支持的压缩编码&quot;&gt;&lt;a href=&quot;#MR支持的压缩编码&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive HQL函数</title>
+    <link href="http://lvmaohai.cn/articles/hive/hql-han-shu.html"/>
+    <id>http://lvmaohai.cn/articles/hive/hql-han-shu.html</id>
+    <published>2020-01-21T21:00:00.000Z</published>
+    <updated>2020-01-21T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;查询函数&quot;&gt;&lt;a href=&quot;#查询函数&quot; class=&quot;headerlink&quot; title=&quot;查询函数&quot;&gt;&lt;/a&gt;查询函数&lt;/h2&gt;&lt;h3 id=&quot;空字段赋值函数（NVL）&quot;&gt;&lt;a href=&quot;#空字段赋值函数（NVL）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive HQL查询</title>
+    <link href="http://lvmaohai.cn/articles/hive/hql-cha-xun.html"/>
+    <id>http://lvmaohai.cn/articles/hive/hql-cha-xun.html</id>
+    <published>2020-01-19T21:00:00.000Z</published>
+    <updated>2020-01-19T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;查询语句语法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[WITH CommonTableExpression (, CommonTableExpression)*] (Note: Only available starting with Hive 0.13.0)
+SELECT
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+      <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive DML数据操作</title>
+    <link href="http://lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html"/>
+    <id>http://lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html</id>
+    <published>2020-01-18T21:00:00.000Z</published>
+    <updated>2020-01-18T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;数据导入&quot;&gt;&lt;a href=&quot;#数据导入&quot; class=&quot;headerlink&quot; title=&quot;数据导入&quot;&gt;&lt;/a&gt;数据导入&lt;/h2&gt;&lt;h3 id=&quot;向表中装载数据（Load）&quot;&gt;&lt;a href=&quot;#向表中装载数据（Load）&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+      <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive DDL数据定义</title>
+    <link href="http://lvmaohai.cn/articles/hive/ddl-shu-ju-ding-yi.html"/>
+    <id>http://lvmaohai.cn/articles/hive/ddl-shu-ju-ding-yi.html</id>
+    <published>2020-01-17T21:00:00.000Z</published>
+    <updated>2020-01-17T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;创建数据库&quot;&gt;&lt;a href=&quot;#创建数据库&quot; class=&quot;headerlink&quot; title=&quot;创建数据库&quot;&gt;&lt;/a&gt;创建数据库&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;创建一个数据库，数据库在HDFS上的默认存储路径是:
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+      <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive 数据类型</title>
+    <link href="http://lvmaohai.cn/articles/hive/shu-ju-lei-xing.html"/>
+    <id>http://lvmaohai.cn/articles/hive/shu-ju-lei-xing.html</id>
+    <published>2020-01-16T21:00:00.000Z</published>
+    <updated>2020-01-16T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;基本数据类型&quot;&gt;&lt;a href=&quot;#基本数据类型&quot; class=&quot;headerlink&quot; title=&quot;基本数据类型&quot;&gt;&lt;/a&gt;基本数据类型&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;Hive数据类型&lt;/th&gt;
+&lt;th
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+      <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive 常见属性配置</title>
+    <link href="http://lvmaohai.cn/articles/hive/chang-jian-shu-xing-pei-zhi.html"/>
+    <id>http://lvmaohai.cn/articles/hive/chang-jian-shu-xing-pei-zhi.html</id>
+    <published>2020-01-15T21:00:00.000Z</published>
+    <updated>2020-01-15T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Hive数据仓库位置配置&quot;&gt;&lt;a href=&quot;#Hive数据仓库位置配置&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive 安装和配置</title>
+    <link href="http://lvmaohai.cn/articles/hive/an-zhuang-he-pei-zhi.html"/>
+    <id>http://lvmaohai.cn/articles/hive/an-zhuang-he-pei-zhi.html</id>
+    <published>2020-01-14T21:00:00.000Z</published>
+    <updated>2020-01-14T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;系统环境：MacOS&lt;br&gt;Hive 版本：3.1.2&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Homebrew安装Hive&quot;&gt;&lt;a href=&quot;#Homebrew安装Hive&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive 基本概念</title>
+    <link href="http://lvmaohai.cn/articles/hive/ji-ben-gai-nian.html"/>
+    <id>http://lvmaohai.cn/articles/hive/ji-ben-gai-nian.html</id>
+    <published>2020-01-13T21:00:00.000Z</published>
+    <updated>2020-01-13T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;什么是Hive&quot;&gt;&lt;a href=&quot;#什么是Hive&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+    
+    
+      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
     
   </entry>
   

@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-09
+                    2020-01-06
                 </div>
                 
 
@@ -494,7 +494,7 @@
 <li>Zookeeper虽然在配置文件中并没有指定Master和Slave。但是，Zookeeper工作时，是有一个节点为Leader，其他则为Follower，Leader是通过内部的选举机制临时产生的。</li>
 </ul>
 <p>以一个简单的例子来说明整个选举的过程：</p>
-<p>假设有五台服务器组成的Zookeeper集群，它们的id从1-5，同时它们都是最新启动的，也就是没有历史数据，在存放数据量这一点上，都是一样的。假设这些服务器依序启动，来看看会发生什么，如图所示。<br><img src="/images/article/zookeeper-09.jpg" alt=""></p>
+<p>假设有五台服务器组成的Zookeeper集群，它们的id从1-5，同时它们都是最新启动的，也就是没有历史数据，在存放数据量这一点上，都是一样的。假设这些服务器依序启动，来看看会发生什么，如图所示。<br><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-09.jpg" alt=""></p>
 <ol>
 <li>服务器1启动，此时只有它一台服务器启动了，它发出去的报文没有任何响应，所以它的选举状态一直是LOOKING状态。</li>
 <li>服务器2启动，它与最开始启动的服务器1进行通信，互相交换自己的选举结果，由于两者都没有历史数据，所以id值较大的服务器2胜出，但是由于没有达到超过半数以上的服务器都同意选举它(这个例子中的半数以上是3)，所以服务器1、2还是继续保持LOOKING状态。</li>
@@ -673,7 +673,7 @@ numChildren = 1</code></pre><ul>
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-09T19-00-31',
+        id: '2020-01-06T05-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -866,7 +866,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">52.3k</span>&nbsp;字
+                class="white-color">53.1k</span>&nbsp;字
             
             
             

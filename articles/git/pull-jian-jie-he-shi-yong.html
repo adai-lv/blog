@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="lrzsz 安装和配置, flink, bigdata">
-    <meta name="description" content="MacOS 通过终端 iTerm2 安装扩展 lrzsz 后，使用 sz和rz 进行远程上传下载文件。">
+    <meta name="keywords" content="git pull 简介和使用, flink, bigdata">
+    <meta name="description" content="git pull 命令的作用是取回远程主机某个分支的更新，再与本地的指定分支合并。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="baidu-site-verification" content="6EhrtReRo2" />
-    <title>lrzsz 安装和配置 | 海韵学社</title>
+    <title>git pull 简介和使用 | 海韵学社</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
@@ -293,12 +293,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">lrzsz 安装和配置</h1>
+                    <h1 class="description center-align post-title">git pull 简介和使用</h1>
                 </div>
             </div>
         </div>
@@ -415,12 +415,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/macos/">
-                                <span class="chip bg-color">MacOS</span>
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">Git</span>
                             </a>
                         
-                            <a href="/tags/lrzsz/">
-                                <span class="chip bg-color">lrzsz</span>
+                            <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">
+                                <span class="chip bg-color">版本管理</span>
                             </a>
                         
                     </div>
@@ -431,8 +431,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/macos/" class="post-category">
-                                MacOS
+                            <a href="/categories/git/" class="post-category">
+                                Git
                             </a>
                         
                     </div>
@@ -451,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-01
+                    2020-01-03
                 </div>
                 
 
@@ -460,14 +460,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    335
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>时长:&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -483,61 +483,78 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>MacOS 自带的命令终端不支持使用 rz 和 sz 命令进行文件上传和下载。<br>可以安装另一种终端 iTerm2，然后对 iTerm2 进行扩展安装 lrzsz，这样 Mac 就可以使用 rz 和 sz 命令进行文件传输了。</p>
-</blockquote>
-<h2 id="远程服务器安装"><a href="#远程服务器安装" class="headerlink" title="远程服务器安装"></a>远程服务器安装</h2><p>在 centOs下，可以用自带的包管理工具进行下载，命令如下:</p>
-<pre><code>$ yum -y install lrzsz
-</code></pre><h2 id="本地-MacOS-安装和配置"><a href="#本地-MacOS-安装和配置" class="headerlink" title="本地 MacOS 安装和配置"></a>本地 MacOS 安装和配置</h2><ol>
-<li>Homebrew 安装 lrzsz</li>
-</ol>
-<pre><code>$ brew install lrzsz
-</code></pre><ol start="2">
-<li>下载安装 iterm2 send、recv <blockquote>
-<p><a href="https://pan.baidu.com/s/1IVr1wCeSw1NPMPlZRg9Q5w" target="_blank" rel="noopener">下载链接</a> (提取码: h467)</p>
-</blockquote>
-</li>
-</ol>
-<pre><code>$ cp iterm2-send-zmodem.sh /usr/local/bin
-$ cp iterm2-recv-zmodem.sh /usr/local/bin
+                <p><strong>git pull</strong> 命令的作用是取回远程主机某个分支的更新，再与本地的指定分支合并。</p>
+<h2 id="使用语法"><a href="#使用语法" class="headerlink" title="使用语法"></a>使用语法</h2><pre><code>git pull [options] [&lt;repository&gt; [&lt;refspec&gt;…]]</code></pre><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>将远程存储库中的更改合并到当前分支中。在默认模式下，<strong>git pull</strong> 是 <strong>git fetch + git merge FETCH_HEAD</strong> 的缩写。</p>
+<p>更准确地说，<strong>git pull</strong> 使用给定的参数运行 <strong>git fetch</strong>，并调用 <strong>git merge</strong> 将检索到的分支头合并到当前分支中。 如果使用 <strong>git pull –rebase</strong>，它运行 <strong>git rebase</strong> 而不是 <strong>git merge</strong>。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
+<li><p>基本格式</p>
+<pre><code># 合并采用 merge 模式
+$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;
 
-# 添加可执行权限
-$ chmode +x /usr/local/bin/iterm2-send-zmodem.sh
-$ chmode +x /usr/local/bin/iterm2-recv-zmodem.sh
-</code></pre><ol start="3">
-<li>设置 iterm2，按 command+, 组合键，打开 iTerm2设置界面，切换到 Profiles-&gt; Default -&gt; Advanced，点击“Edit”</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/lrzsz-01.png" alt=""></p>
-<ol start="4">
-<li>在弹出的界面点 “+” 新增两项参数，完成后，点击“Close”关闭弹窗</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="left">Regular Expression</th>
-<th align="left">Action</th>
-<th align="left">Action</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">**B010</td>
-<td align="left">Run Silent Coprocess</td>
-<td align="left">/usr/local/bin/iterm2-send-zmodem.sh</td>
-</tr>
-<tr>
-<td align="left">**B00000000000000</td>
-<td align="left">Run Silent Coprocess</td>
-<td align="left">/usr/local/bin/iterm2-recv-zmodem.sh</td>
-</tr>
-</tbody></table>
-<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/lrzsz-02.png" alt=""></p>
-<ol start="5">
-<li>重启iterm2</li>
-</ol>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code># 链接远程linux（注意上传文件路径不能包含中文）
+# 合并采用 rebase 模式
+$ git pull --rebase &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</code></pre></li>
+<li><p>取回远程 origin 主机的 next 分支，与本地的 master 分支合并</p>
+<pre><code>$ git pull origin next:master</code></pre></li>
+<li><p>取回远程 origin 主机的 next 分支，与当前分支合并</p>
+<pre><code>$ git pull origin next</code></pre><p>上面命令实质上，等同于先做 git fetch，再执行 git merge。</p>
+<pre><code>$ git fetch origin
+$ git merge origin/next</code></pre></li>
+<li><p>手动建立追踪关系</p>
+<blockquote>
+<p>在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系(tracking)。</p>
+<p>比如，在git clone的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的master分支自动”追踪”origin/master分支。</p>
+</blockquote>
+<pre><code># 指定 master 分支追踪 origin/next 分支
+$ git branch --set-upstream master origin/next</code></pre><p>如果当前分支与远程分支存在追踪关系，git pull 就可以省略远程分支名。</p>
+<pre><code># 本地的当前分支自动与对应的origin主机”追踪分支”（remote-tracking branch）进行合并
+$ git pull origin</code></pre><p>如果当前分支只有一个追踪分支，连远程主机名都可以省略。</p>
+<pre><code>$ git pull</code></pre></li>
+</ul>
+<h2 id="git-fetch-和-git-pull-的区别"><a href="#git-fetch-和-git-pull-的区别" class="headerlink" title="git fetch 和 git pull 的区别"></a>git fetch 和 git pull 的区别</h2><p><strong>git fetch</strong> 相当于是从远程获取最新版本到本地，不会自动合并。</p>
+<pre><code>$ git fetch origin master</code></pre><p>以上命令的含义，从远程 origin 的 master 分支下载最新的版本到 origin/master 分支上</p>
+<p><strong>git pull</strong> 相当于是从远程获取最新版本，并 merge 到本地 </p>
+<pre><code>$ git fetch origin master
+$ git log -p master..origin/master
+$ git merge origin/master</code></pre><p>以上命令的含义：</p>
+<ul>
+<li>从远程 origin 的 master 分支下载最新的版本到 origin/master 分支上</li>
+<li>比较本地的 master 分支和 origin/master 分支的差别</li>
+<li>最后进行合并</li>
+</ul>
+<p>上述过程其实可以用以下更清晰的方式来进行：</p>
+<pre><code>$ git fetch origin master:tmp
+$ git diff tmp 
+$ git merge tmp</code></pre><p>相比 <strong>git pull</strong> 来说，<strong>git fetch</strong> 更安全一些，因为在 <strong>merge</strong> 前，可以查看更新情况，然后再决定是否合并。</p>
+<h2 id="git-pull-和-git-pull-–rebase-的区别"><a href="#git-pull-和-git-pull-–rebase-的区别" class="headerlink" title="git pull 和 git pull –rebase 的区别"></a>git pull 和 git pull –rebase 的区别</h2><p><strong><font color="red">git pull = git fetch + git merge</font></strong></p>
+<p><strong><font color="red">git pull –rebase = git fetch + git rebase</font></strong></p>
+<p>现在来看看 <strong>git merge</strong> 和 <strong>git rebase</strong> 的区别。</p>
+<p>假设你现在基于远程分支”origin”，创建一个叫”mywork”的分支。</p>
+<pre><code>$ git checkout -b mywork origin</code></pre><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/git-rebase-01.png" alt=""></p>
+<p>现在我们在这个分支做一些修改，然后生成两个提交(commit).</p>
+<pre><code>$ vim file.txt
+$ git add file.txt
+$ git commit
 
-$ rz # 上传文件
-$ sz # 下载文件</code></pre><script>
+$ vim otherfile.txt
+$ git add otherfile.txt
+$ git commit
+
+...</code></pre><p>但是与此同时，有些人也在”origin”分支上做了一些修改并且做了提交了. 这就意味着”origin”和”mywork”这两个分支各自”前进”了，它们之间”分叉”了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/git-rebase-02.png" alt=""></p>
+<p>在这里，你可以用”pull”命令把”origin”分支上的修改拉下来并且和你的修改合并； 结果看起来就像一个新的”合并的提交”(merge commit):</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/git-rebase-03.png" alt=""></p>
+<p>但是，如果你想让”mywork”分支历史看起来像没有经过任何合并一样，可以用 git rebase:</p>
+<pre><code>$ git checkout mywork
+$ git rebase origin</code></pre><p>这些命令会把你的”mywork”分支里的每个提交(commit)取消掉，并且把它们临时 保存为补丁(patch)(这些补丁放到”.git/rebase”目录中)，然后把”mywork”分支更新到最新的”origin”分支，最后把保存的这些补丁应用到”mywork”分支上。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/git-rebase-04.png" alt=""></p>
+<p>当”mywork”分支更新之后，它会指向这些新创建的提交(commit)，而那些老的提交会被丢弃。如果运行垃圾收集命令(pruning garbage collection)，这些被丢弃的提交就会删除. （请查看 git gc)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/git-rebase-05.png" alt=""></p>
+<p>现在我们可以看一下用 merge 和用 rebase 所产生的历史的区别：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/git-rebase-06.png" alt=""></p>
+<p>在rebase的过程中，也许会出现冲突(conflict)，在这种情况，Git 会停止rebase并会让你去解决冲突；在解决完冲突后，用 <strong>git add</strong> 命令去更新这些内容的索引(index), 然后无需执行 <strong>git commit</strong>，只要执行:</p>
+<pre><code>$ git rebase --continue</code></pre><p>这样 Git 会继续应用(apply)余下的补丁。</p>
+<p>在任何时候，你可以用–abort参数来终止rebase的行动，并且”mywork”分支会回到rebase开始前的状态。</p>
+<pre><code>$ git rebase --abort</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -569,12 +586,12 @@ $ sz # 下载文件</code></pre><script>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/macos/">
-                                    <span class="chip bg-color">MacOS</span>
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">Git</span>
                                 </a>
                             
-                                <a href="/tags/lrzsz/">
-                                    <span class="chip bg-color">lrzsz</span>
+                                <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">
+                                    <span class="chip bg-color">版本管理</span>
                                 </a>
                             
                         </div>
@@ -609,14 +626,15 @@ $ sz # 下载文件</code></pre><script>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/articles/hadoop/an-zhuang-he-pei-zhi.html">
+                <a href="/articles/redis/nei-cun-fen-xi-fang-fa.html">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/cover/hadoop-face.jpg" class="responsive-img" alt="Hadoop 安装和配置">
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/22.jpg" class="responsive-img" alt="Redis 内存分析方法">
                         
                         <span class="card-title">
                             
-                            Hadoop 安装和配置
+                            Redis 内存分析方法
                         </span>
                     </div>
                 </a>
@@ -629,15 +647,15 @@ $ sz # 下载文件</code></pre><script>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/articles/homebrew-jing-xiang-yuan.html">
+                <a href="/articles/macos/lrzsz-an-zhuang-he-pei-zhi.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg" class="responsive-img" alt="Homebrew 镜像源">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg" class="responsive-img" alt="lrzsz 安装和配置">
                         
                         <span class="card-title">
                             
-                            Homebrew 镜像源
+                            lrzsz 安装和配置
                         </span>
                     </div>
                 </a>
@@ -669,7 +687,7 @@ $ sz # 下载文件</code></pre><script>
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-01T19-29-31',
+        id: '2020-01-03T05-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -862,7 +880,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">52.3k</span>&nbsp;字
+                class="white-color">53.1k</span>&nbsp;字
             
             
             

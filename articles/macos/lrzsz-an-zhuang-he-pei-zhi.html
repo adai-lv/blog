@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Homebrew 镜像源, flink, bigdata">
-    <meta name="description" content="MacOS Homebrew 镜像源替换为国内镜像，加速软件包更新速度。">
+    <meta name="keywords" content="lrzsz 安装和配置, flink, bigdata">
+    <meta name="description" content="MacOS 通过终端 iTerm2 安装扩展 lrzsz 后，使用 sz和rz 进行远程上传下载文件。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="baidu-site-verification" content="6EhrtReRo2" />
-    <title>Homebrew 镜像源 | 海韵学社</title>
+    <title>lrzsz 安装和配置 | 海韵学社</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
@@ -293,12 +293,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Homebrew 镜像源</h1>
+                    <h1 class="description center-align post-title">lrzsz 安装和配置</h1>
                 </div>
             </div>
         </div>
@@ -419,12 +419,8 @@
                                 <span class="chip bg-color">MacOS</span>
                             </a>
                         
-                            <a href="/tags/homebrew/">
-                                <span class="chip bg-color">Homebrew</span>
-                            </a>
-                        
-                            <a href="/tags/brew/">
-                                <span class="chip bg-color">brew</span>
+                            <a href="/tags/lrzsz/">
+                                <span class="chip bg-color">lrzsz</span>
                             </a>
                         
                     </div>
@@ -455,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-01
+                    2020-01-02
                 </div>
                 
 
@@ -464,7 +460,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    219
+                    335
                 </div>
                 
 
@@ -487,45 +483,61 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="镜像源"><a href="#镜像源" class="headerlink" title="镜像源"></a>镜像源</h2><ul>
-<li>官方镜像源</li>
-</ul>
-<pre><code>https://github.com/Homebrew/brew.git
-https://github.com/Homebrew/homebrew-core.git
-</code></pre><ul>
-<li>中科大源</li>
-</ul>
-<pre><code>https://mirrors.ustc.edu.cn/brew.git
-https://mirrors.ustc.edu.cn/homebrew-core.git
-https://mirrors.ustc.edu.cn/homebrew-bottles
-</code></pre><ul>
-<li>清华源</li>
-</ul>
-<pre><code>https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
-https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-</code></pre><h2 id="镜像源设置"><a href="#镜像源设置" class="headerlink" title="镜像源设置"></a>镜像源设置</h2><ul>
-<li>替换 brew.git</li>
-</ul>
-<pre><code>$ cd "$(brew --repo)”
-$ git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+                <blockquote>
+<p>MacOS 自带的命令终端不支持使用 rz 和 sz 命令进行文件上传和下载。<br>可以安装另一种终端 iTerm2，然后对 iTerm2 进行扩展安装 lrzsz，这样 Mac 就可以使用 rz 和 sz 命令进行文件传输了。</p>
+</blockquote>
+<h2 id="远程服务器安装"><a href="#远程服务器安装" class="headerlink" title="远程服务器安装"></a>远程服务器安装</h2><p>在 centOs下，可以用自带的包管理工具进行下载，命令如下:</p>
+<pre><code>$ yum -y install lrzsz
+</code></pre><h2 id="本地-MacOS-安装和配置"><a href="#本地-MacOS-安装和配置" class="headerlink" title="本地 MacOS 安装和配置"></a>本地 MacOS 安装和配置</h2><ol>
+<li>Homebrew 安装 lrzsz</li>
+</ol>
+<pre><code>$ brew install lrzsz
+</code></pre><ol start="2">
+<li>下载安装 iterm2 send、recv <blockquote>
+<p><a href="https://pan.baidu.com/s/1IVr1wCeSw1NPMPlZRg9Q5w" target="_blank" rel="noopener">下载链接</a> (提取码: h467)</p>
+</blockquote>
+</li>
+</ol>
+<pre><code>$ cp iterm2-send-zmodem.sh /usr/local/bin
+$ cp iterm2-recv-zmodem.sh /usr/local/bin
 
-or
+# 添加可执行权限
+$ chmode +x /usr/local/bin/iterm2-send-zmodem.sh
+$ chmode +x /usr/local/bin/iterm2-recv-zmodem.sh
+</code></pre><ol start="3">
+<li>设置 iterm2，按 command+, 组合键，打开 iTerm2设置界面，切换到 Profiles-&gt; Default -&gt; Advanced，点击“Edit”</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/lrzsz-01.png" alt=""></p>
+<ol start="4">
+<li>在弹出的界面点 “+” 新增两项参数，完成后，点击“Close”关闭弹窗</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">Regular Expression</th>
+<th align="left">Action</th>
+<th align="left">Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">**B010</td>
+<td align="left">Run Silent Coprocess</td>
+<td align="left">/usr/local/bin/iterm2-send-zmodem.sh</td>
+</tr>
+<tr>
+<td align="left">**B00000000000000</td>
+<td align="left">Run Silent Coprocess</td>
+<td align="left">/usr/local/bin/iterm2-recv-zmodem.sh</td>
+</tr>
+</tbody></table>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/lrzsz-02.png" alt=""></p>
+<ol start="5">
+<li>重启iterm2</li>
+</ol>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code># 链接远程linux（注意上传文件路径不能包含中文）
 
-$ git -C "$(brew --repo)" remote set-url origin https://mirrors.ustc.edu.cn/brew.git
-</code></pre><ul>
-<li>替换 homebrew-core.git</li>
-</ul>
-<pre><code>$ cd "$(brew --repo homebrew/core)”
-$ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-
-or
-
-$ git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-</code></pre><ul>
-<li>执行更新</li>
-</ul>
-<pre><code>$ brew update</code></pre><script>
+$ rz # 上传文件
+$ sz # 下载文件</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -561,12 +573,8 @@ $ git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.us
                                     <span class="chip bg-color">MacOS</span>
                                 </a>
                             
-                                <a href="/tags/homebrew/">
-                                    <span class="chip bg-color">Homebrew</span>
-                                </a>
-                            
-                                <a href="/tags/brew/">
-                                    <span class="chip bg-color">brew</span>
+                                <a href="/tags/lrzsz/">
+                                    <span class="chip bg-color">lrzsz</span>
                                 </a>
                             
                         </div>
@@ -601,15 +609,15 @@ $ git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.us
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/articles/lrzsz-an-zhuang-he-pei-zhi.html">
+                <a href="/articles/git/pull-jian-jie-he-shi-yong.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg" class="responsive-img" alt="lrzsz 安装和配置">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/3.jpg" class="responsive-img" alt="git pull 简介和使用">
                         
                         <span class="card-title">
                             
-                            lrzsz 安装和配置
+                            git pull 简介和使用
                         </span>
                     </div>
                 </a>
@@ -619,18 +627,18 @@ $ git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.us
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/articles/homebrew-jing-xiang-yuan.html">
+                <a href="/articles/macos/homebrew-ding-qi-geng-xin.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg" class="responsive-img" alt="Homebrew 镜像源">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/9.jpg" class="responsive-img" alt="Homebrew 应该定期更新">
                         
                         <span class="card-title">
                             
-                            Homebrew 镜像源
+                            Homebrew 应该定期更新
                         </span>
                     </div>
                 </a>
@@ -662,7 +670,7 @@ $ git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.us
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-01T05-00-31',
+        id: '2020-01-02T05-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -855,7 +863,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">52.3k</span>&nbsp;字
+                class="white-color">53.1k</span>&nbsp;字
             
             
             
