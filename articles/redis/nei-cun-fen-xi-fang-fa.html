@@ -464,7 +464,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    798
+                    804
                 </div>
                 
 
@@ -534,14 +534,13 @@ sqlite&gt;.import memory.csv memory</code></pre><p>数据导入以后，接下�
 <li><p><strong>查询成员个数1000个以上的list</strong></p>
 <pre><code>  sqlite&gt;select * from memory where type='list' and num_elements &gt; 1000;</code></pre></li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过使用redis-rdb-tools + sqlite的方式，可以方便的对redis实例的内存情况进行静态的分析。整个过程也比较简单,获取到rdb之后</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过使用redis-rdb-tools + sqlite的方式，可以方便的对redis实例的内存情况进行静态的分析。整个过程也比较简单，获取到rdb之后进行如下操作即可。</p>
 <pre><code>rdb -c memory dump.rdb &gt; memory.csv;
 
 sqlite3 memory.db
 sqlite&gt;create table memory(database int,type varchar(128),key varchar(128),size_in_bytes int,encoding varchar(128),num_elements int,len_largest_element varchar(128));
 sqlite&gt;.mode csv memory
-sqlite&gt;.import memory.csv memory</code></pre><p>即可</p>
-<p>总的来说，整个分析的过程简单而实用，是每一个Redis的用户都非常值得掌握的一个方法。</p>
+sqlite&gt;.import memory.csv memory</code></pre><p>总的来说，整个分析的过程简单而实用，是每一个Redis的用户都非常值得掌握的一个方法。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
