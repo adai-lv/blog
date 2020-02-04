@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvmaohai.cn/"/>
-  <updated>2020-02-02T06:00:00.000Z</updated>
+  <updated>2020-02-02T21:00:00.000Z</updated>
   <id>http://lvmaohai.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java OOM之堆空间异常</title>
+    <link href="http://lvmaohai.cn/articles/java/oom-zhi-dui-kong-jian-yi-chang.html"/>
+    <id>http://lvmaohai.cn/articles/java/oom-zhi-dui-kong-jian-yi-chang.html</id>
+    <published>2020-02-02T21:00:00.000Z</published>
+    <updated>2020-02-02T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分析什么情况会导致堆空间异常：&lt;strong&gt;&lt;font color=&quot;red&quot;&gt;java.lang.OutOfMemoryError: Java heap space&lt;/font&gt;&lt;/strong&gt; 出现，并提供示例代码的同时为您提供解决指南。&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+    
+      <category term="OOM" scheme="http://lvmaohai.cn/tags/oom/"/>
+    
+  </entry>
   
   <entry>
     <title>职场感悟</title>
@@ -579,33 +609,6 @@ SELECT
 &lt;p&gt;系统环境：MacOS&lt;br&gt;Hive 版本：3.1.2&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;Homebrew安装Hive&quot;&gt;&lt;a href=&quot;#Homebrew安装Hive&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive 基本概念</title>
-    <link href="http://lvmaohai.cn/articles/hive/ji-ben-gai-nian.html"/>
-    <id>http://lvmaohai.cn/articles/hive/ji-ben-gai-nian.html</id>
-    <published>2020-01-13T21:00:00.000Z</published>
-    <updated>2020-01-13T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;什么是Hive&quot;&gt;&lt;a href=&quot;#什么是Hive&quot; class=&quot;headerlink&quot;
         
       
     
