@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvmaohai.cn/"/>
-  <updated>2020-02-04T21:00:00.000Z</updated>
+  <updated>2020-02-05T05:00:00.000Z</updated>
   <id>http://lvmaohai.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>API 通信协议规范</title>
+    <link href="http://lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html"/>
+    <id>http://lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html</id>
+    <published>2020-02-05T05:00:00.000Z</published>
+    <updated>2020-02-05T05:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;协议类型&quot;&gt;&lt;a href=&quot;#协议类型&quot; class=&quot;headerlink&quot; title=&quot;协议类型&quot;&gt;&lt;/a&gt;协议类型&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;支持 https、dubbo 协议；&lt;/li&gt;
+&lt;li&gt;面向用户的客户端与服务端的通信，使用 https
+        
+      
+    
+    </summary>
+    
+    
+      <category term="架构" scheme="http://lvmaohai.cn/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="API协议" scheme="http://lvmaohai.cn/tags/api%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="架构设计" scheme="http://lvmaohai.cn/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Java OOM之元空间异常</title>
@@ -583,39 +614,6 @@ SELECT
         
           &lt;h2 id=&quot;创建数据库&quot;&gt;&lt;a href=&quot;#创建数据库&quot; class=&quot;headerlink&quot; title=&quot;创建数据库&quot;&gt;&lt;/a&gt;创建数据库&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;创建一个数据库，数据库在HDFS上的默认存储路径是:
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
-    
-      <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive 数据类型</title>
-    <link href="http://lvmaohai.cn/articles/hive/shu-ju-lei-xing.html"/>
-    <id>http://lvmaohai.cn/articles/hive/shu-ju-lei-xing.html</id>
-    <published>2020-01-16T21:00:00.000Z</published>
-    <updated>2020-01-16T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;基本数据类型&quot;&gt;&lt;a href=&quot;#基本数据类型&quot; class=&quot;headerlink&quot; title=&quot;基本数据类型&quot;&gt;&lt;/a&gt;基本数据类型&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;Hive数据类型&lt;/th&gt;
-&lt;th
         
       
     
