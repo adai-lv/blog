@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvmaohai.cn/"/>
-  <updated>2020-02-02T21:00:00.000Z</updated>
+  <updated>2020-02-04T21:00:00.000Z</updated>
   <id>http://lvmaohai.cn/</id>
   
   <author>
@@ -15,6 +15,70 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java OOM之元空间异常</title>
+    <link href="http://lvmaohai.cn/articles/java/oom-zhi-yuan-kong-jian-yi-chang.html"/>
+    <id>http://lvmaohai.cn/articles/java/oom-zhi-yuan-kong-jian-yi-chang.html</id>
+    <published>2020-02-04T21:00:00.000Z</published>
+    <updated>2020-02-04T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分析什么情况会导致元空间异常：&lt;strong&gt;&lt;font color=&quot;red&quot;&gt;java.lang.OutOfMemoryError: Metaspace&lt;/font&gt;&lt;/strong&gt; 出现，并提供示例代码的同时为您提供解决指南。&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+    
+      <category term="OOM" scheme="http://lvmaohai.cn/tags/oom/"/>
+    
+      <category term="Metaspace" scheme="http://lvmaohai.cn/tags/metaspace/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java OOM之持久代异常</title>
+    <link href="http://lvmaohai.cn/articles/java/oom-zhi-chi-jiu-dai-yi-chang.html"/>
+    <id>http://lvmaohai.cn/articles/java/oom-zhi-chi-jiu-dai-yi-chang.html</id>
+    <published>2020-02-03T21:00:00.000Z</published>
+    <updated>2020-02-03T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分析什么情况会导致持久代空间异常：&lt;strong&gt;&lt;font color=&quot;red&quot;&gt;java.lang.OutOfMemoryError: Permgen space&lt;/font&gt;&lt;/strong&gt; 出现，并提供示例代码的同时为您提供解决指南。&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+    
+      <category term="OOM" scheme="http://lvmaohai.cn/tags/oom/"/>
+    
+      <category term="PermgenSpace" scheme="http://lvmaohai.cn/tags/permgenspace/"/>
+    
+  </entry>
   
   <entry>
     <title>Java OOM之堆空间异常</title>
@@ -43,6 +107,8 @@
       <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
     
       <category term="OOM" scheme="http://lvmaohai.cn/tags/oom/"/>
+    
+      <category term="HeapSpace" scheme="http://lvmaohai.cn/tags/heapspace/"/>
     
   </entry>
   
@@ -562,63 +628,6 @@ SELECT
       <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
     
       <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive 常见属性配置</title>
-    <link href="http://lvmaohai.cn/articles/hive/chang-jian-shu-xing-pei-zhi.html"/>
-    <id>http://lvmaohai.cn/articles/hive/chang-jian-shu-xing-pei-zhi.html</id>
-    <published>2020-01-15T21:00:00.000Z</published>
-    <updated>2020-01-15T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Hive数据仓库位置配置&quot;&gt;&lt;a href=&quot;#Hive数据仓库位置配置&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive 安装和配置</title>
-    <link href="http://lvmaohai.cn/articles/hive/an-zhuang-he-pei-zhi.html"/>
-    <id>http://lvmaohai.cn/articles/hive/an-zhuang-he-pei-zhi.html</id>
-    <published>2020-01-14T21:00:00.000Z</published>
-    <updated>2020-01-14T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;系统环境：MacOS&lt;br&gt;Hive 版本：3.1.2&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Homebrew安装Hive&quot;&gt;&lt;a href=&quot;#Homebrew安装Hive&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
     
   </entry>
   

@@ -1,0 +1,1035 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java OOM之持久代异常, flink, bigdata">
+    <meta name="description" content="分析什么情况会导致持久代空间异常出现，并提供示例代码的同时为您提供解决指南。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="baidu-site-verification" content="6EhrtReRo2" />
+    <title>Java OOM之持久代异常 | 海韵学社</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/matery202002041500.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/my.css">
+    
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="海韵学社" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">海韵学社</span>
+                </a>
+            </div>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse">
+  <i class="fas fa-bars"></i>
+</a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>我的</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">海韵学社</div>
+        <div class="logo-desc">
+            
+            从来没有真正的绝境, 只有心灵的迷途
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+    
+        <li class="m-nav-item">
+        
+            <a href="/" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-home"></i>
+            
+            首页
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/categories" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-bookmark"></i>
+            
+            分类
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/tags" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-tags"></i>
+            
+            标签
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/archives" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-archive"></i>
+            
+            归档
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/contact" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-comments"></i>
+            
+            留言板
+            </a>
+        
+        </li>
+        
+        <li class="m-nav-item">
+        
+            <a href="/about" class="waves-effect waves-light">
+            
+              <i class="fa-fw fas fa-user-circle"></i>
+            
+            我的
+            </a>
+        
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lvmaohai" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lvmaohai" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Java OOM之持久代异常</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/oom/">
+                                <span class="chip bg-color">OOM</span>
+                            </a>
+                        
+                            <a href="/tags/permgenspace/">
+                                <span class="chip bg-color">PermgenSpace</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/java/" class="post-category">
+                                Java
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fas fa-user fa-fw"></i>作者:&nbsp;
+                
+                    Bigo Lv
+                
+                </div>
+                            
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
+                    2020-02-04
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
+                    1.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>时长:&nbsp;
+                    7 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>分析什么情况会导致持久代空间异常：<strong><font color="red">java.lang.OutOfMemoryError: Permgen space</font></strong> 出现，并提供示例代码的同时为您提供解决指南。</p>
+<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-oom-02.jpg" alt="JVM内存模型示意图"></p>
+<p>Java 应用程序在启动时，会指定所需要的堆内存大小，它被分割成两个不同的区域：<font color="red">Heap Space（堆空间）</font> 和 <font color="red">Permgen Space（持久代空间 Permanent Generation）</font>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-oom-01.png" alt=""></p>
+<p>持久代空间的大小可以在 JVM（Java虚拟机）启动时，通过如下参数设置：</p>
+<ul>
+<li><strong><font color="red">-XX：PermSize</font></strong> 设置<strong>持久代</strong>初始值。</li>
+<li><strong><font color="red">-XX：MaxPermSize</font></strong> 设置<strong>持久代</strong>最大值。</li>
+</ul>
+<p>如果没有显式设置，则将使用特定平台的默认值。</p>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>要理解 <strong><font color="red">java.lang.OutOfMemoryError: PermGen space</font></strong> 出现的原因，首先需要理解 <strong>Permanent Generation</strong> 的用处是什么？</p>
+<p>持久代主要存储的是每个类的信息，比如：类加载器引用、运行时常量池（所有常量、字段引用、方法引用、属性）、字段(Field)数据、方法(Method)数据、方法代码、方法字节码等等。<strong>PermGen</strong> 的大小取决于被加载类的数量以及类的大小。</p>
+<p>因此，我们可以得出：<strong><font color="red">java.lang.OutOfMemoryError: PermGen space</font></strong> 异常的原因是：太多的类或者太大的类被加载到 <strong>permanent generation（持久代）</strong>，导致持久代所在区域的内存已被耗尽。</p>
+<h2 id="场景示例"><a href="#场景示例" class="headerlink" title="场景示例"></a>场景示例</h2><p>① 最简单的示例</p>
+<p>正如前面所描述的，PermGen的使用与加载到JVM类的数量有密切关系，下面是一个最简单的示例：</p>
+<pre><code>import javassist.ClassPool;
+public class MicroGenerator {
+    public static void main(String[] args) throws Exception {
+        for (int i = 0; i &lt; 100_000_000; i++) {
+            generate("cn.moondev.User" + i);
+        }
+    }
+
+    public static Class generate(String name) throws Exception {
+        ClassPool pool = ClassPool.getDefault();
+        return pool.makeClass(name).toClass();
+    }
+}</code></pre><p>运行时请设置JVM参数：<strong><font color="red">-XX:MaxPermSize=5m</font></strong>，值越小越好。需要注意的是JDK8已经完全移除持久代空间，取而代之的是元空间（<strong><font color="red">Metaspace</font></strong>），所以示例最好的JDK1.7下运行。</p>
+<p>代码在运行时不停的生成类并加载到持久代中，直到撑满持久代内存空间，最后抛出 <strong><font color="red">java.lang.OutOfMemoryError: PermGen space</font></strong> 异常。代码中类的生成使用了 <strong>javassist</strong> 库。</p>
+<p>② Redeploy-time</p>
+<p>更复杂和实际的一个例子就是 <strong>Redeploy</strong>（重新部署，可以想象一下开发时，使用idea时按ctrl + F5时的过程）。</p>
+<p>在从服务器卸载应用程序时，当前的 <strong>classloader</strong> 以及 <strong>加载的class</strong> 在没有实例引用的情况下，持久代的内存空间会被 <strong>GC</strong> 清理并回收。如果应用中有 <strong>类的实例</strong> 对当前的 <strong>classloader</strong> 的引用，那么 <strong>Permgen区</strong> 的 <strong>class</strong> 将无法被卸载，导致 <strong>Permgen区</strong> 的内存一直增加直到出现 <strong>Permgen space</strong> 错误。</p>
+<p>不幸的是，许多第三方库以及糟糕的资源处理方式（比如：线程、JDBC驱动程序、文件系统句柄）使得卸载以前使用的类加载器变成了一件不可能的事。反过来就意味着在每次重新部署过程中，应用程序所有的类的先前版本将仍然驻留在 <strong>Permgen区</strong> 中，你的每次部署都将生成几十甚至几百M的垃圾。</p>
+<p>就以线程和JDBC驱动来说说。很多人都会使用线程来处理一下周期性或者耗时较长的任务，这个时候一定要注意线程的生命周期问题，你需要确保线程不能比你的应用程序活得还长。否则，如果应用程序已经被卸载，线程还在继续运行，这个线程通常会维持对应用程序的 <strong>classloader</strong> 的引用，造成的结果就不再多说。多说一句，开发者有责任处理好这个问题，特别是如果你是第三方库的提供者的话，一定要提供线程关闭接口来处理清理工作。</p>
+<p>让我们想象一个使用JDBC驱动程序连接到关系数据库的示例应用程序。当应用程序部署到服务器上的时：服务器创建一个 <strong>classloader</strong> 实例来加载应用所有的类（包含相应的JDBC驱动）。根据JDBC规范，JDBC驱动程序（比如：com.mysql.jdbc.Driver）会在初始化时将自己注册到java.sql.DriverManager中。该注册过程中会将驱动程序的一个实例存储在DriverManager的静态字段内，代码可以参考：</p>
+<pre><code>// com.mysql.jdbc.Driver源码
+package com.mysql.jdbc;
+
+public class Driver extends NonRegisteringDriver implements java.sql.Driver {
+
+    public Driver() throws SQLException {
+    }
+
+    static {
+        try {
+            DriverManager.registerDriver(new Driver());
+        } catch (SQLException var1) {
+            throw new RuntimeException("Can\'t register driver!");
+        }
+    }
+}
+
+// 再看下DriverManager对应代码
+private final static CopyOnWriteArrayList&lt;DriverInfo&gt; registeredDrivers = new CopyOnWriteArrayList&lt;&gt;();
+
+public static synchronized void registerDriver(java.sql.Driver driver,DriverAction da) throws SQLException {
+
+    if(driver != null) {
+        registeredDrivers.addIfAbsent(new DriverInfo(driver, da));
+    } else {
+        throw new NullPointerException();
+    }
+}</code></pre><p>现在，当从服务器上卸载应用程序的时候，<strong><font color="red">java.sql.DriverManager</font></strong> 仍将持有那个驱动程序的引用，进而持有用于加载应用程序的 <strong>classloader</strong> 的一个实例的引用。这个 <strong>classloader</strong> 现在仍然引用着应用程序的所有类。如果此程序启动时需要加载2000个类，占用约10MB永久代（PermGen）内存，那么只需要5~10次重新部署，就会将默认大小的永久代（PermGen）塞满，然后就会触发 <strong><font color="red">java.lang.OutOfMemoryError: PermGen space</font></strong> 错误并崩溃。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>① 解决初始化时的 <strong>OutOfMemoryError</strong></p>
+<p>当在应用程序启动期间，需要加载所有的类到 <strong>PermGen区域</strong> ，而触发由于 <strong>PermGen 耗尽</strong> 引起的 <strong>OutOfMemoryError</strong> 时，我们只需要增加它的大小。 </p>
+<p>为此，请更改应用程序启动配置，并添加（或增加，如果存在）-XX：MaxPermSize参数，类似以下示例：</p>
+<pre><code>$ java -XX:MaxPermSize=512m PackageName.ClassName</code></pre><p>② 解决 <strong>Redeploy</strong> 时的 <strong>OutOfMemoryError</strong></p>
+<p>如果是你自己代码的问题请及时修改，如果是第三方库，请试着搜索一下是否存在”关闭”接口，如果没有给开发者提交一个bug或者issue吧。</p>
+<p>③ 解决运行时 <strong>OutOfMemoryError</strong></p>
+<p>首先，需要检查是否允许 <strong><font color="red">GC</font></strong> 从 <strong><font color="red">PermGen</font></strong> 卸载类，JVM 的标准配置相当保守，只要类一创建，即使已经没有实例引用它们，其仍将保留在内存中，特别是当应用程序需要动态创建大量的类但其生命周期并不长时，允许 JVM 卸载类对应用大有助益，可以通过在启动脚本中添加以下配置参数来实现：</p>
+<pre><code>-XX:+CMSClassUnloadingEnabled</code></pre><p>默认情况下，这个配置是未启用的，如果启用它，<strong><font color="red">GC</font></strong> 将扫描 <strong><font color="red">PermGen</font></strong> 区并清理已经不再使用的类。但请注意，这个配置只在 <strong><font color="red">UseConcMarkSweepGC</font></strong> 的情况下生效，如果你使用其他 <strong>GC算法</strong>，比如：<strong>ParallelGC</strong> 或者 <strong>Serial GC</strong> 时，这个配置无效。所以使用以上配置时，请配合：</p>
+<pre><code>-XX:+UseConcMarkSweepGC</code></pre><p>如果已经确保 JVM 可以卸载类，但是仍然出现内存溢出问题，那么应该继续分析 <strong><font color="red">dump文件</font></strong>，使用以下命令生成dump文件：</p>
+<pre><code>jmap -dump:file=dump.hprof,format=b &lt;process-id&gt;</code></pre><p>当你拿到生成的堆转储文件，并利用像 <strong>Eclipse Memory Analyzer Toolkit</strong> 这样的工具来寻找应该卸载却没被卸载的类加载器，然后对该类加载器加载的类进行排查，找到可疑对象，分析使用或者生成这些类的代码，查找产生问题的根源并解决它。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/oom/">
+                                    <span class="chip bg-color">OOM</span>
+                                </a>
+                            
+                                <a href="/tags/permgenspace/">
+                                    <span class="chip bg-color">PermgenSpace</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/articles/java/oom-zhi-yuan-kong-jian-yi-chang.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/23.jpg" class="responsive-img" alt="Java OOM之元空间异常">
+                        
+                        <span class="card-title">
+                            
+                            Java OOM之元空间异常
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/articles/java/oom-zhi-dui-kong-jian-yi-chang.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/14.jpg" class="responsive-img" alt="Java OOM之堆空间异常">
+                        
+                        <span class="card-title">
+                            
+                            Java OOM之堆空间异常
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+
+    
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'd5a8d50ea0c5d7022842',
+        clientSecret: '84394c5a3ec389bf2f3a1ee68d4221163a5f96d6',
+        repo: 'blog',
+        owner: 'lvmaohai',
+        admin: "lvmaohai",
+        id: '2020-02-04T05-00-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+    
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 海韵学社<br />'
+            + '作者: Bigo Lv<br />'
+            + '博文链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="http://lvmaohai.cn" target="_blank">Bigo Lv</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">58.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lvmaohai" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:philcode@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=274294331" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 274294331" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("https://cdn.jsdelivr.net/gh/lvmaohai/blog/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6c34e77b2a9079e9a1160d636f3615b5";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
