@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/matery202002041500.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/matery202002051410.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/css/my.css">
     
     <script src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/jquery/jquery.min.js"></script>
@@ -527,7 +527,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
     at OOMTest.main(OOMTest.java:6)
 
 $ java -Xmx13m OOMTest</code></pre><p>② 程序内存泄漏示例</p>
-<p>在Java中，当开发者创建一个新对象（比如：new Integer(5)）时，不需要自己开辟内存空间，而是把它交给JVM。在应用程序整个生命周期类，JVM负责检查哪些对象可用，哪些对象未被使用。未使用对象将被丢弃，其占用的内存也将被回收，这一过程被称为垃圾回收。JVM负责垃圾回收的模块集合被称为垃圾回收器（GC）。</p>
+<p>在Java中，当开发者创建一个新对象（比如：new Integer(5)）时，不需要自己开辟内存空间，而是把它交给JVM。在应用程序整个生命周期内，JVM负责检查哪些对象可用，哪些对象未被使用。未使用对象将被丢弃，其占用的内存也将被回收，这一过程被称为垃圾回收。JVM负责垃圾回收的模块集合被称为垃圾回收器（GC）。</p>
 <p>Java的内存自动管理机制依赖于GC定期查找未使用对象并删除它们。Java中的内存泄漏是由于GC无法识别一些已经不再使用的对象，而这些未使用的对象一直留在堆空间中，这种堆积最终会导致 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 异常。</p>
 <p>我们可以非常容易的写出导致内存泄漏的Java代码：</p>
 <pre><code>public class KeylessEntry {
@@ -594,6 +594,10 @@ java -Xmx1g com.mycompany.MyClass</code></pre><p>然后，更多的时候，单�
             document.body.appendChild(img);
           });
       </script>
+            </div>
+            
+            <div class="center-align">
+                <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/weixin_sousou.png" width="100%" />
             </div>
             
             <hr/>
@@ -927,7 +931,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
-    <a href="mailto:philcode@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:bingdong13@msn.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -944,6 +948,10 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
+
+    <a href="https://weibo.com/6238057164" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/6238057164" data-position="top" data-delay="50">
+        <i class="fab fa-weibo"></i>
+    </a>
 
 
 
