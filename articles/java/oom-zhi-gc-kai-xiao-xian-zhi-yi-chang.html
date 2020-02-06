@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Zookeeper 入门和内部原理, flink, bigdata">
-    <meta name="description" content="Zookeeper是一个开源的分布式的，为分布式应用提供协调服务的Apache项目。">
+    <meta name="keywords" content="Java OOM之GC开销限制异常, flink, bigdata">
+    <meta name="description" content="分析什么情况会导致GC开销限制异常出现，并提供示例代码的同时为您提供解决指南。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="baidu-site-verification" content="6EhrtReRo2" />
-    <title>Zookeeper 入门和内部原理 | 海韵学社</title>
+    <title>Java OOM之GC开销限制异常 | 海韵学社</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
@@ -293,12 +293,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Zookeeper 入门和内部原理</h1>
+                    <h1 class="description center-align post-title">Java OOM之GC开销限制异常</h1>
                 </div>
             </div>
         </div>
@@ -415,8 +415,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/zookeeper/">
-                                <span class="chip bg-color">Zookeeper</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/oom/">
+                                <span class="chip bg-color">OOM</span>
+                            </a>
+                        
+                            <a href="/tags/gcoverheadlimit/">
+                                <span class="chip bg-color">GCOverheadLimit</span>
                             </a>
                         
                     </div>
@@ -427,8 +435,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/zookeeper/" class="post-category">
-                                Zookeeper
+                            <a href="/categories/java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -447,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-06
+                    2020-02-06
                 </div>
                 
 
@@ -456,14 +464,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    917
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>时长:&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -479,71 +487,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Zookeeper是一个开源的分布式的，为分布式应用提供协调服务的Apache项目。</p>
-<h2 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h2><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-01.jpg" alt=""></p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-02.jpg" alt=""></p>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-03.jpg" alt=""></p>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>提供的服务包括：统一命名服务、统一配置管理、统一集群管理、服务器节点动态上下线、软负载均衡等。</p>
-<h3 id="统一命名服务"><a href="#统一命名服务" class="headerlink" title="统一命名服务"></a>统一命名服务</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-04.jpg" alt=""></p>
-<h3 id="统一配置管理"><a href="#统一配置管理" class="headerlink" title="统一配置管理"></a>统一配置管理</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-05.jpg" alt=""></p>
-<h3 id="统一集群管理"><a href="#统一集群管理" class="headerlink" title="统一集群管理"></a>统一集群管理</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-06.jpg" alt=""></p>
-<h3 id="服务器节点动态上下线"><a href="#服务器节点动态上下线" class="headerlink" title="服务器节点动态上下线"></a>服务器节点动态上下线</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-07.jpg" alt=""></p>
-<h3 id="软负载均衡"><a href="#软负载均衡" class="headerlink" title="软负载均衡"></a>软负载均衡</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-08.jpg" alt=""></p>
-<h2 id="内部原理"><a href="#内部原理" class="headerlink" title="内部原理"></a>内部原理</h2><h3 id="选举机制"><a href="#选举机制" class="headerlink" title="选举机制"></a>选举机制</h3><ul>
-<li><font color="red"><strong>半数机制</strong></font> 集群中半数以上机器存活，集群可用。所以Zookeeper适合安装奇数台服务器。</li>
-<li>Zookeeper虽然在配置文件中并没有指定Master和Slave。但是，Zookeeper工作时，是有一个节点为Leader，其他则为Follower，Leader是通过内部的选举机制临时产生的。</li>
-</ul>
-<p>以一个简单的例子来说明整个选举的过程：</p>
-<p>假设有五台服务器组成的Zookeeper集群，它们的id从1-5，同时它们都是最新启动的，也就是没有历史数据，在存放数据量这一点上，都是一样的。假设这些服务器依序启动，来看看会发生什么，如图所示。<br><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-09.jpg" alt=""></p>
-<ol>
-<li>服务器1启动，此时只有它一台服务器启动了，它发出去的报文没有任何响应，所以它的选举状态一直是LOOKING状态。</li>
-<li>服务器2启动，它与最开始启动的服务器1进行通信，互相交换自己的选举结果，由于两者都没有历史数据，所以id值较大的服务器2胜出，但是由于没有达到超过半数以上的服务器都同意选举它(这个例子中的半数以上是3)，所以服务器1、2还是继续保持LOOKING状态。</li>
-<li>服务器3启动，根据前面的理论分析，服务器3成为服务器1、2、3中的老大，而与上面不同的是，此时有三台服务器选举了它，所以它成为了这次选举的Leader。</li>
-<li>服务器4启动，根据前面的分析，理论上服务器4应该是服务器1、2、3、4中最大的，但是由于前面已经有半数以上的服务器选举了服务器3，所以它只能接收当小弟的命了。</li>
-<li>服务器5启动，同4一样当小弟。</li>
-</ol>
-<h3 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-10.jpg" alt=""></p>
-<h3 id="Stat结构体"><a href="#Stat结构体" class="headerlink" title="Stat结构体"></a>Stat结构体</h3><p>查看当前节点详细数据</p>
-<pre><code>[zk: localhost:2181(CONNECTED) 1] ls2 /
-[zookeeper]
-cZxid = 0x0
-ctime = Thu Jan 01 08:00:00 CST 1970
-mZxid = 0x0
-mtime = Thu Jan 01 08:00:00 CST 1970
-pZxid = 0x0
-cversion = -1
-dataVersion = 0
-aclVersion = 0
-ephemeralOwner = 0x0
-dataLength = 0
-numChildren = 1</code></pre><ul>
-<li><p><strong>cZxid</strong> 创建节点的事务zxid</p>
-<p>  每次修改ZooKeeper状态都会收到一个zxid形式的时间戳，也就是ZooKeeper事务ID。</p>
-<p>  事务ID是ZooKeeper中所有修改总的次序。每个修改都有唯一的zxid，如果zxid1小于zxid2，那么zxid1在zxid2之前发生。</p>
+                <p>分析什么情况会导致<strong>GC</strong>开销限制异常：<strong><font color="red">java.lang.OutOfMemoryError: GC overhead limit exceeded</font></strong> 出现，并提供示例代码的同时为您提供解决指南。</p>
+<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>Java运行时环境（<strong>JRE</strong>）包含一个内置的垃圾回收进程，而在许多其他的编程语言中，开发者需要手动分配和释放内存。</p>
+<p>Java应用程序只需要<strong>开发者分配内存</strong>，每当在内存中特定的空间不再使用时，一个单独的垃圾收集进程会清空这些内存空间。</p>
+<p><strong>GC overhead limt exceed</strong> 检查是 <strong>Hotspot VM 1.6</strong> 定义的一个策略，通过统计<strong>GC时间</strong>来预测是否要<strong>OOM</strong>了，提前抛出异常，防止<strong>OOM</strong>发生。Sun 官方对此的定义是：“并行/并发回收器在 <strong><font color="red">GC回收时间过长</font></strong> 时会抛出<strong>OutOfMemroyError</strong>，用来避免内存过小造成应用不能正常工作。过长的定义是：<font color="red">超过98%的时间用来做GC并且回收了不到2%的堆内存</font>。“</p>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p><strong><font color="red">java.lang.OutOfMemoryError: GC overhead limit exceeded</font></strong> 异常是一个信号，示意你的应用程序在垃圾收集上花费了太多时间但却没有什么卵用。默认花费超过<font color="red">98%</font>的时间用来做<strong>GC</strong>并且回收了不到<font color="red">2%</font>的堆内存时将会抛出此错误。那如果没有此限制会发生什么呢？<strong>GC</strong>进程将被重启，<font color="red">100%</font>的<strong>CPU</strong>将用于<strong>GC</strong>，而没有<strong>CPU</strong>资源用于其他正常的工作。如果一个工作本来只需要几毫秒即可完成，现在却需要几分钟才能完成，我想这种结果谁都没有办法接受。</p>
+<p>所以 <strong><font color="red">java.lang.OutOfMemoryError: GC overhead limit exceeded</font></strong> 也可以看做是一个<font color="red">fail-fast（快速失败）</font>实战的实例。</p>
+<h2 id="场景示例"><a href="#场景示例" class="headerlink" title="场景示例"></a>场景示例</h2><p>下面的代码初始化一个map并在无限循环中不停的添加键值对，运行后将会抛出 <strong>GC overhead limit exceeded</strong> 错误：</p>
+<pre><code>import java.util.Map;
+import java.util.Random;
+
+public class WrapperTest {
+    public static void main(String args[]) throws Exception {
+        Map map = System.getProperties();
+        Random r = new Random();
+        while (true) {
+            map.put(r.nextInt(), "value");
+        }
+    }
+}
+
+// 编译和运行程序
+
+$ javac WrapperTest.java
+$ java WrapperTest</code></pre><p>正如你所预料的那样，程序不能正常的结束，事实上，当使用如下参数启动程序时：</p>
+<pre><code>$ java -Xmx100m -XX:+UseParallelGC WrapperTest</code></pre><p>很快就可以看到程序抛出 <strong><font color="red">java.lang.OutOfMemoryError: GC overhead limit exceeded</font></strong> 异常。</p>
+<pre><code>Exception in thread "main" java.lang.OutOfMemoryError: GC overhead limit exceeded
+    at java.util.Hashtable.addEntry(Hashtable.java:436)
+    at java.util.Hashtable.put(Hashtable.java:477)
+    at WrapperTest.main(WrapperTest.java:9)</code></pre><p>如果在启动时设置不同的堆空间大小或者使用不同的GC算法，比如这样：</p>
+<ul>
+<li><p>设置堆空间偏小，启动命令如下：</p>
+<pre><code>  $ java -Xmx10m -XX:+UseParallelGC WrapperTest</code></pre><p>  将看到如下错误：</p>
+<pre><code>  Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+      at java.util.Hashtable.rehash(Hashtable.java:402)
+      at java.util.Hashtable.addEntry(Hashtable.java:426)
+      at java.util.Hashtable.put(Hashtable.java:477)
+      at WrapperTest.main(WrapperTest.java:9)</code></pre></li>
+<li><p>使用<strong>ConcMarkSweepGC</strong>算法：-XX:+UseConcMarkSweepGC，启动命令如下：</p>
+<pre><code>  $ java -Xmx100m -XX:+UseConcMarkSweepGC WrapperTest</code></pre><p>  将看到如下错误：</p>
+<pre><code>  Exception in thread "main"
+  Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "main"</code></pre><p>  错误已经被默认的异常处理程序捕获，并且没有任何错误的堆栈信息输出。</p>
 </li>
-<li><p><strong>ctime</strong> znode被创建的毫秒数(从1970年开始)</p>
-</li>
-<li><p><strong>mZxid</strong> znode最后更新的事务zxid</p>
-</li>
-<li><p><strong>mtime</strong> znode最后修改的毫秒数(从1970年开始)</p>
-</li>
-<li><p><strong>pZxid</strong> znode最后更新的子节点zxid</p>
-</li>
-<li><p><strong>cversion</strong> znode子节点变化号，znode子节点修改次数</p>
-</li>
-<li><p><strong>dataVersion</strong> znode数据变化号</p>
-</li>
-<li><p><strong>aclVersion</strong> znode访问控制列表的变化号</p>
-</li>
-<li><p><strong>ephemeralOwner</strong> 如果是临时节点，这个是znode拥有者的session id。如果不是临时节点则是0。</p>
-</li>
-<li><p><strong>dataLength</strong> znode的数据长度</p>
-</li>
-<li><p><strong>numChildren</strong> znode子节点数量</p>
+<li><p>使用<strong>G1GC</strong>算法：-XX:+UseG1GC，启动命令如下：</p>
+<pre><code>  $ java -Xmx100m -XX:+UseG1GC WrapperTest</code></pre><p>  将看到如下错误：</p>
+<pre><code>  Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "main"</code></pre><p>  错误已经被默认的异常处理程序捕获，并且没有任何错误的堆栈信息输出。</p>
 </li>
 </ul>
-<h3 id="监听器原理"><a href="#监听器原理" class="headerlink" title="监听器原理"></a>监听器原理</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-11.jpg" alt=""></p>
-<h3 id="写数据流程"><a href="#写数据流程" class="headerlink" title="写数据流程"></a>写数据流程</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/zookeeper-12.jpg" alt=""></p>
+<p>以上这些变化可以说明，在资源有限的情况下，你根本无法无法预测你的应用是怎样挂掉的，什么时候会挂掉，所以在开发时，你不能仅仅保证自己的应用程序在特定的环境下正常运行。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>首先是一个毫无诚意的解决方案，如果你仅仅是不想看到 <strong><font color="red">java.lang.OutOfMemoryError: GC overhead limit exceeded</font></strong> 异常的错误信息，可以在应用程序启动时添加如下JVM参数：</p>
+<pre><code>// 关闭GC开销限制策略
+-XX:-UseGCOverheadLimit</code></pre><p>但是强烈建议不要使用这个选项，因为这样并没有解决任何问题，只是推迟了错误出现的时间，错误信息也变成了我们更熟悉的 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 而已。</p>
+<p>另一个解决方案，如果你的应用程序确实内存不足，增加堆内存会解决<strong>GC overhead limit</strong>问题，就如下面这样，给应用程序1G的堆内存：</p>
+<pre><code>java -Xmx1024m com.PackageName.ClassName</code></pre><p>但如果你想确保你已经解决了潜在的问题，而不是掩盖 <strong><font color="red">java.lang.OutOfMemoryError: GC overhead limit exceeded</font></strong> 错误，那么你不应该仅止步于此。你要记得还有<strong>profilers</strong>和<strong>memory dump analyzers</strong>这些工具，你需要花费更多的时间和精力来查找问题。需要注意的是，这些工具在Java运行时有显著的开销，因此不建议在生产环境中使用。</p>
+<p>在生产环境中遇到了这个问题，在不知道原因时不要简单的猜测和规避。可以通过 <strong>-verbose:gc -XX:+PrintGCDetails</strong> 看下到底什么原因造成了异常。通常原因都是因为<strong>老年代区</strong>占用过多导致频繁<strong>Full GC</strong>，最终导致<strong>GC overhead limit exceed</strong>。如果gc log不够可以借助于JProfile等工具查看内存的占用，<strong>老年代区</strong>是否有内存泄露。分析内存泄露还有一个方法 <strong>-XX:+HeapDumpOnOutOfMemoryError</strong>，这样OOM时会自动做<strong>Heap Dump</strong>，可以拿<strong>MAT</strong>来排查了。还要留意<strong>新生代区</strong>，如果有过多短暂对象分配，可能也会抛这个异常。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -580,8 +577,16 @@ numChildren = 1</code></pre><ul>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/zookeeper/">
-                                    <span class="chip bg-color">Zookeeper</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/oom/">
+                                    <span class="chip bg-color">OOM</span>
+                                </a>
+                            
+                                <a href="/tags/gcoverheadlimit/">
+                                    <span class="chip bg-color">GCOverheadLimit</span>
                                 </a>
                             
                         </div>
@@ -612,19 +617,20 @@ numChildren = 1</code></pre><ul>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/articles/zookeeper/ke-hu-duan-ming-ling-cao-zuo.html">
+                <a href="/articles/java/oom-zhi-gc-kai-xiao-xian-zhi-yi-chang.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg" class="responsive-img" alt="Zookeeper 客户端命令操作">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg" class="responsive-img" alt="Java OOM之GC开销限制异常">
                         
                         <span class="card-title">
                             
-                            Zookeeper 客户端命令操作
+                            Java OOM之GC开销限制异常
                         </span>
                     </div>
                 </a>
@@ -637,15 +643,15 @@ numChildren = 1</code></pre><ul>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/articles/zookeeper/an-zhuang-he-pei-zhi.html">
+                <a href="/articles/api-tong-xin-xie-yi-gui-fan.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/13.jpg" class="responsive-img" alt="Zookeeper 安装和配置">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/19.jpg" class="responsive-img" alt="API 通信协议规范">
                         
                         <span class="card-title">
                             
-                            Zookeeper 安装和配置
+                            API 通信协议规范
                         </span>
                     </div>
                 </a>
@@ -677,7 +683,7 @@ numChildren = 1</code></pre><ul>
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-06T05-00-00',
+        id: '2020-02-06T05-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 

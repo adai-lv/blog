@@ -345,6 +345,55 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/articles/hive/ji-ben-gai-nian.html">
+                        <div class="card-image">
+                            
+                            <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/cover/hive-face.png" class="responsive-img" alt="Hive 基本概念">
+                            
+                            <span class="card-title" style="font-size: 20px;">
+                                
+                                Hive 基本概念
+                            </span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                基于Hadoop的一个数仓工具，将结构化的数据文件映射为一张表，并提供类SQL查询功能。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/hive/" class="post-category">
+                                    Hive
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/hive/">
+                            <span class="chip bg-color">Hive</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/articles/hadoop/an-zhuang-he-pei-zhi.html">
                         <div class="card-image">
                             
@@ -904,60 +953,6 @@
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/articles/macos/lrzsz-an-zhuang-he-pei-zhi.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg" class="responsive-img" alt="lrzsz 安装和配置">
-                            
-                            <span class="card-title" style="font-size: 20px;">
-                                
-                                lrzsz 安装和配置
-                            </span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                MacOS 通过终端 iTerm2 安装扩展 lrzsz 后，使用 sz和rz 进行远程上传下载文件。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-02
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/macos/" class="post-category">
-                                    MacOS
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/macos/">
-                            <span class="chip bg-color">MacOS</span>
-                        </a>
-                        
-                        <a href="/tags/lrzsz/">
-                            <span class="chip bg-color">lrzsz</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 </main>
@@ -995,13 +990,13 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2020</span>
-            <a href="http://lvmaohai.cn" target="_blank">Bigo Lv</a>
+            <a href="http://blog.lvmaohai.cn" target="_blank">Bigo Lv</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.6k</span>&nbsp;字
+                class="white-color">62.1k</span>&nbsp;字
             
             
             
@@ -1097,28 +1092,38 @@ $(function () {
     <!-- Baidu Analytics -->
 
 <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?6c34e77b2a9079e9a1160d636f3615b5";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+    if (window.location.hostname && 
+        window.location.hostname != 'localhost') {
+
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6c34e77b2a9079e9a1160d636f3615b5";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    }
 </script>
 
     <!-- Baidu Push -->
 
 <script>
     (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+
+        var location = window.location;
+
+        if (location.hostname && location.hostname != 'localhost') {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
         }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
+        
     })();
 </script>
 

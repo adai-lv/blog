@@ -5,9 +5,9 @@
   <subtitle>宁愿尝思考之痛,不愿吃学习之苦</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://lvmaohai.cn/"/>
-  <updated>2020-02-05T05:00:00.000Z</updated>
-  <id>http://lvmaohai.cn/</id>
+  <link href="http://blog.lvmaohai.cn/"/>
+  <updated>2020-02-05T21:00:00.000Z</updated>
+  <id>http://blog.lvmaohai.cn/</id>
   
   <author>
     <name>Bigo Lv</name>
@@ -17,9 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java OOM之GC开销限制异常</title>
+    <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-gc-kai-xiao-xian-zhi-yi-chang.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-gc-kai-xiao-xian-zhi-yi-chang.html</id>
+    <published>2020-02-05T21:00:00.000Z</published>
+    <updated>2020-02-05T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分析什么情况会导致&lt;strong&gt;GC&lt;/strong&gt;开销限制异常：&lt;strong&gt;&lt;font color=&quot;red&quot;&gt;java.lang.OutOfMemoryError: GC overhead limit exceeded&lt;/font&gt;&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
+    
+      <category term="OOM" scheme="http://blog.lvmaohai.cn/tags/oom/"/>
+    
+      <category term="GCOverheadLimit" scheme="http://blog.lvmaohai.cn/tags/gcoverheadlimit/"/>
+    
+  </entry>
+  
+  <entry>
     <title>API 通信协议规范</title>
-    <link href="http://lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html"/>
-    <id>http://lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html"/>
+    <id>http://blog.lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html</id>
     <published>2020-02-05T05:00:00.000Z</published>
     <updated>2020-02-05T05:00:00.000Z</updated>
     
@@ -38,19 +69,19 @@
     </summary>
     
     
-      <category term="架构" scheme="http://lvmaohai.cn/categories/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="http://blog.lvmaohai.cn/categories/%E6%9E%B6%E6%9E%84/"/>
     
     
-      <category term="API协议" scheme="http://lvmaohai.cn/tags/api%E5%8D%8F%E8%AE%AE/"/>
+      <category term="API协议" scheme="http://blog.lvmaohai.cn/tags/api%E5%8D%8F%E8%AE%AE/"/>
     
-      <category term="架构设计" scheme="http://lvmaohai.cn/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+      <category term="架构设计" scheme="http://blog.lvmaohai.cn/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>Java OOM之元空间异常</title>
-    <link href="http://lvmaohai.cn/articles/java/oom-zhi-yuan-kong-jian-yi-chang.html"/>
-    <id>http://lvmaohai.cn/articles/java/oom-zhi-yuan-kong-jian-yi-chang.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-yuan-kong-jian-yi-chang.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-yuan-kong-jian-yi-chang.html</id>
     <published>2020-02-04T21:00:00.000Z</published>
     <updated>2020-02-04T21:00:00.000Z</updated>
     
@@ -68,21 +99,21 @@
     </summary>
     
     
-      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
     
     
-      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
     
-      <category term="OOM" scheme="http://lvmaohai.cn/tags/oom/"/>
+      <category term="OOM" scheme="http://blog.lvmaohai.cn/tags/oom/"/>
     
-      <category term="Metaspace" scheme="http://lvmaohai.cn/tags/metaspace/"/>
+      <category term="Metaspace" scheme="http://blog.lvmaohai.cn/tags/metaspace/"/>
     
   </entry>
   
   <entry>
     <title>Java OOM之持久代异常</title>
-    <link href="http://lvmaohai.cn/articles/java/oom-zhi-chi-jiu-dai-yi-chang.html"/>
-    <id>http://lvmaohai.cn/articles/java/oom-zhi-chi-jiu-dai-yi-chang.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-chi-jiu-dai-yi-chang.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-chi-jiu-dai-yi-chang.html</id>
     <published>2020-02-03T21:00:00.000Z</published>
     <updated>2020-02-03T21:00:00.000Z</updated>
     
@@ -100,21 +131,21 @@
     </summary>
     
     
-      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
     
     
-      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
     
-      <category term="OOM" scheme="http://lvmaohai.cn/tags/oom/"/>
+      <category term="OOM" scheme="http://blog.lvmaohai.cn/tags/oom/"/>
     
-      <category term="PermgenSpace" scheme="http://lvmaohai.cn/tags/permgenspace/"/>
+      <category term="PermgenSpace" scheme="http://blog.lvmaohai.cn/tags/permgenspace/"/>
     
   </entry>
   
   <entry>
     <title>Java OOM之堆空间异常</title>
-    <link href="http://lvmaohai.cn/articles/java/oom-zhi-dui-kong-jian-yi-chang.html"/>
-    <id>http://lvmaohai.cn/articles/java/oom-zhi-dui-kong-jian-yi-chang.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-dui-kong-jian-yi-chang.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-dui-kong-jian-yi-chang.html</id>
     <published>2020-02-02T21:00:00.000Z</published>
     <updated>2020-02-02T21:00:00.000Z</updated>
     
@@ -132,21 +163,21 @@
     </summary>
     
     
-      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
     
     
-      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
     
-      <category term="OOM" scheme="http://lvmaohai.cn/tags/oom/"/>
+      <category term="OOM" scheme="http://blog.lvmaohai.cn/tags/oom/"/>
     
-      <category term="HeapSpace" scheme="http://lvmaohai.cn/tags/heapspace/"/>
+      <category term="HeapSpace" scheme="http://blog.lvmaohai.cn/tags/heapspace/"/>
     
   </entry>
   
   <entry>
     <title>职场感悟</title>
-    <link href="http://lvmaohai.cn/articles/zhi-chang-gan-wu.html"/>
-    <id>http://lvmaohai.cn/articles/zhi-chang-gan-wu.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/zhi-chang-gan-wu.html"/>
+    <id>http://blog.lvmaohai.cn/articles/zhi-chang-gan-wu.html</id>
     <published>2020-02-02T06:00:00.000Z</published>
     <updated>2020-02-02T06:00:00.000Z</updated>
     
@@ -167,17 +198,17 @@
     </summary>
     
     
-      <category term="职场" scheme="http://lvmaohai.cn/categories/%E8%81%8C%E5%9C%BA/"/>
+      <category term="职场" scheme="http://blog.lvmaohai.cn/categories/%E8%81%8C%E5%9C%BA/"/>
     
     
-      <category term="职场感悟" scheme="http://lvmaohai.cn/tags/%E8%81%8C%E5%9C%BA%E6%84%9F%E6%82%9F/"/>
+      <category term="职场感悟" scheme="http://blog.lvmaohai.cn/tags/%E8%81%8C%E5%9C%BA%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>Flink 快速上手</title>
-    <link href="http://lvmaohai.cn/articles/flink/kuai-su-shang-shou.html"/>
-    <id>http://lvmaohai.cn/articles/flink/kuai-su-shang-shou.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/flink/kuai-su-shang-shou.html"/>
+    <id>http://blog.lvmaohai.cn/articles/flink/kuai-su-shang-shou.html</id>
     <published>2020-02-01T21:00:00.000Z</published>
     <updated>2020-02-01T21:00:00.000Z</updated>
     
@@ -195,23 +226,23 @@
     </summary>
     
     
-      <category term="Flink" scheme="http://lvmaohai.cn/categories/flink/"/>
+      <category term="Flink" scheme="http://blog.lvmaohai.cn/categories/flink/"/>
     
     
-      <category term="Flink" scheme="http://lvmaohai.cn/tags/flink/"/>
+      <category term="Flink" scheme="http://blog.lvmaohai.cn/tags/flink/"/>
     
-      <category term="大数据" scheme="http://lvmaohai.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+      <category term="大数据" scheme="http://blog.lvmaohai.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="实时计算" scheme="http://lvmaohai.cn/tags/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97/"/>
+      <category term="实时计算" scheme="http://blog.lvmaohai.cn/tags/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97/"/>
     
-      <category term="数据处理" scheme="http://lvmaohai.cn/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
+      <category term="数据处理" scheme="http://blog.lvmaohai.cn/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Flink 简介</title>
-    <link href="http://lvmaohai.cn/articles/flink/jian-jie.html"/>
-    <id>http://lvmaohai.cn/articles/flink/jian-jie.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/flink/jian-jie.html"/>
+    <id>http://blog.lvmaohai.cn/articles/flink/jian-jie.html</id>
     <published>2020-01-31T21:00:00.000Z</published>
     <updated>2020-01-31T21:00:00.000Z</updated>
     
@@ -228,23 +259,23 @@
     </summary>
     
     
-      <category term="Flink" scheme="http://lvmaohai.cn/categories/flink/"/>
+      <category term="Flink" scheme="http://blog.lvmaohai.cn/categories/flink/"/>
     
     
-      <category term="Flink" scheme="http://lvmaohai.cn/tags/flink/"/>
+      <category term="Flink" scheme="http://blog.lvmaohai.cn/tags/flink/"/>
     
-      <category term="大数据" scheme="http://lvmaohai.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+      <category term="大数据" scheme="http://blog.lvmaohai.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="实时计算" scheme="http://lvmaohai.cn/tags/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97/"/>
+      <category term="实时计算" scheme="http://blog.lvmaohai.cn/tags/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97/"/>
     
-      <category term="数据处理" scheme="http://lvmaohai.cn/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
+      <category term="数据处理" scheme="http://blog.lvmaohai.cn/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>java8 - 函数式编程之Stream</title>
-    <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-stream.html"/>
-    <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-stream.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-stream.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-stream.html</id>
     <published>2020-01-30T21:00:00.000Z</published>
     <updated>2020-01-30T21:00:00.000Z</updated>
     
@@ -261,21 +292,21 @@
     </summary>
     
     
-      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
     
     
-      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
     
-      <category term="函数式编程" scheme="http://lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+      <category term="函数式编程" scheme="http://blog.lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
-      <category term="Stream" scheme="http://lvmaohai.cn/tags/stream/"/>
+      <category term="Stream" scheme="http://blog.lvmaohai.cn/tags/stream/"/>
     
   </entry>
   
   <entry>
     <title>java8 - 函数式编程之Optional</title>
-    <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-optional.html"/>
-    <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-optional.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-optional.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-optional.html</id>
     <published>2020-01-29T21:00:00.000Z</published>
     <updated>2020-01-29T21:00:00.000Z</updated>
     
@@ -292,21 +323,21 @@
     </summary>
     
     
-      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
     
     
-      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
     
-      <category term="函数式编程" scheme="http://lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+      <category term="函数式编程" scheme="http://blog.lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
-      <category term="Optional" scheme="http://lvmaohai.cn/tags/optional/"/>
+      <category term="Optional" scheme="http://blog.lvmaohai.cn/tags/optional/"/>
     
   </entry>
   
   <entry>
     <title>java8 - 函数式编程之Lambda</title>
-    <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html"/>
-    <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html</id>
     <published>2020-01-28T21:00:00.000Z</published>
     <updated>2020-01-28T21:00:00.000Z</updated>
     
@@ -324,21 +355,21 @@
     </summary>
     
     
-      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
     
     
-      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
     
-      <category term="函数式编程" scheme="http://lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+      <category term="函数式编程" scheme="http://blog.lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
-      <category term="Lambda" scheme="http://lvmaohai.cn/tags/lambda/"/>
+      <category term="Lambda" scheme="http://blog.lvmaohai.cn/tags/lambda/"/>
     
   </entry>
   
   <entry>
     <title>java8 - 函数式编程之基本接口</title>
-    <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-ji-ben-jie-kou.html"/>
-    <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-ji-ben-jie-kou.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-ji-ben-jie-kou.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-ji-ben-jie-kou.html</id>
     <published>2020-01-27T21:00:00.000Z</published>
     <updated>2020-01-27T21:00:00.000Z</updated>
     
@@ -356,19 +387,19 @@
     </summary>
     
     
-      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
     
     
-      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
     
-      <category term="函数式编程" scheme="http://lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+      <category term="函数式编程" scheme="http://blog.lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>java8 - 函数式编程之简介</title>
-    <link href="http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html"/>
-    <id>http://lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html</id>
     <published>2020-01-26T21:00:00.000Z</published>
     <updated>2020-01-26T21:00:00.000Z</updated>
     
@@ -385,19 +416,19 @@
     </summary>
     
     
-      <category term="Java" scheme="http://lvmaohai.cn/categories/java/"/>
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
     
     
-      <category term="java" scheme="http://lvmaohai.cn/tags/java/"/>
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
     
-      <category term="函数式编程" scheme="http://lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+      <category term="函数式编程" scheme="http://blog.lvmaohai.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>PySpark之RDD入门</title>
-    <link href="http://lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html"/>
-    <id>http://lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html"/>
+    <id>http://blog.lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html</id>
     <published>2020-01-25T21:00:00.000Z</published>
     <updated>2020-01-25T21:00:00.000Z</updated>
     
@@ -417,21 +448,21 @@
     </summary>
     
     
-      <category term="Spark" scheme="http://lvmaohai.cn/categories/spark/"/>
+      <category term="Spark" scheme="http://blog.lvmaohai.cn/categories/spark/"/>
     
     
-      <category term="Spark" scheme="http://lvmaohai.cn/tags/spark/"/>
+      <category term="Spark" scheme="http://blog.lvmaohai.cn/tags/spark/"/>
     
-      <category term="PySpark" scheme="http://lvmaohai.cn/tags/pyspark/"/>
+      <category term="PySpark" scheme="http://blog.lvmaohai.cn/tags/pyspark/"/>
     
-      <category term="RDD" scheme="http://lvmaohai.cn/tags/rdd/"/>
+      <category term="RDD" scheme="http://blog.lvmaohai.cn/tags/rdd/"/>
     
   </entry>
   
   <entry>
     <title>Spark 安装和配置</title>
-    <link href="http://lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html"/>
-    <id>http://lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html"/>
+    <id>http://blog.lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html</id>
     <published>2020-01-24T21:00:00.000Z</published>
     <updated>2020-01-24T21:00:00.000Z</updated>
     
@@ -451,17 +482,17 @@
     </summary>
     
     
-      <category term="Spark" scheme="http://lvmaohai.cn/categories/spark/"/>
+      <category term="Spark" scheme="http://blog.lvmaohai.cn/categories/spark/"/>
     
     
-      <category term="Spark" scheme="http://lvmaohai.cn/tags/spark/"/>
+      <category term="Spark" scheme="http://blog.lvmaohai.cn/tags/spark/"/>
     
   </entry>
   
   <entry>
     <title>Hive 性能调优</title>
-    <link href="http://lvmaohai.cn/articles/hive/xing-neng-diao-you.html"/>
-    <id>http://lvmaohai.cn/articles/hive/xing-neng-diao-you.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/hive/xing-neng-diao-you.html"/>
+    <id>http://blog.lvmaohai.cn/articles/hive/xing-neng-diao-you.html</id>
     <published>2020-01-23T21:00:00.000Z</published>
     <updated>2020-01-23T21:00:00.000Z</updated>
     
@@ -478,17 +509,17 @@
     </summary>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
     
   </entry>
   
   <entry>
     <title>Hive 压缩和存储</title>
-    <link href="http://lvmaohai.cn/articles/hive/ya-suo-he-cun-chu.html"/>
-    <id>http://lvmaohai.cn/articles/hive/ya-suo-he-cun-chu.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/hive/ya-suo-he-cun-chu.html"/>
+    <id>http://blog.lvmaohai.cn/articles/hive/ya-suo-he-cun-chu.html</id>
     <published>2020-01-22T21:00:00.000Z</published>
     <updated>2020-01-22T21:00:00.000Z</updated>
     
@@ -505,17 +536,17 @@
     </summary>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
     
   </entry>
   
   <entry>
     <title>Hive HQL函数</title>
-    <link href="http://lvmaohai.cn/articles/hive/hql-han-shu.html"/>
-    <id>http://lvmaohai.cn/articles/hive/hql-han-shu.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/hive/hql-han-shu.html"/>
+    <id>http://blog.lvmaohai.cn/articles/hive/hql-han-shu.html</id>
     <published>2020-01-21T21:00:00.000Z</published>
     <updated>2020-01-21T21:00:00.000Z</updated>
     
@@ -532,17 +563,17 @@
     </summary>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
     
   </entry>
   
   <entry>
     <title>Hive HQL查询</title>
-    <link href="http://lvmaohai.cn/articles/hive/hql-cha-xun.html"/>
-    <id>http://lvmaohai.cn/articles/hive/hql-cha-xun.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/hive/hql-cha-xun.html"/>
+    <id>http://blog.lvmaohai.cn/articles/hive/hql-cha-xun.html</id>
     <published>2020-01-19T21:00:00.000Z</published>
     <updated>2020-01-19T21:00:00.000Z</updated>
     
@@ -561,19 +592,19 @@ SELECT
     </summary>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
     
-      <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
+      <category term="HQL" scheme="http://blog.lvmaohai.cn/tags/hql/"/>
     
   </entry>
   
   <entry>
     <title>Hive DML数据操作</title>
-    <link href="http://lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html"/>
-    <id>http://lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html</id>
+    <link href="http://blog.lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html"/>
+    <id>http://blog.lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html</id>
     <published>2020-01-18T21:00:00.000Z</published>
     <updated>2020-01-18T21:00:00.000Z</updated>
     
@@ -590,42 +621,12 @@ SELECT
     </summary>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
     
     
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
+      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
     
-      <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive DDL数据定义</title>
-    <link href="http://lvmaohai.cn/articles/hive/ddl-shu-ju-ding-yi.html"/>
-    <id>http://lvmaohai.cn/articles/hive/ddl-shu-ju-ding-yi.html</id>
-    <published>2020-01-17T21:00:00.000Z</published>
-    <updated>2020-01-17T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;创建数据库&quot;&gt;&lt;a href=&quot;#创建数据库&quot; class=&quot;headerlink&quot; title=&quot;创建数据库&quot;&gt;&lt;/a&gt;创建数据库&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;创建一个数据库，数据库在HDFS上的默认存储路径是:
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://lvmaohai.cn/tags/hive/"/>
-    
-      <category term="HQL" scheme="http://lvmaohai.cn/tags/hql/"/>
+      <category term="HQL" scheme="http://blog.lvmaohai.cn/tags/hql/"/>
     
   </entry>
   
