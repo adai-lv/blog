@@ -485,7 +485,7 @@
             <div id="articleContent">
                 <p>分析什么情况会导致可用虚拟内存异常：<strong><font color="red">java.lang.OutOfMemoryError:Kill process or sacrifice child</font></strong> 出现，并提供示例代码的同时为您提供解决指南。</p>
 <h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>操作系统是建立在进程的概念之上，这些进程在内核中作业，其中有一个非常特殊的进程，名叫“内存杀手（Out of memory killer）”。当内核检测到系统内存不足时，OOM killer被激活，然后选择一个进程杀掉。哪一个进程这么倒霉呢？选择的算法和想法都很朴实：谁占用内存最多，谁就被干掉。如果你对OOM Killer感兴趣的话，建议你阅读一下这篇文章：<a href="https://www.vpsee.com/2013/10/how-to-configure-the-linux-oom-killer/" target="_blank" rel="noopener">理解和配置 Linux 下的 OOM Killer</a>。</p>
-<p><img src="/images/article/java-oom-07.png" alt="OOM Killer"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-oom-07.png" alt="OOM Killer"></p>
 <p>当可用虚拟虚拟内存(包括交换空间)消耗到让整个操作系统面临风险时，就会产生 <font color="red">Out of memory:Kill process or sacrifice child</font> 错误。在这种情况下，OOM Killer会选择“流氓进程”并杀死它。</p>
 <h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>默认情况下，<strong>Linux内核</strong>允许进程请求比系统中可用内存更多的内存，但大多数进程实际上并没有使用完他们所分配的内存。这就跟现实生活中的宽带运营商类似，他们向所有消费者出售一个100M的带宽，远远超过用户实际使用的带宽，一个10G的链路可以非常轻松的服务100个(10G/100M)用户，但实际上宽带运行商往往会把10G链路用于服务150人或者更多，以便让链路的利用率更高，毕竟空闲在那儿也没什么意义。</p>
 <p>Linux内核采用的机制跟宽带运营商差不多，一般情况下都没有问题，但当大多数应用程序都消耗完自己的内存时，麻烦就来了，因为这些应用程序的内存需求加起来超出了物理内存（包括 swap）的容量，内核（OOM killer）必须杀掉一些进程才能腾出空间保障系统正常运行。</p>
