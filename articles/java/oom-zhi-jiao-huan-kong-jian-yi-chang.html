@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java OOM之堆空间异常, flink, bigdata">
-    <meta name="description" content="分析什么情况会导致堆空间异常出现，并提供示例代码的同时为您提供解决指南。">
+    <meta name="keywords" content="Java OOM之交换空间异常, flink, bigdata">
+    <meta name="description" content="分析什么情况会导致交换空间异常出现，并提供示例代码的同时为您提供解决指南。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="baidu-site-verification" content="6EhrtReRo2" />
-    <title>Java OOM之堆空间异常 | 海韵学社</title>
+    <title>Java OOM之交换空间异常 | 海韵学社</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
@@ -293,12 +293,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java OOM之堆空间异常</h1>
+                    <h1 class="description center-align post-title">Java OOM之交换空间异常</h1>
                 </div>
             </div>
         </div>
@@ -423,10 +423,6 @@
                                 <span class="chip bg-color">OOM</span>
                             </a>
                         
-                            <a href="/tags/heapspace/">
-                                <span class="chip bg-color">HeapSpace</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -455,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-02-03
+                    2020-02-07
                 </div>
                 
 
@@ -464,14 +460,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    1.7k
+                    851
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>时长:&nbsp;
-                    6 分
+                    3 分
                 </div>
                 
 
@@ -487,94 +483,34 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>分析什么情况会导致堆空间异常：<strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 出现，并提供示例代码的同时为您提供解决指南。</p>
-<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-oom-02.jpg" alt="JVM内存模型示意图"></p>
-<p>Java 应用程序在启动时，会指定所需要的堆内存大小，它被分割成两个不同的区域：<font color="red">Heap Space（堆空间）</font> 和 <font color="red">Permgen Space（持久代空间 Permanent Generation）</font>：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-oom-01.png" alt=""></p>
-<p>Java中堆空间是 JVM 管理的最大一块内存空间，其中堆被划分成两个不同的区域：新生代（Young）和老年代（Tenured），新生代又被划分为3个区域：<strong><font color="red">Eden、From Survivor、To Survivor。</font></strong></p>
-<p>堆空间的大小可以在 JVM（Java虚拟机）启动时，通过如下参数设置：</p>
-<ul>
-<li><p><strong><font color="red">-Xmx</font></strong> 设置 JVM 最大堆空间。</p>
-</li>
-<li><p><strong><font color="red">-Xms</font></strong> 设置 JVM 初始堆空间。</p>
-<p>此值可以设置与 <strong>-Xmx</strong> 相同，以避免每次垃圾回收完成后JVM重新分配内存。</p>
-</li>
-<li><p><strong><font color="red">-Xmn</font></strong>：设置年轻代。</p>
-<p>在整个堆堆空间大小确定的情况下，增大年轻代将会减小年老代，反之亦然，此值关系到JVM垃圾回收，对系统性能影响较大，<strong><font color="red">官方推荐配置为整个堆大小的3/8</font></strong>。</p>
-</li>
-</ul>
-<p>如果没有显式设置，则将使用特定平台的默认值。</p>
-<p>当应用程序试图向堆空间添加更多的数据，但堆却没有足够的空间来容纳这些数据时，将会触发 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 异常。需要注意的是： <font color="red">即使有足够的物理内存可用，只要达到堆空间设置的大小限制，此异常仍然会被触发。</font></p>
-<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>触发 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 最常见的原因就是应用程序需要的堆空间是XXL号的，但是JVM提供的却是S号。解决方法也很简单，提供更大的堆空间即可。</p>
-<p>除了前面的因素还有更复杂的成因：</p>
-<ul>
-<li><strong>流量/数据量峰值：</strong> 应用程序在设计之初均有用户量和数据量的限制，某一时刻，当用户数量或数据量突然达到一个峰值，并且这个峰值已经超过了设计之初预期的阈值，那么以前正常的功能将会停止，并触发 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 异常。</li>
-<li><strong>内存泄漏：</strong> 特定的编程错误会导致你的应用程序不停的消耗更多的内存，每次使用有内存泄漏风险的功能就会留下一些不能被回收的对象到堆空间中，随着时间的推移，泄漏的对象会消耗所有的堆空间，最终触发 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 异常。</li>
-</ul>
-<h2 id="场景示例"><a href="#场景示例" class="headerlink" title="场景示例"></a>场景示例</h2><p>① 堆空间运行时设置不合理示例</p>
-<p>下面的代码试图创建 2 x 1024 x 1024 个元素的整型数组，当你尝试编译并指定 <strong>12M 堆空间</strong> 运行时（java -Xmx12m OOMTest），将会失败并抛出 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 异常，而当你指定 <strong>13M 堆空间</strong> 时，将正常的运行。</p>
-<pre><code>class OOMTest {
-
-    static final int SIZE = 2*1024*1024;
-
-    public static void main(String[] a) {
-        int[] i = new int[SIZE];
-    }
-}</code></pre><p>运行如下：</p>
-<pre><code>$ javac OOMTest.java
-$ java -Xmx12m OOMTest
-Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
-    at OOMTest.main(OOMTest.java:6)
-
-$ java -Xmx13m OOMTest</code></pre><p>② 程序内存泄漏示例</p>
-<p>在Java中，当开发者创建一个新对象（比如：new Integer(5)）时，不需要自己开辟内存空间，而是把它交给JVM。在应用程序整个生命周期内，JVM负责检查哪些对象可用，哪些对象未被使用。未使用对象将被丢弃，其占用的内存也将被回收，这一过程被称为垃圾回收。JVM负责垃圾回收的模块集合被称为垃圾回收器（GC）。</p>
-<p>Java的内存自动管理机制依赖于GC定期查找未使用对象并删除它们。Java中的内存泄漏是由于GC无法识别一些已经不再使用的对象，而这些未使用的对象一直留在堆空间中，这种堆积最终会导致 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 异常。</p>
-<p>我们可以非常容易的写出导致内存泄漏的Java代码：</p>
-<pre><code>public class KeylessEntry {
-
-    static class Key {
-        Integer id;
-
-        Key(Integer id) {
-            this.id = id;
-        }
-
-        @Override
-        public int hashCode() {
-            return id.hashCode();
-        }
-    }
-
-    public static void main(String[] args) {
-        Map&lt;Key,String&gt; m = new HashMap&lt;&gt;();
-        while(true) {
-            for(int i = 0; i &lt; 10000; i++) {
-                if(!m.containsKey(new Key(i))) {
-                    m.put(new Key(i), "Number:" + i);
-                }
-            }
-        }
-    }
-}</code></pre><p>代码中 <strong>HashMap</strong> 为本地缓存，第一次while循环，会将10000个元素添加到缓存中。后面的while循环中，由于key已经存在于缓存中，缓存的大小将一直会维持在10000。但事实真的如此吗？由于 <strong>Key 实体</strong> 没有实现 <strong>equals()</strong> 方法，导致for循环中每次执行 <strong>m.containsKey(new Key(i))</strong> 结果均为false，其结果就是HashMap中的元素将一直增加。</p>
-<p>随着时间的推移，越来越多的 <strong>Key 对象</strong> 进入堆空间且不能被垃圾收集器回收（m为局部变量，GC会认为这些对象一直可用，所以不会回收），直到所有的堆空间被占用，最后抛出 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 异常。</p>
+                <p>分析什么情况会导致创建<strong>Native线程</strong>异常：<strong><font color="red">java.lang.OutOfMemoryError:Out of swap space</font></strong> 出现，并提供示例代码的同时为您提供解决指南。</p>
+<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>在 JVM 启动的时候，可以通过 -Xmx 等参数来限制 JVM 的最大内存。当 JVM 使用的内存总量超过可用的物理内存时，操作系统就会用到虚拟内存（会将内存中的数据交换到磁盘上去）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-oom-05.png" alt=""></p>
+<p>出现 <strong><font color="red">java.lang.OutOfMemoryError:Out of swap space</font></strong> 就意味着交换空间也将耗尽，并且由于缺少物理内存和交换空间，再次尝试分配内存也将失败。</p>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>当应用程序向 <strong>JVM native heap</strong> 请求分配内存失败并且 <strong>native heap</strong> 也即将耗尽时，JVM 会抛出 <strong><font color="red">java.lang.OutOfMemoryError:Out of swap space</font></strong> 错误。该错误消息中包含分配失败的大小（以字节为单位）和请求失败的原因。</p>
 <blockquote>
-<p>上面的代码直接运行可能很久也不会抛出异常，可以在启动时使用-Xmx参数，设置堆内存大小，或者在for循环后打印HashMap的大小，执行后会发现HashMap的size一直再增长。</p>
+<p>Native Heap Memory 是 JVM 内部使用的 Memory，这部分的 Memory 可以通过JDK提供的JNI的方式去访问，这部分Memory效率很高，但是管理需要自己去做，如果没有把握最好不要使用，以防出现内存泄露问题。JVM 使用 Native Heap Memory 用来优化代码载入（JTI代码生成），临时对象空间申请，以及JVM内部的一些操作。</p>
 </blockquote>
-<p>解决方法也非常简单，只要 <strong>Key</strong> 实现自己的 <strong>equals</strong> 方法即可：</p>
-<pre><code>Override
-public boolean equals(Object o) {
-    boolean response = false;
-    if (o instanceof Key) {
-        response = (((Key)o).id).equals(this.id);
-    }
-    return response;
-}</code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>先要确保有 <strong>足够的堆空间</strong> 来正常运行你的应用程序，在JVM的启动配置中分配 <strong>1024M堆空间</strong>，如下配置：</p>
-<pre><code>-Xmx1024m</code></pre><p>当然也可以使用其他单位，比如用G表示GB，K表示KB。下面的示例都表示最大堆空间为1GB：</p>
-<pre><code>java -Xmx1073741824 com.mycompany.MyClass
-java -Xmx1048576k com.mycompany.MyClass
-java -Xmx1024m com.mycompany.MyClass
-java -Xmx1g com.mycompany.MyClass</code></pre><p>然后，更多的时候，单纯地增加堆空间不能解决所有的问题。如果你的程序存在内存泄漏，一味的增加堆空间也只是推迟 <strong><font color="red">java.lang.OutOfMemoryError: Java heap space</font></strong> 异常出现的时间而已，并未解决这个隐患。除此之外，垃圾收集器在GC时，应用程序会停止运行直到GC完成，而增加堆空间也会导致GC时间延长，进而影响程序的吞吐量。</p>
-<p>如果你想完全解决这个问题，那就好好提升自己的编程技能吧，当然运用好 <strong>Debuggers, profilers, heap dump analyzers</strong> 等工具，可以让你的程序最大程度的避免内存泄漏问题。</p>
+<p>这个问题往往发生在Java进程已经开始交换的情况下，现代的GC算法已经做得足够好了，当面临由于交换引起的延迟问题时，GC暂停的时间往往会让大多数应用程序不能容忍。</p>
+<p><strong><font color="red">java.lang.OutOfMemoryError:Out of swap space</font></strong> 往往是由操作系统级别的问题引起的，例如：</p>
+<ul>
+<li>操作系统配置的交换空间不足。</li>
+<li>系统上的另一个进程消耗所有内存资源。</li>
+</ul>
+<p>还有可能是本地内存泄漏导致应用程序失败，比如：应用程序调用了<strong>native code</strong>连续分配内存，但却没有被释放。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>解决这个问题有几个办法，通常最简单的方法就是增加交换空间，不同平台实现的方式会有所不同，比如在Linux下可以通过如下命令实现：</p>
+<pre><code># 创建并附加一个大小为640MB的新交换文件
+swapoff -a 
+dd if=/dev/zero of=swapfile bs=1024 count=655360
+mkswap swapfile
+swapon swapfile</code></pre><p>Java GC会扫描内存中的数据，如果是对交换空间运行垃圾回收算法会使GC暂停的时间增加几个数量级，因此你应该慎重考虑使用上文增加交换空间的方法。</p>
+<p>如果你的应用程序部署在JVM需要同其他进程激烈竞争获取资源的物理机上，建议将服务隔离到单独的虚拟机中。</p>
+<p>但在许多情况下，您唯一真正可行的替代方案是：</p>
+<ul>
+<li>升级机器以包含更多内存</li>
+<li>优化应用程序以减少其内存占用</li>
+</ul>
+<p>当您转向优化路径时，使用内存转储分析程序来检测内存中的大分配是一个好的开始。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -619,10 +555,6 @@ java -Xmx1g com.mycompany.MyClass</code></pre><p>然后，更多的时候，单�
                                     <span class="chip bg-color">OOM</span>
                                 </a>
                             
-                                <a href="/tags/heapspace/">
-                                    <span class="chip bg-color">HeapSpace</span>
-                                </a>
-                            
                         </div>
                     
                 </div>
@@ -651,19 +583,20 @@ java -Xmx1g com.mycompany.MyClass</code></pre><p>然后，更多的时候，单�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/articles/java/oom-zhi-chi-jiu-dai-yi-chang.html">
+                <a href="/articles/java/oom-zhi-jiao-huan-kong-jian-yi-chang.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/17.jpg" class="responsive-img" alt="Java OOM之持久代异常">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/22.jpg" class="responsive-img" alt="Java OOM之交换空间异常">
                         
                         <span class="card-title">
                             
-                            Java OOM之持久代异常
+                            Java OOM之交换空间异常
                         </span>
                     </div>
                 </a>
@@ -676,17 +609,15 @@ java -Xmx1g com.mycompany.MyClass</code></pre><p>然后，更多的时候，单�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/articles/zhi-chang-gan-wu.html">
+                <a href="/articles/java/oom-zhi-chuang-jian-native-xian-cheng-yi-chang.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/6.jpg" class="responsive-img" alt="职场感悟">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/20.jpg" class="responsive-img" alt="Java OOM之创建Native线程异常">
                         
                         <span class="card-title">
                             
-                            <i class="fa fa-lock"></i>&nbsp;&nbsp;
-                            
-                            职场感悟
+                            Java OOM之创建Native线程异常
                         </span>
                     </div>
                 </a>
@@ -718,7 +649,7 @@ java -Xmx1g com.mycompany.MyClass</code></pre><p>然后，更多的时候，单�
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-02-03T05-00-00',
+        id: '2020-02-07T05-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 

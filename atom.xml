@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lvmaohai.cn/"/>
-  <updated>2020-02-05T21:00:00.000Z</updated>
+  <updated>2020-02-06T21:00:00.000Z</updated>
   <id>http://blog.lvmaohai.cn/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java OOM之交换空间异常</title>
+    <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-jiao-huan-kong-jian-yi-chang.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-jiao-huan-kong-jian-yi-chang.html</id>
+    <published>2020-02-06T21:00:00.000Z</published>
+    <updated>2020-02-06T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分析什么情况会导致创建&lt;strong&gt;Native线程&lt;/strong&gt;异常：&lt;strong&gt;&lt;font color=&quot;red&quot;&gt;java.lang.OutOfMemoryError:Out of swap space&lt;/font&gt;&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
+    
+      <category term="OOM" scheme="http://blog.lvmaohai.cn/tags/oom/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java OOM之创建Native线程异常</title>
+    <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-chuang-jian-native-xian-cheng-yi-chang.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-chuang-jian-native-xian-cheng-yi-chang.html</id>
+    <published>2020-02-06T13:00:00.000Z</published>
+    <updated>2020-02-06T13:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分析什么情况会导致创建&lt;strong&gt;Native线程&lt;/strong&gt;异常：&lt;strong&gt;&lt;font color=&quot;red&quot;&gt;java.lang.OutOfMemoryError:Unable to create new native
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
+    
+      <category term="OOM" scheme="http://blog.lvmaohai.cn/tags/oom/"/>
+    
+      <category term="Thread" scheme="http://blog.lvmaohai.cn/tags/thread/"/>
+    
+  </entry>
   
   <entry>
     <title>Java OOM之GC开销限制异常</title>
@@ -567,66 +627,6 @@
     
     
       <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive HQL查询</title>
-    <link href="http://blog.lvmaohai.cn/articles/hive/hql-cha-xun.html"/>
-    <id>http://blog.lvmaohai.cn/articles/hive/hql-cha-xun.html</id>
-    <published>2020-01-19T21:00:00.000Z</published>
-    <updated>2020-01-19T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;查询语句语法&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[WITH CommonTableExpression (, CommonTableExpression)*] (Note: Only available starting with Hive 0.13.0)
-SELECT
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
-    
-      <category term="HQL" scheme="http://blog.lvmaohai.cn/tags/hql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive DML数据操作</title>
-    <link href="http://blog.lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html"/>
-    <id>http://blog.lvmaohai.cn/articles/hive/dml-shu-ju-cao-zuo.html</id>
-    <published>2020-01-18T21:00:00.000Z</published>
-    <updated>2020-01-18T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;数据导入&quot;&gt;&lt;a href=&quot;#数据导入&quot; class=&quot;headerlink&quot; title=&quot;数据导入&quot;&gt;&lt;/a&gt;数据导入&lt;/h2&gt;&lt;h3 id=&quot;向表中装载数据（Load）&quot;&gt;&lt;a href=&quot;#向表中装载数据（Load）&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
-    
-      <category term="HQL" scheme="http://blog.lvmaohai.cn/tags/hql/"/>
     
   </entry>
   
