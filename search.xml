@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Java OOM之可用虚拟内存异常</title>
+      <link href="/articles/java/oom-zhi-ke-yong-xu-ni-nei-cun-yi-chang.html"/>
+      <url>/articles/java/oom-zhi-ke-yong-xu-ni-nei-cun-yi-chang.html</url>
+      
+        <content type="html"><![CDATA[<p>分析什么情况会导致可用虚拟内存异常：<strong><font color="red">java.lang.OutOfMemoryError:Kill process or sacrifice child</font></strong> 出现，并提供示例代码的同时为您提供解决指南。</p><h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>操作系统是建立在进程的概念之上，这些进程在内核中作业，其中有一个非常特殊的进程，名叫“内存杀手（Out of memory killer）”。当内核检测到系统内存不足时，OOM killer被激活，然后选择一个进程杀掉。哪一个进程这么倒霉呢？选择的算法和想法都很朴实：谁占用内存最多，谁就被干掉。如果你对OOM Killer感兴趣的话，建议你阅读一下这篇文章：<a href="https://www.vpsee.com/2013/10/how-to-configure-the-linux-oom-killer/" target="_blank" rel="noopener">理解和配置 Linux 下的 OOM Killer</a>。</p><p><img src="/images/article/java-oom-07.png" alt="OOM Killer"></p><p>当可用虚拟虚拟内存(包括交换空间)消耗到让整个操作系统面临风险时，就会产生 <font color="red">Out of memory:Kill process or sacrifice child</font> 错误。在这种情况下，OOM Killer会选择“流氓进程”并杀死它。</p><h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>默认情况下，<strong>Linux内核</strong>允许进程请求比系统中可用内存更多的内存，但大多数进程实际上并没有使用完他们所分配的内存。这就跟现实生活中的宽带运营商类似，他们向所有消费者出售一个100M的带宽，远远超过用户实际使用的带宽，一个10G的链路可以非常轻松的服务100个(10G/100M)用户，但实际上宽带运行商往往会把10G链路用于服务150人或者更多，以便让链路的利用率更高，毕竟空闲在那儿也没什么意义。</p><p>Linux内核采用的机制跟宽带运营商差不多，一般情况下都没有问题，但当大多数应用程序都消耗完自己的内存时，麻烦就来了，因为这些应用程序的内存需求加起来超出了物理内存（包括 swap）的容量，内核（OOM killer）必须杀掉一些进程才能腾出空间保障系统正常运行。</p><h2 id="场景示例"><a href="#场景示例" class="headerlink" title="场景示例"></a>场景示例</h2><p>当你在Linux上运行如下代码：</p><pre><code>public static void main(String[] args){    List&lt;int[]&gt; l = new java.util.ArrayList();    for (int i = 10000; i &lt; 100000; i++) {        try {            l.add(new int[100000000]);        } catch (Throwable t) {            t.printStackTrace();        }    }}</code></pre><p>在Linux的系统日志中<font color="red">/var/log/kern.log</font>会出现以下日志：</p><pre><code>Feb  7 21:30:59 bigo kernel: [70667120.897649] Out of memory: Kill process 29957 (java) score 366 or sacrifice childFeb  7 21:30:59 bigo kernel: [70667120.897701] Killed process 29957 (java) total-vm:2532680kB, anon-rss:1416508kB, file-rss:0kB</code></pre><p>注意：你可能需要调整交换文件和堆大小，否则你将很快见到熟悉的Java heap space异常。在测试用例中，使用-Xmx2g指定的2g堆，并具有以下交换配置：</p><pre><code>swapoff -a dd if=/dev/zero of=swapfile bs=1024 count=655360mkswap swapfileswapon swapfile</code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>解决这个问题最有效也是最直接的方法就是升级内存，其他方法诸如：调整OOM Killer配置、水平扩展应用，将内存的负载分摊到若干小实例上等</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> OOM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java OOM之数组大小限制异常</title>
+      <link href="/articles/java/oom-zhi-shu-zu-da-xiao-xian-zhi-yi-chang.html"/>
+      <url>/articles/java/oom-zhi-shu-zu-da-xiao-xian-zhi-yi-chang.html</url>
+      
+        <content type="html"><![CDATA[<p>分析什么情况会导致数组大小限制异常：<strong><font color="red">java.lang.OutOfMemoryError:Requested array size exceeds VM limit</font></strong> 出现，并提供示例代码的同时为您提供解决指南。</p><h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>Java对应用程序可以分配的最大数组大小有限制。不同平台限制有所不同，但通常在1到21亿个元素之间。</p><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/java-oom-06.png" alt=""></p><p>当你遇到 <strong><font color="red">java.lang.OutOfMemoryError:Requested array size exceeds VM limit</font></strong> 错误时，意味着你的应用程序试图分配大于Java虚拟机可以支持的数组。</p><h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>该错误由 <strong>JVM</strong> 中的<strong>native code</strong>抛出。<strong>JVM</strong> 在为数组分配内存之前，会执行特定于平台的检查：分配的数据结构是否在此平台中是可寻址的。</p><p>你很少见到这个错误是因为Java数组的索引是int类型。Java中的最大正整数为2 ^ 31 - 1 = 2,147,483,647。 并且平台特定的限制可以非常接近这个数字，例如：64位macOS，运行<strong>Jdk1.8</strong>可以初始化数组的长度高达2,147,483,645（Integer.MAX_VALUE-2）。如果再将数组的长度增加1到Integer.MAX_VALUE-1会导致熟悉的OutOfMemoryError：</p><pre><code>Exception in thread "main" java.lang.OutOfMemoryError: Requested array size exceeds VM limit</code></pre><p>但是，在使用OpenJDK 6的32位Linux上，在分配具有大约11亿个元素的数组时，您将遇到 <strong><font color="red">java.lang.OutOfMemoryError:Requested array size exceeds VM limit</font></strong> 的错误。 要理解你的特定环境的限制，运行下文中描述的小测试程序。</p><h2 id="场景示例"><a href="#场景示例" class="headerlink" title="场景示例"></a>场景示例</h2><pre><code>for (int i = 3; i &gt;= 0; i--) {    try {        int[] arr = new int[Integer.MAX_VALUE-i];        System.out.format("Successfully initialized an array with %,d elements.\n", Integer.MAX_VALUE-i);    } catch (Throwable t) {        t.printStackTrace();    }}</code></pre><p>该示例重复四次，并在每个回合中初始化一个长原语数组。该程序尝试初始化的数组的大小在每次迭代时增加1，最终达到Integer.MAX_VALUE。 现在，当使用Hotspot 7在64位Mac OS X上启动代码片段时，应该得到类似于以下内容的输出：</p><pre><code>java.lang.OutOfMemoryError: Java heap space    at com.phlicode.demo.ArraySize.main(ArraySize.java:8)java.lang.OutOfMemoryError: Java heap space    at com.phlicode.demo.ArraySize.main(ArraySize.java:8)java.lang.OutOfMemoryError: Requested array size exceeds VM limit    at com.phlicode.demo.ArraySize.main(ArraySize.java:8)java.lang.OutOfMemoryError: Requested array size exceeds VM limit    at com.phlicode.demo.ArraySize.main(ArraySize.java:8)</code></pre><p>注意，在出现<strong>Requested array size exceeded VM limit</strong>之前，出现了更熟悉的<strong>java.lang.OutOfMemoryError: Java heap space</strong>。 这是因为初始化2 ^ 31-1个元素的数组需要腾出8G的内存空间，大于JVM使用的默认值。</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p><strong><font color="red">java.lang.OutOfMemoryError:Requested array size exceeds VM limit</font></strong> 可能会在以下任一情况下出现：</p><ul><li>数组增长太大，最终大小在平台限制和Integer.MAX_INT之间</li><li>你有意分配大于2 ^ 31-1个元素的数组</li></ul><p>在第一种情况下，检查你的代码库，看看你是否真的需要这么大的数组。也许你可以减少数组的大小，或者将数组分成更小的数据块，然后分批处理数据。</p><p>在第二种情况下，记住Java数组是由int索引的。因此，当在平台中使用标准数据结构时，数组不能超过2 ^ 31-1个元素。事实上，在编译时就会出错：error：integer number too large。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> OOM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java OOM之交换空间异常</title>
       <link href="/articles/java/oom-zhi-jiao-huan-kong-jian-yi-chang.html"/>
       <url>/articles/java/oom-zhi-jiao-huan-kong-jian-yi-chang.html</url>

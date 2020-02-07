@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Kafka 概述和入门, 海韵学社,软件编程,flink,bigdata,java">
-    <meta name="description" content="Kafka 是一个分布式的基于发布/订阅模式的消息队列，主要应用于大数据实时处理领域。">
+    <meta name="keywords" content="Java OOM之可用虚拟内存异常, 海韵学社,软件编程,flink,bigdata,java">
+    <meta name="description" content="分析什么情况会导致可用虚拟内存异常出现，并提供示例代码的同时为您提供解决指南。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="baidu-site-verification" content="6EhrtReRo2" />
-    <title>Kafka 概述和入门 | 海韵学社</title>
+    <title>Java OOM之可用虚拟内存异常 | 海韵学社</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lvmaohai/blog/libs/awesome/css/all.css">
@@ -293,12 +293,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Kafka 概述和入门</h1>
+                    <h1 class="description center-align post-title">Java OOM之可用虚拟内存异常</h1>
                 </div>
             </div>
         </div>
@@ -415,8 +415,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/kafka/">
-                                <span class="chip bg-color">Kafka</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/oom/">
+                                <span class="chip bg-color">OOM</span>
                             </a>
                         
                     </div>
@@ -427,8 +431,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/kafka/" class="post-category">
-                                Kafka
+                            <a href="/categories/java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -447,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布:&nbsp;
-                    2020-01-10
+                    2020-02-07
                 </div>
                 
 
@@ -456,7 +460,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;
-                    1.1k
+                    822
                 </div>
                 
 
@@ -479,68 +483,29 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Kafka 是一个<font color="red">分布式</font>的基于<font color="red">发布/订阅模式</font>的<font color="red">消息队列(Message Queue)</font>，主要应用于大数据实时处理领域。</p>
-<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><h3 id="传统消息队列的应用场景"><a href="#传统消息队列的应用场景" class="headerlink" title="传统消息队列的应用场景"></a>传统消息队列的应用场景</h3><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/kafka-01.jpg" alt=""></p>
-<p><strong>使用消息队列的好处</strong></p>
-<ul>
-<li><p>解耦 </p>
-<p>  允许你独立的扩展或修改两边的处理过程，只要确保它们遵守同样的接口约束。</p>
-</li>
-<li><p>可恢复性</p>
-<p>  系统的一部分组件失效时，不会影响到整个系统。消息队列降低了进程间的耦合度，所以即使一个处理消息的进程挂掉，加入队列中的消息仍然可以在系统恢复后被处理。</p>
-</li>
-<li><p>缓冲</p>
-<p>  有助于控制和优化数据流经过系统的速度，解决生产消息和消费消息的处理速度不一致 的情况。</p>
-</li>
-<li><p>灵活性 &amp; 峰值处理能力</p>
-<p>  在访问量剧增的情况下，应用仍然需要继续发挥作用，但是这样的突发流量并不常见。</p>
-<p>  如果为以能处理这类峰值访问为标准来投入资源随时待命无疑是巨大的浪费。</p>
-<p>  使用消息队列能够使关键组件顶住突发的访问压力，而不会因为突发的超负荷的请求而完全崩溃。</p>
-</li>
-<li><p>异步通信</p>
-<p>  消息队列提供了异步处理机制，允许用户把一个消息放入队列，但并不立即处理它。</p>
-<p>  想向队列中放入多少消息就放多少，然后在需要的时候再去处理它们。</p>
-</li>
-</ul>
-<h3 id="消息队列的两种模式"><a href="#消息队列的两种模式" class="headerlink" title="消息队列的两种模式"></a>消息队列的两种模式</h3><ul>
-<li><p><strong>点对点模式</strong> (一对一，消费者主动拉取数据，消息收到后消息清除)</p>
-<p>  消息生产者生产消息发送到 Queue 中，然后消息消费者从 Queue 中取出并且消费消息。</p>
-<p>  消息被消费以后，queue 中不再有存储，所以消息消费者不可能消费到已经被消费的消息。</p>
-<p>  Queue 支持存在多个消费者，但是对一个消息而言，只会有一个消费者可以消费。</p>
-<p>  <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/kafka-02.jpg" alt=""></p>
-</li>
-<li><p><strong>发布/订阅模式</strong> (一对多，消费者消费数据之后不会清除消息)</p>
-<p>  消息生产者(发布)将消息发布到 topic 中，同时有多个消息消费者(订阅)消费该消息。</p>
-<p>  和点对点方式不同，发布到 topic 的消息会被所有订阅者消费。</p>
-<p>  <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/kafka-03.jpg" alt=""></p>
-</li>
-</ul>
-<h2 id="Kafka-基础架构"><a href="#Kafka-基础架构" class="headerlink" title="Kafka 基础架构"></a>Kafka 基础架构</h2><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/kafka-04.jpg" alt=""></p>
-<ul>
-<li><p><strong>Producer</strong> 消息生产者，向 kafka broker 发消息的客户端。</p>
-</li>
-<li><p><strong>Consumer</strong> 消息消费者，向 kafka broker 取消息的客户端。</p>
-</li>
-<li><p><strong>Consumer Group (CG)</strong> 消费者组，由多个 consumer 组成。</p>
-<p>  消费者组内每个消费者负责消费不同分区的数据，一个分区只能由一个组内消费者消费。</p>
-<p>  消费者组之间互不影响。</p>
-<p>  所有的消费者都属于某个消费者组，即<font color="red">消费者组是逻辑上的一个订阅者。</font></p>
-</li>
-<li><p><strong>Broker</strong> 一台 kafka 服务器就是一个 broker。</p>
-<p>  一个集群由多个 broker 组成，一个 broker 可以容纳多个 topic。</p>
-</li>
-<li><p><strong>Topic</strong> 可以理解为一个队列，<font color="red">生产者和消费者面向的都是一个 topic。</font></p>
-</li>
-<li><p><strong>Partition</strong> 为了实现扩展性，一个非常大的 topic 可以分布到多个 broker(即服务器)上，<font color="red">一个 topic 可以分为多个 partition</font>，每个 partition 是一个有序的队列。</p>
-</li>
-<li><p><strong>Replica</strong> 副本。</p>
-<p>  为保证集群中的某个节点发生故障时，<font color="red">该节点上的 partition 数据不丢失，且 kafka 仍然能够继续工作</font>，kafka 提供了副本机制，一个 topic 的每个分区都有若干个副本， 一个 leader 和若干个 follower。</p>
-</li>
-<li><p><strong>leader</strong> 每个分区多个副本的“主”，生产者发送数据的对象，以及消费者消费数据的对象都是 leader。</p>
-</li>
-<li><p><strong>follower</strong> 每个分区多个副本中的“从”，实时从 leader 中同步数据，保持和 leader 数据的同步。leader 发生故障时，某个 follower 会成为新的 follower。</p>
-</li>
-</ul>
+                <p>分析什么情况会导致可用虚拟内存异常：<strong><font color="red">java.lang.OutOfMemoryError:Kill process or sacrifice child</font></strong> 出现，并提供示例代码的同时为您提供解决指南。</p>
+<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>操作系统是建立在进程的概念之上，这些进程在内核中作业，其中有一个非常特殊的进程，名叫“内存杀手（Out of memory killer）”。当内核检测到系统内存不足时，OOM killer被激活，然后选择一个进程杀掉。哪一个进程这么倒霉呢？选择的算法和想法都很朴实：谁占用内存最多，谁就被干掉。如果你对OOM Killer感兴趣的话，建议你阅读一下这篇文章：<a href="https://www.vpsee.com/2013/10/how-to-configure-the-linux-oom-killer/" target="_blank" rel="noopener">理解和配置 Linux 下的 OOM Killer</a>。</p>
+<p><img src="/images/article/java-oom-07.png" alt="OOM Killer"></p>
+<p>当可用虚拟虚拟内存(包括交换空间)消耗到让整个操作系统面临风险时，就会产生 <font color="red">Out of memory:Kill process or sacrifice child</font> 错误。在这种情况下，OOM Killer会选择“流氓进程”并杀死它。</p>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>默认情况下，<strong>Linux内核</strong>允许进程请求比系统中可用内存更多的内存，但大多数进程实际上并没有使用完他们所分配的内存。这就跟现实生活中的宽带运营商类似，他们向所有消费者出售一个100M的带宽，远远超过用户实际使用的带宽，一个10G的链路可以非常轻松的服务100个(10G/100M)用户，但实际上宽带运行商往往会把10G链路用于服务150人或者更多，以便让链路的利用率更高，毕竟空闲在那儿也没什么意义。</p>
+<p>Linux内核采用的机制跟宽带运营商差不多，一般情况下都没有问题，但当大多数应用程序都消耗完自己的内存时，麻烦就来了，因为这些应用程序的内存需求加起来超出了物理内存（包括 swap）的容量，内核（OOM killer）必须杀掉一些进程才能腾出空间保障系统正常运行。</p>
+<h2 id="场景示例"><a href="#场景示例" class="headerlink" title="场景示例"></a>场景示例</h2><p>当你在Linux上运行如下代码：</p>
+<pre><code>public static void main(String[] args){
+    List&lt;int[]&gt; l = new java.util.ArrayList();
+    for (int i = 10000; i &lt; 100000; i++) {
+        try {
+            l.add(new int[100000000]);
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
+}</code></pre><p>在Linux的系统日志中<font color="red">/var/log/kern.log</font>会出现以下日志：</p>
+<pre><code>Feb  7 21:30:59 bigo kernel: [70667120.897649] Out of memory: Kill process 29957 (java) score 366 or sacrifice child
+Feb  7 21:30:59 bigo kernel: [70667120.897701] Killed process 29957 (java) total-vm:2532680kB, anon-rss:1416508kB, file-rss:0kB</code></pre><p>注意：你可能需要调整交换文件和堆大小，否则你将很快见到熟悉的Java heap space异常。在测试用例中，使用-Xmx2g指定的2g堆，并具有以下交换配置：</p>
+<pre><code>swapoff -a 
+dd if=/dev/zero of=swapfile bs=1024 count=655360
+mkswap swapfile
+swapon swapfile</code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>解决这个问题最有效也是最直接的方法就是升级内存，其他方法诸如：调整OOM Killer配置、水平扩展应用，将内存的负载分摊到若干小实例上等</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -577,8 +542,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/kafka/">
-                                    <span class="chip bg-color">Kafka</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/oom/">
+                                    <span class="chip bg-color">OOM</span>
                                 </a>
                             
                         </div>
@@ -609,19 +578,20 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/articles/kafka/jia-gou-yuan-li.html">
+                <a href="/articles/java/oom-zhi-ke-yong-xu-ni-nei-cun-yi-chang.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/23.jpg" class="responsive-img" alt="Kafka 架构原理">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/19.jpg" class="responsive-img" alt="Java OOM之可用虚拟内存异常">
                         
                         <span class="card-title">
                             
-                            Kafka 架构原理
+                            Java OOM之可用虚拟内存异常
                         </span>
                     </div>
                 </a>
@@ -634,15 +604,15 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/articles/kafka/an-zhuang-pei-zhi-he-chang-yong-ming-ling.html">
+                <a href="/articles/java/oom-zhi-shu-zu-da-xiao-xian-zhi-yi-chang.html">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/4.jpg" class="responsive-img" alt="Kafka 安装配置和常用命令">
+                        <img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/medias/featureimages/12.jpg" class="responsive-img" alt="Java OOM之数组大小限制异常">
                         
                         <span class="card-title">
                             
-                            Kafka 安装配置和常用命令
+                            Java OOM之数组大小限制异常
                         </span>
                     </div>
                 </a>
@@ -674,7 +644,7 @@
         repo: 'blog',
         owner: 'lvmaohai',
         admin: "lvmaohai",
-        id: '2020-01-10T05-00-00',
+        id: '2020-02-07T21-10-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 

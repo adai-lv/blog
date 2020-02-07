@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lvmaohai.cn/"/>
-  <updated>2020-02-06T21:00:00.000Z</updated>
+  <updated>2020-02-07T13:10:00.000Z</updated>
   <id>http://blog.lvmaohai.cn/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java OOM之可用虚拟内存异常</title>
+    <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-ke-yong-xu-ni-nei-cun-yi-chang.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-ke-yong-xu-ni-nei-cun-yi-chang.html</id>
+    <published>2020-02-07T13:10:00.000Z</published>
+    <updated>2020-02-07T13:10:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分析什么情况会导致可用虚拟内存异常：&lt;strong&gt;&lt;font color=&quot;red&quot;&gt;java.lang.OutOfMemoryError:Kill process or sacrifice child&lt;/font&gt;&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
+    
+      <category term="OOM" scheme="http://blog.lvmaohai.cn/tags/oom/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java OOM之数组大小限制异常</title>
+    <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-shu-zu-da-xiao-xian-zhi-yi-chang.html"/>
+    <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-shu-zu-da-xiao-xian-zhi-yi-chang.html</id>
+    <published>2020-02-07T13:00:00.000Z</published>
+    <updated>2020-02-07T13:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分析什么情况会导致数组大小限制异常：&lt;strong&gt;&lt;font color=&quot;red&quot;&gt;java.lang.OutOfMemoryError:Requested array size exceeds VM limit&lt;/font&gt;&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://blog.lvmaohai.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://blog.lvmaohai.cn/tags/java/"/>
+    
+      <category term="OOM" scheme="http://blog.lvmaohai.cn/tags/oom/"/>
+    
+  </entry>
   
   <entry>
     <title>Java OOM之交换空间异常</title>
@@ -563,60 +621,6 @@
         
         
           &lt;h2 id=&quot;Fetch抓取&quot;&gt;&lt;a href=&quot;#Fetch抓取&quot; class=&quot;headerlink&quot; title=&quot;Fetch抓取&quot;&gt;&lt;/a&gt;Fetch抓取&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Fetch&lt;/strong&gt; 抓取是指 &lt;font
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive 压缩和存储</title>
-    <link href="http://blog.lvmaohai.cn/articles/hive/ya-suo-he-cun-chu.html"/>
-    <id>http://blog.lvmaohai.cn/articles/hive/ya-suo-he-cun-chu.html</id>
-    <published>2020-01-22T21:00:00.000Z</published>
-    <updated>2020-01-22T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Hadoop压缩配置&quot;&gt;&lt;a href=&quot;#Hadoop压缩配置&quot; class=&quot;headerlink&quot; title=&quot;Hadoop压缩配置&quot;&gt;&lt;/a&gt;Hadoop压缩配置&lt;/h2&gt;&lt;h3 id=&quot;MR支持的压缩编码&quot;&gt;&lt;a href=&quot;#MR支持的压缩编码&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive HQL函数</title>
-    <link href="http://blog.lvmaohai.cn/articles/hive/hql-han-shu.html"/>
-    <id>http://blog.lvmaohai.cn/articles/hive/hql-han-shu.html</id>
-    <published>2020-01-21T21:00:00.000Z</published>
-    <updated>2020-01-21T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;查询函数&quot;&gt;&lt;a href=&quot;#查询函数&quot; class=&quot;headerlink&quot; title=&quot;查询函数&quot;&gt;&lt;/a&gt;查询函数&lt;/h2&gt;&lt;h3 id=&quot;空字段赋值函数（NVL）&quot;&gt;&lt;a href=&quot;#空字段赋值函数（NVL）&quot; class=&quot;headerlink&quot;
         
       
     
