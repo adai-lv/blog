@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Google 搜索的基本语法</title>
+      <link href="/articles/google-sou-suo-de-ji-ben-yu-fa.html"/>
+      <url>/articles/google-sou-suo-de-ji-ben-yu-fa.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="精确查找-“”）"><a href="#精确查找-“”）" class="headerlink" title="精确查找(“”）"></a>精确查找(“”）</h2><p>通常 Google 搜索关键词或者问题匹配查找都是进行模糊查询（搜索结果中存在搜索的部分关键词即可查询出）。为了实现搜索的关键词是「紧挨着」的，所以只需要在关键词两边分别加一个「引号(“”)」即可进行精确关键词查找，这样更能快速的进行关键词的匹配。</p><blockquote><p>“搜索内容1 搜索内容2”</p></blockquote><h2 id="逻辑关系-与-或"><a href="#逻辑关系-与-或" class="headerlink" title="逻辑关系(与/或)"></a>逻辑关系(与/或)</h2><p>搜索引擎中也是可以使用逻辑关系来进行匹配搜索的。</p><p>Google 默认的是<font color="red">「与」</font>的逻辑搜索，输入多个搜索关键词(关键词间用<strong>空格</strong>分隔)，关键词都会出现在页面搜索结果中。</p><blockquote><p>搜索内容1 搜索内容2</p></blockquote><p>比如，搜索关键词 <strong>java Hadoop</strong>，如下搜索结果：</p><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/google-01.jpg" alt=""></p><p>对于<font color="red">「或」</font>的使用，输入多个搜索关键词(关键词间用<strong>OR</strong>分隔)，页面的匹配结果至少是某一个关键词的搜索结果。</p><blockquote><p>搜索内容1 OR 搜索内容2</p></blockquote><p>比如，搜索关键词 <strong>java OR Hadoop</strong>，如下搜索结果：</p><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/google-02.jpg" alt=""></p><p>想在搜索的网页中不包含一些关键词（关键词间用<strong>空格</strong>分隔，关键词前用<strong>减号</strong>忽略），可以使用<font color="red">「非」</font>来进行搜索。</p><blockquote><p>搜索内容1 -搜索内容2 -搜索内容3</p></blockquote><p>比如，搜索关键词 <strong>历史 -世界历史 -中国历史</strong>，如下搜索结果：</p><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/google-03.jpg" alt=""></p><h2 id="限定网站域名搜索-site"><a href="#限定网站域名搜索-site" class="headerlink" title="限定网站域名搜索(site)"></a>限定网站域名搜索(site)</h2><p>如果只想要在某一个网站搜索相关内容，可以使用 site 语法，指定网站域名。</p><blockquote><p>搜索内容 site:<a href="http://www.xxx.xx" target="_blank" rel="noopener">www.xxx.xx</a></p></blockquote><p>比如，在 CSDN 搜索关键词 <strong>Flink 简介</strong>，如下搜索结果：</p><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/google-04.jpg" alt=""></p><p>除此之外，还可以限定域名的范围。限定顶级域名：</p><blockquote><p>搜索内容 site:.com</p></blockquote><h2 id="搜索的关键字包含在网页标题中-intitle"><a href="#搜索的关键字包含在网页标题中-intitle" class="headerlink" title="搜索的关键字包含在网页标题中(intitle)"></a>搜索的关键字包含在网页标题中(intitle)</h2><p>使用 <strong>intitle</strong> 可以完成对关键词包含在 <strong>title</strong> 中的搜索，也就是 <strong>HTML</strong> 的 <strong>title</strong> 部分。</p><blockquote><p>intitle:搜索内容</p></blockquote><p>比如，在 CSDN 搜索关键词 <strong>Hadoop</strong>，如下搜索结果：</p><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/google-05.jpg" alt=""></p><h2 id="限定文件格式-filetype"><a href="#限定文件格式-filetype" class="headerlink" title="限定文件格式(filetype)"></a>限定文件格式(filetype)</h2><p>在 Google 搜索一些文件，比如毕业设计文献之类的，只需要搜索出一定文件格式的文件，那么如何做？</p><blockquote><p>搜索内容 filetype:pdf</p></blockquote><p>比如，搜索关键词 <strong>资产负债表</strong> 文件，如下搜索结果：</p><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/google-06.jpg" alt=""></p><h2 id="计算器"><a href="#计算器" class="headerlink" title="计算器"></a>计算器</h2><blockquote><p>(1 + 3) * 4</p></blockquote><p>可以直接在谷歌搜索框内做数字运算的,如下得出的结果：</p><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/google-07.jpg" alt=""></p><h2 id="单词翻译"><a href="#单词翻译" class="headerlink" title="单词翻译"></a>单词翻译</h2><p>如果你的电脑不想安装什么翻译软件，只是想简单的翻译一下最基本的单词，我们可以使用以下谷歌语法进行翻译：</p><blockquote><p>define:单词</p></blockquote><p>比如，搜索关键词 <strong>submit</strong> 文件，如下搜索结果：</p><p><img src="https://cdn.jsdelivr.net/gh/lvmaohai/blog/images/article/google-08.jpg" alt=""></p><p>以上就是谷歌搜索的基本语法，也是我们工作学习中最常用的，欢迎大家留言，一起分享更多 Google 搜索的语法。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂谈 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Google </tag>
+            
+            <tag> 搜索 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java OOM之可用虚拟内存异常</title>
       <link href="/articles/java/oom-zhi-ke-yong-xu-ni-nei-cun-yi-chang.html"/>
       <url>/articles/java/oom-zhi-ke-yong-xu-ni-nei-cun-yi-chang.html</url>

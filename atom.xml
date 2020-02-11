@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lvmaohai.cn/"/>
-  <updated>2020-02-07T13:10:00.000Z</updated>
+  <updated>2020-02-07T21:00:00.000Z</updated>
   <id>http://blog.lvmaohai.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google 搜索的基本语法</title>
+    <link href="http://blog.lvmaohai.cn/articles/google-sou-suo-de-ji-ben-yu-fa.html"/>
+    <id>http://blog.lvmaohai.cn/articles/google-sou-suo-de-ji-ben-yu-fa.html</id>
+    <published>2020-02-07T21:00:00.000Z</published>
+    <updated>2020-02-07T21:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;精确查找-“”）&quot;&gt;&lt;a href=&quot;#精确查找-“”）&quot; class=&quot;headerlink&quot; title=&quot;精确查找(“”）&quot;&gt;&lt;/a&gt;精确查找(“”）&lt;/h2&gt;&lt;p&gt;通常 Google
+        
+      
+    
+    </summary>
+    
+    
+      <category term="杂谈" scheme="http://blog.lvmaohai.cn/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="Google" scheme="http://blog.lvmaohai.cn/tags/google/"/>
+    
+      <category term="搜索" scheme="http://blog.lvmaohai.cn/tags/%E6%90%9C%E7%B4%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>Java OOM之可用虚拟内存异常</title>
@@ -604,33 +633,6 @@
     
     
       <category term="Spark" scheme="http://blog.lvmaohai.cn/tags/spark/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive 性能调优</title>
-    <link href="http://blog.lvmaohai.cn/articles/hive/xing-neng-diao-you.html"/>
-    <id>http://blog.lvmaohai.cn/articles/hive/xing-neng-diao-you.html</id>
-    <published>2020-01-23T21:00:00.000Z</published>
-    <updated>2020-01-23T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Fetch抓取&quot;&gt;&lt;a href=&quot;#Fetch抓取&quot; class=&quot;headerlink&quot; title=&quot;Fetch抓取&quot;&gt;&lt;/a&gt;Fetch抓取&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Fetch&lt;/strong&gt; 抓取是指 &lt;font
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/categories/hive/"/>
-    
-    
-      <category term="Hive" scheme="http://blog.lvmaohai.cn/tags/hive/"/>
     
   </entry>
   
