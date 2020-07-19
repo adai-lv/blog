@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>海韵学社</title>
   
-  <subtitle>宁愿尝深思之痛,不愿吃浅尝之苦</subtitle>
+  <subtitle>问题就是机会</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lvmaohai.cn/"/>
-  <updated>2020-02-07T21:00:00.000Z</updated>
+  <updated>2020-02-14T22:00:00.000Z</updated>
   <id>http://blog.lvmaohai.cn/</id>
   
   <author>
@@ -17,40 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Google 搜索的基本语法</title>
-    <link href="http://blog.lvmaohai.cn/articles/google-sou-suo-de-ji-ben-yu-fa.html"/>
-    <id>http://blog.lvmaohai.cn/articles/google-sou-suo-de-ji-ben-yu-fa.html</id>
-    <published>2020-02-07T21:00:00.000Z</published>
-    <updated>2020-02-07T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;精确查找-“”）&quot;&gt;&lt;a href=&quot;#精确查找-“”）&quot; class=&quot;headerlink&quot; title=&quot;精确查找(“”）&quot;&gt;&lt;/a&gt;精确查找(“”）&lt;/h2&gt;&lt;p&gt;通常 Google
-        
-      
-    
-    </summary>
-    
-    
-      <category term="杂谈" scheme="http://blog.lvmaohai.cn/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-      <category term="Google" scheme="http://blog.lvmaohai.cn/tags/google/"/>
-    
-      <category term="搜索" scheme="http://blog.lvmaohai.cn/tags/%E6%90%9C%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java OOM之可用虚拟内存异常</title>
     <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-ke-yong-xu-ni-nei-cun-yi-chang.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-ke-yong-xu-ni-nei-cun-yi-chang.html</id>
-    <published>2020-02-07T13:10:00.000Z</published>
-    <updated>2020-02-07T13:10:00.000Z</updated>
+    <published>2020-02-14T22:00:00.000Z</published>
+    <updated>2020-02-14T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -78,8 +49,8 @@
     <title>Java OOM之数组大小限制异常</title>
     <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-shu-zu-da-xiao-xian-zhi-yi-chang.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-shu-zu-da-xiao-xian-zhi-yi-chang.html</id>
-    <published>2020-02-07T13:00:00.000Z</published>
-    <updated>2020-02-07T13:00:00.000Z</updated>
+    <published>2020-02-13T22:00:00.000Z</published>
+    <updated>2020-02-13T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -107,8 +78,8 @@
     <title>Java OOM之交换空间异常</title>
     <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-jiao-huan-kong-jian-yi-chang.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-jiao-huan-kong-jian-yi-chang.html</id>
-    <published>2020-02-06T21:00:00.000Z</published>
-    <updated>2020-02-06T21:00:00.000Z</updated>
+    <published>2020-02-12T22:00:00.000Z</published>
+    <updated>2020-02-12T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -136,8 +107,8 @@
     <title>Java OOM之创建Native线程异常</title>
     <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-chuang-jian-native-xian-cheng-yi-chang.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-chuang-jian-native-xian-cheng-yi-chang.html</id>
-    <published>2020-02-06T13:00:00.000Z</published>
-    <updated>2020-02-06T13:00:00.000Z</updated>
+    <published>2020-02-11T22:00:00.000Z</published>
+    <updated>2020-02-11T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -167,8 +138,8 @@
     <title>Java OOM之GC开销限制异常</title>
     <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-gc-kai-xiao-xian-zhi-yi-chang.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-gc-kai-xiao-xian-zhi-yi-chang.html</id>
-    <published>2020-02-05T21:00:00.000Z</published>
-    <updated>2020-02-05T21:00:00.000Z</updated>
+    <published>2020-02-10T22:00:00.000Z</published>
+    <updated>2020-02-10T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -195,42 +166,11 @@
   </entry>
   
   <entry>
-    <title>API 通信协议规范</title>
-    <link href="http://blog.lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html"/>
-    <id>http://blog.lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html</id>
-    <published>2020-02-05T05:00:00.000Z</published>
-    <updated>2020-02-05T05:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;协议类型&quot;&gt;&lt;a href=&quot;#协议类型&quot; class=&quot;headerlink&quot; title=&quot;协议类型&quot;&gt;&lt;/a&gt;协议类型&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;支持 https、dubbo 协议；&lt;/li&gt;
-&lt;li&gt;面向用户的客户端与服务端的通信，使用 https
-        
-      
-    
-    </summary>
-    
-    
-      <category term="架构" scheme="http://blog.lvmaohai.cn/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="API协议" scheme="http://blog.lvmaohai.cn/tags/api%E5%8D%8F%E8%AE%AE/"/>
-    
-      <category term="架构设计" scheme="http://blog.lvmaohai.cn/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java OOM之元空间异常</title>
     <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-yuan-kong-jian-yi-chang.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-yuan-kong-jian-yi-chang.html</id>
-    <published>2020-02-04T21:00:00.000Z</published>
-    <updated>2020-02-04T21:00:00.000Z</updated>
+    <published>2020-02-09T22:00:00.000Z</published>
+    <updated>2020-02-09T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -261,8 +201,8 @@
     <title>Java OOM之持久代异常</title>
     <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-chi-jiu-dai-yi-chang.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-chi-jiu-dai-yi-chang.html</id>
-    <published>2020-02-03T21:00:00.000Z</published>
-    <updated>2020-02-03T21:00:00.000Z</updated>
+    <published>2020-02-08T22:00:00.000Z</published>
+    <updated>2020-02-08T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -293,8 +233,8 @@
     <title>Java OOM之堆空间异常</title>
     <link href="http://blog.lvmaohai.cn/articles/java/oom-zhi-dui-kong-jian-yi-chang.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/oom-zhi-dui-kong-jian-yi-chang.html</id>
-    <published>2020-02-02T21:00:00.000Z</published>
-    <updated>2020-02-02T21:00:00.000Z</updated>
+    <published>2020-02-07T22:00:00.000Z</published>
+    <updated>2020-02-07T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -322,109 +262,11 @@
   </entry>
   
   <entry>
-    <title>职场感悟</title>
-    <link href="http://blog.lvmaohai.cn/articles/zhi-chang-gan-wu.html"/>
-    <id>http://blog.lvmaohai.cn/articles/zhi-chang-gan-wu.html</id>
-    <published>2020-02-02T06:00:00.000Z</published>
-    <updated>2020-02-02T06:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;第01感悟：自学能力是竞争力之本。&lt;/li&gt;
-&lt;li&gt;第02感悟：自信能让你与众不同，尽管有时的自信有点莫名其妙。&lt;/li&gt;
-&lt;li&gt;第03感悟：兴趣是学习效率的催化剂，培养自己的职业兴趣。&lt;/li&gt;
-&lt;li&gt;第04感悟：学习应给自己设置虚拟的项目目标，以做项目
-        
-      
-    
-    </summary>
-    
-    
-      <category term="职场" scheme="http://blog.lvmaohai.cn/categories/%E8%81%8C%E5%9C%BA/"/>
-    
-    
-      <category term="职场感悟" scheme="http://blog.lvmaohai.cn/tags/%E8%81%8C%E5%9C%BA%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Flink 快速上手</title>
-    <link href="http://blog.lvmaohai.cn/articles/flink/kuai-su-shang-shou.html"/>
-    <id>http://blog.lvmaohai.cn/articles/flink/kuai-su-shang-shou.html</id>
-    <published>2020-02-01T21:00:00.000Z</published>
-    <updated>2020-02-01T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;我们将从一个小的应用实例开始，从设置Flink项目到在 IDE 或命令行上运行 Flink 流分析程序。&lt;/p&gt;
-&lt;p&gt;Wikipedia 提供了一个IRC频道，其中记录了对 Wiki 的所有编辑。Flink 程序读取此通道中实时数据，并计算 &lt;strong&gt;&lt;font
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Flink" scheme="http://blog.lvmaohai.cn/categories/flink/"/>
-    
-    
-      <category term="Flink" scheme="http://blog.lvmaohai.cn/tags/flink/"/>
-    
-      <category term="大数据" scheme="http://blog.lvmaohai.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-      <category term="实时计算" scheme="http://blog.lvmaohai.cn/tags/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97/"/>
-    
-      <category term="数据处理" scheme="http://blog.lvmaohai.cn/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Flink 简介</title>
-    <link href="http://blog.lvmaohai.cn/articles/flink/jian-jie.html"/>
-    <id>http://blog.lvmaohai.cn/articles/flink/jian-jie.html</id>
-    <published>2020-01-31T21:00:00.000Z</published>
-    <updated>2020-01-31T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;初识-Flink&quot;&gt;&lt;a href=&quot;#初识-Flink&quot; class=&quot;headerlink&quot; title=&quot;初识 Flink&quot;&gt;&lt;/a&gt;初识 Flink&lt;/h2&gt;&lt;p&gt;Flink 起源于 2010~2014
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Flink" scheme="http://blog.lvmaohai.cn/categories/flink/"/>
-    
-    
-      <category term="Flink" scheme="http://blog.lvmaohai.cn/tags/flink/"/>
-    
-      <category term="大数据" scheme="http://blog.lvmaohai.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-      <category term="实时计算" scheme="http://blog.lvmaohai.cn/tags/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97/"/>
-    
-      <category term="数据处理" scheme="http://blog.lvmaohai.cn/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>java8 - 函数式编程之Stream</title>
     <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-stream.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-stream.html</id>
-    <published>2020-01-30T21:00:00.000Z</published>
-    <updated>2020-01-30T21:00:00.000Z</updated>
+    <published>2020-02-06T22:00:00.000Z</published>
+    <updated>2020-02-06T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -454,8 +296,8 @@
     <title>java8 - 函数式编程之Optional</title>
     <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-optional.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-optional.html</id>
-    <published>2020-01-29T21:00:00.000Z</published>
-    <updated>2020-01-29T21:00:00.000Z</updated>
+    <published>2020-02-05T22:00:00.000Z</published>
+    <updated>2020-02-05T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -485,8 +327,8 @@
     <title>java8 - 函数式编程之Lambda</title>
     <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-lambda.html</id>
-    <published>2020-01-28T21:00:00.000Z</published>
-    <updated>2020-01-28T21:00:00.000Z</updated>
+    <published>2020-02-04T22:00:00.000Z</published>
+    <updated>2020-02-04T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -517,8 +359,8 @@
     <title>java8 - 函数式编程之基本接口</title>
     <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-ji-ben-jie-kou.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-ji-ben-jie-kou.html</id>
-    <published>2020-01-27T21:00:00.000Z</published>
-    <updated>2020-01-27T21:00:00.000Z</updated>
+    <published>2020-02-03T22:00:00.000Z</published>
+    <updated>2020-02-03T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -547,8 +389,8 @@
     <title>java8 - 函数式编程之简介</title>
     <link href="http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html"/>
     <id>http://blog.lvmaohai.cn/articles/java/han-shu-shi-bian-cheng-zhi-jian-jie.html</id>
-    <published>2020-01-26T21:00:00.000Z</published>
-    <updated>2020-01-26T21:00:00.000Z</updated>
+    <published>2020-02-02T22:00:00.000Z</published>
+    <updated>2020-02-02T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -573,11 +415,11 @@
   </entry>
   
   <entry>
-    <title>PySpark之RDD入门</title>
-    <link href="http://blog.lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html"/>
-    <id>http://blog.lvmaohai.cn/articles/spark/pyspark-zhi-rdd-ru-men.html</id>
-    <published>2020-01-25T21:00:00.000Z</published>
-    <updated>2020-01-25T21:00:00.000Z</updated>
+    <title>API通信协议规范</title>
+    <link href="http://blog.lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html"/>
+    <id>http://blog.lvmaohai.cn/articles/api-tong-xin-xie-yi-gui-fan.html</id>
+    <published>2020-02-01T22:00:00.000Z</published>
+    <updated>2020-02-01T22:00:00.000Z</updated>
     
     <summary type="html">
     
@@ -585,54 +427,21 @@
       
         
         
-          &lt;h2 id=&quot;RDD的基本运算&quot;&gt;&lt;a href=&quot;#RDD的基本运算&quot; class=&quot;headerlink&quot; title=&quot;RDD的基本运算&quot;&gt;&lt;/a&gt;RDD的基本运算&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th
+          &lt;h2 id=&quot;协议类型&quot;&gt;&lt;a href=&quot;#协议类型&quot; class=&quot;headerlink&quot; title=&quot;协议类型&quot;&gt;&lt;/a&gt;协议类型&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;支持 https、dubbo 协议；&lt;/li&gt;
+&lt;li&gt;面向用户的客户端与服务端的通信，使用 https
         
       
     
     </summary>
     
     
-      <category term="Spark" scheme="http://blog.lvmaohai.cn/categories/spark/"/>
+      <category term="架构" scheme="http://blog.lvmaohai.cn/categories/%E6%9E%B6%E6%9E%84/"/>
     
     
-      <category term="Spark" scheme="http://blog.lvmaohai.cn/tags/spark/"/>
+      <category term="API协议" scheme="http://blog.lvmaohai.cn/tags/api%E5%8D%8F%E8%AE%AE/"/>
     
-      <category term="PySpark" scheme="http://blog.lvmaohai.cn/tags/pyspark/"/>
-    
-      <category term="RDD" scheme="http://blog.lvmaohai.cn/tags/rdd/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spark 安装和配置</title>
-    <link href="http://blog.lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html"/>
-    <id>http://blog.lvmaohai.cn/articles/spark/an-zhuang-he-pei-zhi.html</id>
-    <published>2020-01-24T21:00:00.000Z</published>
-    <updated>2020-01-24T21:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;系统环境：MacOS&lt;br&gt;Spark 版本：2.4.4&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Homebrew安装Spark&quot;&gt;&lt;a href=&quot;#Homebrew安装Spark&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Spark" scheme="http://blog.lvmaohai.cn/categories/spark/"/>
-    
-    
-      <category term="Spark" scheme="http://blog.lvmaohai.cn/tags/spark/"/>
+      <category term="架构设计" scheme="http://blog.lvmaohai.cn/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
